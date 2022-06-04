@@ -5,10 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class Registro extends AppCompatActivity {
-//Interfaz registro
-    //asd
-    //Nuevo
-    //Listo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
