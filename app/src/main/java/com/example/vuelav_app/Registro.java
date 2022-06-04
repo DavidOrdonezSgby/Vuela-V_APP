@@ -27,7 +27,6 @@ public class Registro extends AppCompatActivity {
 
 
     }
-
     private String TodosDias() {
         Calendar cal = Calendar.getInstance();
         int anio = cal.get(Calendar.YEAR);
