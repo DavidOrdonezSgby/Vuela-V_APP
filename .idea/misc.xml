@@ -5,13 +5,17 @@
       <map>
         <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/drawable/bgborde.xml" value="0.114" />
         <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/drawable/bgboton.xml" value="0.114" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/drawable/margen.xml" value="0.213" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/layout/activity_destino.xml" value="0.23596014492753623" />
         <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/layout/activity_login.xml" value="0.29322916666666665" />
         <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/layout/activity_mi_cuenta.xml" value="0.29322916666666665" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/layout/activity_origen.xml" value="0.23596014492753623" />
         <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/layout/activity_registro.xml" value="0.25" />
         <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/layout/fragment_account.xml" value="0.17346014492753623" />
         <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/layout/fragment_home.xml" value="0.17346014492753623" />
         <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/layout/fragment_notification.xml" value="0.17346014492753623" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/layout/fragment_reserve.xml" value="0.254981884057971" />
         <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/activity_registro.xml" value="0.22419928825622776" />

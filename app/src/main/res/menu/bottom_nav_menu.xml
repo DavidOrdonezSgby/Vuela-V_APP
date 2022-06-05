@@ -2,15 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/home"
-        android:title="Home"
+        android:title="Inicio"
         android:icon="@drawable/ic_baseline_account_circle_24" />
 
+    <item android:id="@+id/reserve"
+        android:title="Reservar"
+        android:icon="@drawable/ic_baseline_map_24" />
+
     <item android:id="@+id/notification"
-        android:title="Notification"
+        android:title="Notificaciones"
         android:icon="@drawable/ic_baseline_notifications_24" />
 
     <item android:id="@+id/account"
-        android:title="Account"
+        android:title="Mi Cuenta"
         android:icon="@drawable/ic_baseline_account_circle_24" />
 
 </menu>

@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import com.example.vuelav_app.Fragments.AccountFragment;
 import com.example.vuelav_app.Fragments.HomeFragment;
 import com.example.vuelav_app.Fragments.NotificationFragment;
+import com.example.vuelav_app.Fragments.ReserveFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     HomeFragment homeFragment = new HomeFragment();
     NotificationFragment notificationFragment = new NotificationFragment();
     AccountFragment accountFragment = new AccountFragment();
+    ReserveFragment reserveFragment = new ReserveFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +42,21 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.account:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, accountFragment).commit();
                         return true;
+                    case R.id.reserve:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, reserveFragment).commit();
+                        return true;
                 }
                 return false;
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() == 0) {
+            super.onBackPressed();
+        } else {
+            getFragmentManager().popBackStack();
+        }
     }
 }
