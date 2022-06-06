@@ -13,10 +13,12 @@
         android:theme="@style/Theme.Design.Light.NoActionBar">
         <activity
             android:name="com.example.vuelav_app.ReserveEmergent.Destino"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.example.vuelav_app.ReserveEmergent.Origen"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.example.vuelav_app.MiCuenta"
             android:exported="false"
