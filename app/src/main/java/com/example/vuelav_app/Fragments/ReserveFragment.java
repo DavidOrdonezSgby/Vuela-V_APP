@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.vuelav_app.Login;
@@ -54,16 +55,25 @@ public class ReserveFragment extends Fragment implements View.OnClickListener {
                                 R.layout.layout_bottom_sheet,
                                 (LinearLayout)view.findViewById(R.id.bottomSheetContainer)
                         );
+                RadioButton c = bottomSheetView.findViewById(R.id.rbComercial);
+                RadioButton p = bottomSheetView.findViewById(R.id.rbPremium);
                 bottomSheetView.findViewById(R.id.btnConfirmarTipoVuelo).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         bottomSheetDialog.dismiss();
+                        if (c.isChecked()==true){
+                            tipoViaje.setText("Comercial");
+                        }
+                        if (p.isChecked()){
+                            tipoViaje.setText("Premium");
+                        }
                     }
                 });
                 bottomSheetDialog.setContentView(bottomSheetView);
                 bottomSheetDialog.show();
             }
         });
+
     }
 
     private void goToOrigen() {

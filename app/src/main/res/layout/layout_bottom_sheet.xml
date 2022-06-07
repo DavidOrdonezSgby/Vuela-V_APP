@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:text="Comercial"
             android:button="@null"
+            android:checked="true"
             android:drawableRight="@android:drawable/btn_radio"
             android:paddingStart="15dp"
             android:drawablePadding="250dp"
