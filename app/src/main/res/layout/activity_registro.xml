@@ -100,7 +100,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="44dp"
         android:onClick="abrirfecha"
-        android:text="Julio 16 2021"
+        android:text="          Mes       /       Día     /       Año"
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintHorizontal_bias="0.0"

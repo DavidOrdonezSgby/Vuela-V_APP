@@ -60,7 +60,7 @@ public class Registro extends AppCompatActivity {
     }
 
     private String obtenerfecha(int dia, int mes, int anio) {
-        return Formatomes(mes) + " " + dia + " " + anio;
+        return "            "+ Formatomes(mes) + "      /       " + dia + "        /        " + anio;
     }
 
     private int Formatomes(int mes) {
