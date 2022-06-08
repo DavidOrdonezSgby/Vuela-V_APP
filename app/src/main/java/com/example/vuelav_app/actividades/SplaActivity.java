@@ -19,7 +19,8 @@ public class SplaActivity extends AppCompatActivity {
             public void run() {
                 Intent intent=new Intent(SplaActivity.this, MainActivity.class);
                 startActivity(intent);
-                finish();
+               finish();
+               //edy gay
             }
         },3000);
     }
