@@ -8,17 +8,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import com.example.vuelav_app.Login;
 import com.example.vuelav_app.R;
 import com.example.vuelav_app.ReserveEmergent.Destino;
 import com.example.vuelav_app.ReserveEmergent.Origen;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class ReserveFragment extends Fragment implements View.OnClickListener {
