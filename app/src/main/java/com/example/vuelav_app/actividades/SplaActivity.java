@@ -1,4 +1,4 @@
-package com.example.vuelav_app.acrividades;
+package com.example.vuelav_app.actividades;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +21,6 @@ public class SplaActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        },13000);
+        },3000);
     }
 }
