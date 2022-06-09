@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.vuelav_app.Logico.Apis;
 import com.example.vuelav_app.Logico.Models.Usuario;
+import com.example.vuelav_app.Logico.Models.UsuarioRequest;
 import com.example.vuelav_app.Logico.Service.UsuarioService;
 
 import retrofit2.Call;
@@ -22,6 +23,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private Button Registro, Iniciar;
     private UsuarioService usuarioService = Apis.getUsuarioService();
     private EditText a1, a2;
+    public String cedula;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,18 +38,24 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         a1 = (EditText) findViewById(R.id.txtUsername);
         a2 = (EditText) findViewById(R.id.as);
+
     }
 
-    public void revisarcorreo(Usuario usuario){
+    public void revisarcorreo(UsuarioRequest usuario){
 
-        Call<Usuario> call=usuarioService.login(usuario);
-        call.enqueue(new Callback<Usuario>() {
+        Call<UsuarioRequest> call=usuarioService.login(usuario);
+        call.enqueue(new Callback<UsuarioRequest>() {
             @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+            public void onResponse(Call<UsuarioRequest> call, Response<UsuarioRequest> response) {
                 if(response.isSuccessful()){
                     System.out.println("entro y si valio");
                     if(response.body().getEmail().equals(a1.getText().toString())){
                         System.out.println("Coincide");
+                        cedula = response.body().getDocIdentificacion();
+                        System.out.println(response.body().getEmail());
+                        Intent intent = new Intent(getApplicationContext(), MiCuenta.class);
+                        intent.putExtra("cedula", cedula);
+                        startActivity(intent);
                     }else{
                         System.out.println("No coincide");
                     }
@@ -56,7 +64,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             }
 
             @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
+            public void onFailure(Call<UsuarioRequest> call, Throwable t) {
                 System.out.println("fallooooooooo");
                 System.out.println(t.toString());
 
@@ -78,7 +86,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 goToRegistro();
                 break;
             case R.id.btnIniciarSesion:
-                Usuario usuario=new Usuario(a1.getText().toString(),a2.getText().toString());
+                UsuarioRequest usuario=new UsuarioRequest(a1.getText().toString(),a2.getText().toString());
                 revisarcorreo(usuario);
                 break;
 

@@ -8,12 +8,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+
+import com.example.vuelav_app.Logico.Apis;
+import com.example.vuelav_app.Logico.Models.Usuario;
+import com.example.vuelav_app.Logico.Service.UsuarioService;
 
 import java.util.Calendar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Registro extends AppCompatActivity {
 
     String fnacimiento,edadp;
+    private UsuarioService usuarioService = Apis.getUsuarioService();
+
+    private EditText nombre, apellido, telefono, email, contra;
 
     private DatePickerDialog btnDate;
     private Button btnDates;
@@ -25,6 +37,11 @@ public class Registro extends AppCompatActivity {
         btnDates = findViewById(R.id.btnDate);
         btnDates.setText(TodosDias());
 
+        nombre = (EditText) findViewById(R.id.txtregistroNombre);
+        apellido = (EditText) findViewById(R.id.txtregistroApellido);
+        telefono = (EditText) findViewById(R.id.txtregistroCelular);
+        email = (EditText) findViewById(R.id.txtregistroEmail);
+        contra = (EditText) findViewById(R.id.txtregistroPassword);
 
     }
     private String TodosDias() {
@@ -93,5 +110,35 @@ public class Registro extends AppCompatActivity {
     }
     public void abrirfecha(View view) {
         btnDate.show();
+    }
+
+    public void crearusuario(View view){
+        Usuario usuario = new Usuario();
+        usuario.setDoc_identificacion("0150307322");
+        usuario.setNombres(nombre.getText().toString());
+        usuario.setApellidos(apellido.getText().toString());
+        usuario.setTelefono(telefono.getText().toString());
+        usuario.setEmail(email.getText().toString());
+        usuario.setClave(contra.getText().toString());
+
+        Call<Usuario> call=usuarioService.signup(usuario);
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if(response.isSuccessful()){
+                    System.out.println("entro y si valio \n Creadouski");
+                }else{
+                    System.out.println("Esta cedula ya esta creada");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                System.out.println("Fallo el creado mi pana");
+                System.out.println(t.toString());
+
+            }
+        });
+
     }
 }
