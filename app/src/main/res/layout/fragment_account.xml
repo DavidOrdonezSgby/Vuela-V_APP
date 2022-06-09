@@ -6,16 +6,17 @@
     tools:context=".Fragments.AccountFragment">
 
     <TextView
+        android:id="@+id/Texto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:id="@+id/Texto"
         android:text="Iniciar Sesión para ver información de tu cuenta"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:textAlignment="center"/>
 
     <Button
         android:id="@+id/buttonInicioSesion"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/Texto"
         android:layout_centerInParent="true"

@@ -22,11 +22,11 @@ import retrofit2.Response;
 
 public class Registro extends AppCompatActivity {
 
-    String fnacimiento,edadp;
+
     private UsuarioService usuarioService = Apis.getUsuarioService();
 
-    private EditText nombre, apellido, telefono, email, contra;
-
+    private EditText nombre, apellido, cedula ,razonsocial, telefono, email, contra;
+    private String fechanacimiento;
     private DatePickerDialog btnDate;
     private Button btnDates;
     @Override
@@ -37,11 +37,13 @@ public class Registro extends AppCompatActivity {
         btnDates = findViewById(R.id.btnDate);
         btnDates.setText(TodosDias());
 
-        nombre = (EditText) findViewById(R.id.txtregistroNombre);
-        apellido = (EditText) findViewById(R.id.txtregistroApellido);
-        telefono = (EditText) findViewById(R.id.txtregistroCelular);
-        email = (EditText) findViewById(R.id.txtregistroEmail);
-        contra = (EditText) findViewById(R.id.txtregistroPassword);
+        nombre = (EditText) findViewById(R.id.txtNombreRegistro);
+        apellido = (EditText) findViewById(R.id.txtApellidoRegistro);
+       cedula = (EditText) findViewById(R.id.txtCedulaRegistro);
+        telefono = (EditText) findViewById(R.id.txtCelularRegistro);
+        razonsocial = (EditText)findViewById(R.id.txtRazonSocialRegistro);
+        email = (EditText) findViewById(R.id.txtUsernameRegistro);
+        contra = (EditText) findViewById(R.id.txtPasswordregistro);
 
     }
     private String TodosDias() {
@@ -50,7 +52,7 @@ public class Registro extends AppCompatActivity {
         int mes = cal.get(Calendar.MONTH);
         mes = mes + 1;
         int dia = cal.get(Calendar.DAY_OF_MONTH);
-        return obtenerfecha(dia, mes, anio);
+        return obtenerfecha(anio, mes, dia);
     }
 
 
@@ -59,10 +61,9 @@ public class Registro extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker datePicker, int anio, int mes, int dia) {
                 mes = mes + 1;
-                String date = obtenerfecha(dia, mes, anio);
-                fnacimiento = date;
+                String date = obtenerfecha(anio, mes, dia);
                 btnDates.setText(date);
-                Integer an = Integer.valueOf(anio);
+                fechanacimiento = date;
             }
         };
         Calendar cal = Calendar.getInstance();
@@ -70,14 +71,14 @@ public class Registro extends AppCompatActivity {
         int mes = cal.get(Calendar.MONTH);
         int dia = cal.get(Calendar.DAY_OF_MONTH);
 
-        int estilo = AlertDialog.THEME_HOLO_LIGHT;
+        int estilo = AlertDialog.BUTTON_POSITIVE;
 
         btnDate = new DatePickerDialog(this, estilo, date, anio, mes, dia);
         btnDate.getDatePicker().setMaxDate(System.currentTimeMillis());
     }
 
-    private String obtenerfecha(int dia, int mes, int anio) {
-        return "            "+ Formatomes(mes) + "      /       " + dia + "        /        " + anio;
+    private String obtenerfecha(int anio, int mes, int dia) {
+        return ""+ anio + "      -     " + Formatomes(mes) + "      -      " + dia ;
     }
 
     private int Formatomes(int mes) {
@@ -114,9 +115,10 @@ public class Registro extends AppCompatActivity {
 
     public void crearusuario(View view){
         Usuario usuario = new Usuario();
-        usuario.setDoc_identificacion("0150307322");
+        usuario.setDoc_identificacion(cedula.getText().toString());
         usuario.setNombres(nombre.getText().toString());
         usuario.setApellidos(apellido.getText().toString());
+        usuario.setRazonSocial(razonsocial.getText().toString());
         usuario.setTelefono(telefono.getText().toString());
         usuario.setEmail(email.getText().toString());
         usuario.setClave(contra.getText().toString());

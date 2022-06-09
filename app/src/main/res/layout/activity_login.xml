@@ -26,17 +26,18 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         app:counterEnabled="true"
         app:counterMaxLength="15"
-        android:layout_marginTop="50dp"
-        app:startIconDrawable="@drawable/ic_baseline_email_24"
-        app:errorEnabled="true">
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/txtUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Username"
-        android:inputType="text"/>
+        app:errorEnabled="true"
+        app:startIconDrawable="@drawable/ic_baseline_email_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -51,7 +52,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -89,6 +91,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
-
 
 </LinearLayout>
