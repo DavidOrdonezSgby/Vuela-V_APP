@@ -6,7 +6,7 @@ public class RegisterRequest {
 
     private String pais;
 
-    private String docIdentificacion;
+    private String doc_identificacion;
 
     private String nombres;
 
@@ -45,11 +45,11 @@ public class RegisterRequest {
     }
 
     public String getDocIdentificacion() {
-        return docIdentificacion;
+        return doc_identificacion;
     }
 
     public void setDocIdentificacion(String docIdentificacion) {
-        this.docIdentificacion = docIdentificacion;
+        this.doc_identificacion = docIdentificacion;
     }
 
     public String getNombres() {

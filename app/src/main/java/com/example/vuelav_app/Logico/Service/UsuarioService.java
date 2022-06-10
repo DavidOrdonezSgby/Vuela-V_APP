@@ -3,6 +3,7 @@ package com.example.vuelav_app.Logico.Service;
 
 import com.example.vuelav_app.Logico.Models.Usuario.Usuario;
 import com.example.vuelav_app.Logico.Models.RegisterRequest;
+import com.example.vuelav_app.Logico.Request.UsuarioRequest;
 import com.example.vuelav_app.Logico.Response.UsuarioResponse;
 
 import retrofit2.Call;
@@ -15,7 +16,7 @@ import retrofit2.http.Path;
 public interface UsuarioService {
 
     @POST("/api/usuario/login")
-    Call<UsuarioResponse> login(@Body RegisterRequest usuario);
+    Call<UsuarioResponse> login(@Body UsuarioRequest usuario);
 
     @POST("/api/usuario/signup")
     Call<Usuario> signup(@Body Usuario usuario);

@@ -44,7 +44,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     }
 
-    public void revisarcorreo(RegisterRequest usuario) {
+    public void revisarcorreo(UsuarioRequest usuario) {
         System.out.println("LOGIN");
         Call<UsuarioResponse> call = usuarioService.login(usuario);
         call.enqueue(new Callback<UsuarioResponse>() {
@@ -70,7 +70,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
             @Override
             public void onFailure(Call<UsuarioResponse> call, Throwable t) {
-                System.out.println("ERROR RESPONSE");
+
             }
         });
     }
@@ -89,7 +89,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 goToRegistro();
                 break;
             case R.id.btnIniciarSesion:
-                RegisterRequest usuario=new RegisterRequest(a1.getText().toString(),a2.getText().toString());
+                UsuarioRequest usuario=new UsuarioRequest(a1.getText().toString(),a2.getText().toString());
                 revisarcorreo(usuario);
                 break;
 
