@@ -21,7 +21,7 @@ import retrofit2.Response;
 public class MiCuenta extends AppCompatActivity implements View.OnClickListener {
 
     private ImageButton regresarInicio;
-    private TextView nombre, apellido, fecha, genero, email, telefono;
+    private TextView nombre, apellido, fecha, genero, emailU, telefono;
     private UsuarioService usuarioService = Apis.getUsuarioService();
     private Login login = new Login();
 
@@ -46,18 +46,24 @@ public class MiCuenta extends AppCompatActivity implements View.OnClickListener 
         apellido = (TextView) findViewById(R.id.txtApellido);
         fecha = (TextView) findViewById(R.id.txtFecha);
         genero = (TextView) findViewById(R.id.txtGenero);
-        email = (TextView) findViewById(R.id.txtEmail);
+        emailU = (TextView) findViewById(R.id.txtEmail);
         telefono = (TextView) findViewById(R.id.txtTelefono);
         System.out.println(getIntent().getStringExtra("cedula"));
-        obtusuario(getIntent().getStringExtra("cedula"));
+        obtusuario(getIntent().getStringExtra("email"));
     }
 
     public void obtusuario(String email){
-        Call<UsuarioResponse> call=usuarioService.findByemail("Bearer "+ getIntent().getStringExtra("token"), email);
+        Call<UsuarioResponse> call=usuarioService.findByemail("Bearer "+ new TokenController().getToken(this), email);
         call.enqueue(new Callback<UsuarioResponse>() {
             @Override
             public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
                 if(response.isSuccessful()) {
+                    nombre.setText(response.body().getNombres().toString());
+                    apellido.setText(response.body().getApellidos().toString());
+                    fecha.setText(response.body().getFechaNacimiento().toString());
+                    genero.setText(response.body().getGenero().toString());
+                    emailU.setText(response.body().getEmail().toString());
+                    telefono.setText(response.body().getTelefono().toString());
                     System.out.println(response.body().getDocIdentificacion());
                 }else{
                     System.out.println("Esta mal :/");

@@ -13,6 +13,7 @@ import com.example.vuelav_app.Logico.Models.RegisterRequest;
 import com.example.vuelav_app.Logico.Request.UsuarioRequest;
 import com.example.vuelav_app.Logico.Response.UsuarioResponse;
 import com.example.vuelav_app.Logico.Service.UsuarioService;
+import com.example.vuelav_app.Logico.Token.TokenController;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,7 +24,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private Button Registro, Iniciar;
     private UsuarioService usuarioService = Apis.getUsuarioService();
     private EditText a1, a2;
-    public String cedula;
+    public String email;
 
     public Login() {
     }
@@ -54,11 +55,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     System.out.println("entro y si valio");
                     if (response.body().getEmail().equals(a1.getText().toString())) {
                         System.out.println("Coincide");
-                        cedula = response.body().getDocIdentificacion();
                         System.out.println(response.body().getEmail());
                         Intent intent = new Intent(getApplicationContext(), MiCuenta.class);
                         intent.putExtra("token", response.body().getToken());
-                        intent.putExtra("cedula", cedula);
+                        intent.putExtra("email", response.body().getEmail());
+                        TokenController.setToken(Login.this, response.body().getToken());
                         System.out.println("Cedula login" +response.body().getDocIdentificacion());
                         System.out.println("TOKEN login" +response.body().getToken());
                         startActivity(intent);
@@ -70,7 +71,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
             @Override
             public void onFailure(Call<UsuarioResponse> call, Throwable t) {
-
+                System.out.println("ERROR " + t.toString());
             }
         });
     }
