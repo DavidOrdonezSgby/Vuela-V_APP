@@ -52,8 +52,8 @@ public class MiCuenta extends AppCompatActivity implements View.OnClickListener 
         obtusuario(getIntent().getStringExtra("cedula"));
     }
 
-    public void obtusuario(String cedula){
-        Call<UsuarioResponse> call=usuarioService.findByCI("Bearer "+ new TokenController().getToken(this), cedula);
+    public void obtusuario(String email){
+        Call<UsuarioResponse> call=usuarioService.findByemail("Bearer "+ getIntent().getStringExtra("token"), email);
         call.enqueue(new Callback<UsuarioResponse>() {
             @Override
             public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
@@ -67,7 +67,7 @@ public class MiCuenta extends AppCompatActivity implements View.OnClickListener 
 
             @Override
             public void onFailure(Call<UsuarioResponse> call, Throwable t) {
-                System.out.println("Datos obtenidos mal"+ t.toString());
+
             }
         });
     }
