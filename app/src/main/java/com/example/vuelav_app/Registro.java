@@ -11,7 +11,10 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.example.vuelav_app.Logico.Apis;
+import com.example.vuelav_app.Logico.Models.RegisterRequest;
 import com.example.vuelav_app.Logico.Models.Usuario.Usuario;
+import com.example.vuelav_app.Logico.Request.UsuarioRequest;
+import com.example.vuelav_app.Logico.Response.UsuarioResponse;
 import com.example.vuelav_app.Logico.Service.UsuarioService;
 
 import java.util.Calendar;
@@ -114,8 +117,8 @@ public class Registro extends AppCompatActivity {
     }
 
     public void crearusuario(View view){
-        Usuario usuario = new Usuario();
-        usuario.setDoc_identificacion(cedula.getText().toString());
+        RegisterRequest usuario = new RegisterRequest();
+        usuario.setDocIdentificacion(cedula.getText().toString());
         usuario.setNombres(nombre.getText().toString());
         usuario.setApellidos(apellido.getText().toString());
         usuario.setRazonSocial(razonsocial.getText().toString());
@@ -123,10 +126,10 @@ public class Registro extends AppCompatActivity {
         usuario.setEmail(email.getText().toString());
         usuario.setClave(contra.getText().toString());
 
-        Call<Usuario> call=usuarioService.signup(usuario);
-        call.enqueue(new Callback<Usuario>() {
+        Call<UsuarioResponse> call=usuarioService.signup(usuario);
+        call.enqueue(new Callback<UsuarioResponse>() {
             @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+            public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
                 if(response.isSuccessful()){
                     System.out.println("entro y si valio \n Creadouski");
                 }else{
@@ -135,12 +138,11 @@ public class Registro extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
-                System.out.println("Fallo el creado mi pana");
-                System.out.println(t.toString());
+            public void onFailure(Call<UsuarioResponse> call, Throwable t) {
 
             }
         });
+
 
     }
 }

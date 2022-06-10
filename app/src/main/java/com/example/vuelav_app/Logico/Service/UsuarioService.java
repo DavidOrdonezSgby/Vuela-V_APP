@@ -19,9 +19,9 @@ public interface UsuarioService {
     Call<UsuarioResponse> login(@Body UsuarioRequest usuario);
 
     @POST("/api/usuario/signup")
-    Call<Usuario> signup(@Body Usuario usuario);
+    Call<UsuarioResponse> signup(@Body RegisterRequest registerRequest);
 
-    @GET("/api/usuario/usuario/{cedula}")
-    Call<UsuarioResponse> findByCI(@Header("Authorization") String token, @Path(value="cedula") String cedula);
+    @GET("/api/usuario/{email}")
+    Call<UsuarioResponse> findByemail(@Header("Authorization") String token, @Path(value="email") String email);
 
 }
