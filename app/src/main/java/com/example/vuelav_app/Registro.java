@@ -11,7 +11,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.example.vuelav_app.Logico.Apis;
-import com.example.vuelav_app.Logico.Models.Usuario;
+import com.example.vuelav_app.Logico.Models.Usuario.Usuario;
 import com.example.vuelav_app.Logico.Service.UsuarioService;
 
 import java.util.Calendar;

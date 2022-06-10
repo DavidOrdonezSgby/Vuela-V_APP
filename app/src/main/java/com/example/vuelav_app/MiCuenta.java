@@ -2,6 +2,7 @@ package com.example.vuelav_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,8 +10,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.vuelav_app.Logico.Apis;
-import com.example.vuelav_app.Logico.Models.Usuario;
+import com.example.vuelav_app.Logico.Response.UsuarioResponse;
 import com.example.vuelav_app.Logico.Service.UsuarioService;
+import com.example.vuelav_app.Logico.Token.TokenController;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,6 +24,15 @@ public class MiCuenta extends AppCompatActivity implements View.OnClickListener 
     private TextView nombre, apellido, fecha, genero, email, telefono;
     private UsuarioService usuarioService = Apis.getUsuarioService();
     private Login login = new Login();
+
+    public MiCuenta() {
+    }
+
+    private Context context;
+
+    public MiCuenta(Context context){
+        this.context=context;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,19 +53,20 @@ public class MiCuenta extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void obtusuario(String cedula){
-        Call<Usuario> call=usuarioService.findByCI(cedula);
-        call.enqueue(new Callback<Usuario>() {
+        Call<UsuarioResponse> call=usuarioService.findByCI("Bearer "+ new TokenController().getToken(this), cedula);
+        call.enqueue(new Callback<UsuarioResponse>() {
             @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+            public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
                 if(response.isSuccessful()) {
-                    System.out.println(response.body().getDoc_identificacion());
+                    System.out.println(response.body().getDocIdentificacion());
                 }else{
                     System.out.println("Esta mal :/");
+                    System.out.println("Error "+ response.code());
                 }
             }
 
             @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
+            public void onFailure(Call<UsuarioResponse> call, Throwable t) {
                 System.out.println("Datos obtenidos mal"+ t.toString());
             }
         });

@@ -2,11 +2,11 @@ package com.example.vuelav_app.Logico.Models;
 
 import java.util.Date;
 
-public class Usuario {
+public class RegisterRequest {
 
     private String pais;
 
-    private String doc_identificacion;
+    private String docIdentificacion;
 
     private String nombres;
 
@@ -28,10 +28,10 @@ public class Usuario {
 
     private Boolean autorizacion;
 
-    public Usuario() {
+    public RegisterRequest() {
     }
 
-    public Usuario(String email, String clave) {
+    public RegisterRequest(String email, String clave) {
         this.email = email;
         this.clave = clave;
     }
@@ -44,12 +44,12 @@ public class Usuario {
         this.pais = pais;
     }
 
-    public String getDoc_identificacion() {
-        return doc_identificacion;
+    public String getDocIdentificacion() {
+        return docIdentificacion;
     }
 
-    public void setDoc_identificacion(String doc_identificacion) {
-        this.doc_identificacion = doc_identificacion;
+    public void setDocIdentificacion(String docIdentificacion) {
+        this.docIdentificacion = docIdentificacion;
     }
 
     public String getNombres() {

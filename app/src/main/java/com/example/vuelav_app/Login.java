@@ -7,11 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.vuelav_app.Logico.Apis;
-import com.example.vuelav_app.Logico.Models.Usuario;
-import com.example.vuelav_app.Logico.Models.UsuarioRequest;
+import com.example.vuelav_app.Logico.Models.RegisterRequest;
+import com.example.vuelav_app.Logico.Request.UsuarioRequest;
+import com.example.vuelav_app.Logico.Response.UsuarioResponse;
 import com.example.vuelav_app.Logico.Service.UsuarioService;
 
 import retrofit2.Call;
@@ -24,6 +24,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private UsuarioService usuarioService = Apis.getUsuarioService();
     private EditText a1, a2;
     public String cedula;
+
+    public Login() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,37 +44,37 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     }
 
-    public void revisarcorreo(UsuarioRequest usuario){
-
-        Call<UsuarioRequest> call=usuarioService.login(usuario);
-        call.enqueue(new Callback<UsuarioRequest>() {
+    public void revisarcorreo(RegisterRequest usuario) {
+        System.out.println("LOGIN");
+        Call<UsuarioResponse> call = usuarioService.login(usuario);
+        call.enqueue(new Callback<UsuarioResponse>() {
             @Override
-            public void onResponse(Call<UsuarioRequest> call, Response<UsuarioRequest> response) {
-                if(response.isSuccessful()){
+            public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
+                if(response.isSuccessful()) {
                     System.out.println("entro y si valio");
-                    if(response.body().getEmail().equals(a1.getText().toString())){
+                    if (response.body().getEmail().equals(a1.getText().toString())) {
                         System.out.println("Coincide");
                         cedula = response.body().getDocIdentificacion();
                         System.out.println(response.body().getEmail());
                         Intent intent = new Intent(getApplicationContext(), MiCuenta.class);
+                        intent.putExtra("token", response.body().getToken());
                         intent.putExtra("cedula", cedula);
+                        System.out.println("Cedula login" +response.body().getDocIdentificacion());
+                        System.out.println("TOKEN login" +response.body().getToken());
                         startActivity(intent);
-                    }else{
+                    } else {
                         System.out.println("No coincide");
                     }
-
                 }
             }
 
             @Override
-            public void onFailure(Call<UsuarioRequest> call, Throwable t) {
-                System.out.println("fallooooooooo");
-                System.out.println(t.toString());
-
+            public void onFailure(Call<UsuarioResponse> call, Throwable t) {
+                System.out.println("ERROR RESPONSE");
             }
         });
-
     }
+
 
     private void goToRegistro() {
         Intent intent = new Intent(getApplicationContext(), Registro.class);
@@ -86,7 +89,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 goToRegistro();
                 break;
             case R.id.btnIniciarSesion:
-                UsuarioRequest usuario=new UsuarioRequest(a1.getText().toString(),a2.getText().toString());
+                RegisterRequest usuario=new RegisterRequest(a1.getText().toString(),a2.getText().toString());
                 revisarcorreo(usuario);
                 break;
 
