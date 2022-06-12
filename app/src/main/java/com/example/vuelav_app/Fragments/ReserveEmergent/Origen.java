@@ -1,4 +1,4 @@
-package com.example.vuelav_app.ReserveEmergent;
+package com.example.vuelav_app.Fragments.ReserveEmergent;
 
 import androidx.appcompat.app.AppCompatActivity;
 

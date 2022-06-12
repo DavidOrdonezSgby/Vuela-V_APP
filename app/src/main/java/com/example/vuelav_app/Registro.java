@@ -17,7 +17,10 @@ import com.example.vuelav_app.Logico.Request.UsuarioRequest;
 import com.example.vuelav_app.Logico.Response.UsuarioResponse;
 import com.example.vuelav_app.Logico.Service.UsuarioService;
 
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Calendar;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,6 +35,7 @@ public class Registro extends AppCompatActivity {
     private String fechanacimiento;
     private DatePickerDialog btnDate;
     private Button btnDates;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,6 +126,9 @@ public class Registro extends AppCompatActivity {
         usuario.setNombres(nombre.getText().toString());
         usuario.setApellidos(apellido.getText().toString());
         usuario.setRazonSocial(razonsocial.getText().toString());
+
+
+
         usuario.setTelefono(telefono.getText().toString());
         usuario.setEmail(email.getText().toString());
         usuario.setClave(contra.getText().toString());
@@ -142,7 +149,5 @@ public class Registro extends AppCompatActivity {
 
             }
         });
-
-
     }
 }

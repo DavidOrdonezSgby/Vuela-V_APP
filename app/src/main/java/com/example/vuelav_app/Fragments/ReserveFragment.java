@@ -13,8 +13,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.vuelav_app.R;
-import com.example.vuelav_app.ReserveEmergent.Destino;
-import com.example.vuelav_app.ReserveEmergent.Origen;
+import com.example.vuelav_app.Fragments.ReserveEmergent.Destino;
+import com.example.vuelav_app.Fragments.ReserveEmergent.Origen;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class ReserveFragment extends Fragment implements View.OnClickListener {

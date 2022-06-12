@@ -1,19 +1,14 @@
-package com.example.vuelav_app.ReserveEmergent;
+package com.example.vuelav_app.Fragments.ReserveEmergent;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.FragmentManager;
 
-import android.app.FragmentManager;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
 import com.example.vuelav_app.Fragments.ReserveFragment;
-import com.example.vuelav_app.MainActivity;
 import com.example.vuelav_app.R;
-import com.google.android.material.navigation.NavigationBarView;
 
 public class Destino extends AppCompatActivity implements View.OnClickListener {
 
@@ -31,7 +26,8 @@ public class Destino extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void goToReserve() {
-
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.container, reserveFragment).commit();
     }
 
 

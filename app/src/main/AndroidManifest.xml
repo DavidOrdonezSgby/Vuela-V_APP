@@ -13,11 +13,11 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
         <activity
-            android:name="com.example.vuelav_app.ReserveEmergent.Destino"
+            android:name=".Fragments.ReserveEmergent.Destino"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.vuelav_app.ReserveEmergent.Origen"
+            android:name=".Fragments.ReserveEmergent.Origen"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
@@ -45,6 +45,10 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
