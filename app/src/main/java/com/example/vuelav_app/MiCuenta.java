@@ -18,12 +18,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MiCuenta extends AppCompatActivity implements View.OnClickListener {
+public class MiCuenta extends AppCompatActivity {
 
-    private ImageButton regresarInicio;
     private TextView nombre, apellido, fecha, genero, emailU, telefono;
     private UsuarioService usuarioService = Apis.getUsuarioService();
-    private Login login = new Login();
 
     public MiCuenta() {
     }
@@ -38,9 +36,6 @@ public class MiCuenta extends AppCompatActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mi_cuenta);
-
-        regresarInicio = (ImageButton) findViewById(R.id.imgRegresar);
-        regresarInicio.setOnClickListener(this);
 
         nombre = (TextView) findViewById(R.id.txtNombre);
         apellido = (TextView) findViewById(R.id.txtApellido);
@@ -78,18 +73,4 @@ public class MiCuenta extends AppCompatActivity implements View.OnClickListener 
         });
     }
 
-    private void goToHome(){
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public void onClick(View view) {
-        int id = view.getId();
-        switch (id) {
-            case R.id.imgRegresar:
-                goToHome();
-                break;
-        }
-    }
 }
