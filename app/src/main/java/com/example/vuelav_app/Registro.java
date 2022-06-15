@@ -33,7 +33,7 @@ public class Registro extends AppCompatActivity {
     private DatePickerDialog btnDate;
     private Button btnDates;
     private Date date1;
-        private String fecha2;
+    private String fecha2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +96,7 @@ public class Registro extends AppCompatActivity {
         usuario.setNombres(nombre.getText().toString());
         usuario.setApellidos(apellido.getText().toString());
         usuario.setRazonSocial(razonsocial.getText().toString());
-       usuario.setFechaNacimiento(date1);
+        usuario.setFechaNacimiento(date1);
         usuario.setTelefono(telefono.getText().toString());
         usuario.setEmail(email.getText().toString());
         usuario.setClave(contra.getText().toString());

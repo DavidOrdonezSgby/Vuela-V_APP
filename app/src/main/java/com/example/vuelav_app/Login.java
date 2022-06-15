@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.vuelav_app.Fragments.AccountFragmentModel.MiCuenta;
 import com.example.vuelav_app.Logico.Apis;
-import com.example.vuelav_app.Logico.Models.RegisterRequest;
 import com.example.vuelav_app.Logico.Request.UsuarioRequest;
 import com.example.vuelav_app.Logico.Response.UsuarioResponse;
 import com.example.vuelav_app.Logico.Service.UsuarioService;
@@ -24,10 +24,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private Button Registro, Iniciar;
     private UsuarioService usuarioService = Apis.getUsuarioService();
     private EditText a1, a2;
-    public String email;
-
-    public Login() {
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +52,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     if (response.body().getEmail().equals(a1.getText().toString())) {
                         System.out.println("Coincide");
                         System.out.println(response.body().getEmail());
-                        Intent intent = new Intent(getApplicationContext(), MiCuenta.class);
-                        intent.putExtra("token", response.body().getToken());
-                        intent.putExtra("email", response.body().getEmail());
+                        //Intent intent = new Intent(getApplicationContext(), MiCuenta.class);
+                        //intent.putExtra("token", response.body().getToken());
+                        //intent.putExtra("email", response.body().getEmail());
+                        Bundle bundle = new Bundle();
+                        bundle.putString("token", response.body().getToken());
+                        bundle.putString("email", response.body().getEmail());
                         TokenController.setToken(Login.this, response.body().getToken());
                         System.out.println("Cedula login" +response.body().getDocIdentificacion());
                         System.out.println("TOKEN login" +response.body().getToken());
-                        startActivity(intent);
+                        //startActivity(intent);
                     } else {
                         System.out.println("No coincide");
                     }
@@ -75,7 +74,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             }
         });
     }
-
 
     private void goToRegistro() {
         Intent intent = new Intent(getApplicationContext(), Registro.class);
@@ -90,11 +88,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 goToRegistro();
                 break;
             case R.id.btnIniciarSesion:
-                UsuarioRequest usuario=new UsuarioRequest(a1.getText().toString(),a2.getText().toString());
+                UsuarioRequest usuario = new UsuarioRequest(a1.getText().toString(),a2.getText().toString());
                 revisarcorreo(usuario);
+                Intent intent = new Intent(getApplicationContext(), SesionIniciada.class);
+                startActivity(intent);
                 break;
 
         }
     }
-
 }

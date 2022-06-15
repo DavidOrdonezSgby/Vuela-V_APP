@@ -10,24 +10,24 @@ import com.example.vuelav_app.Fragments.AccountFragment;
 import com.example.vuelav_app.Fragments.AccountFragmentModel.MiCuenta;
 import com.example.vuelav_app.Fragments.HomeFragment;
 import com.example.vuelav_app.Fragments.NotificationFragment;
+import com.example.vuelav_app.Fragments.NotificationFragmentModel.NotificationSesionIniciada;
 import com.example.vuelav_app.Fragments.ReserveFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class MainActivity extends AppCompatActivity {
+public class SesionIniciada extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     HomeFragment homeFragment = new HomeFragment();
     NotificationFragment notificationFragment = new NotificationFragment();
-    AccountFragment accountFragment = new AccountFragment();
     ReserveFragment reserveFragment = new ReserveFragment();
     MiCuenta miCuenta = new MiCuenta();
+    NotificationSesionIniciada notificationSesionIniciada = new NotificationSesionIniciada();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_sesion_iniciada);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         getSupportFragmentManager().beginTransaction().replace(R.id.container, homeFragment).commit();
@@ -40,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, homeFragment).commit();
                         return true;
                     case R.id.notification:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, notificationFragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, notificationSesionIniciada).commit();
                         return true;
                     case R.id.account:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, accountFragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, miCuenta).commit();
                         return true;
                     case R.id.reserve:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, reserveFragment).commit();
@@ -52,14 +52,5 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() == 0) {
-            super.onBackPressed();
-        } else {
-            getFragmentManager().popBackStack();
-        }
     }
 }
