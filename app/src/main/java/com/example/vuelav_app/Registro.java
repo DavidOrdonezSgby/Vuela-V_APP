@@ -12,13 +12,11 @@ import android.widget.EditText;
 
 import com.example.vuelav_app.Logico.Apis;
 import com.example.vuelav_app.Logico.Models.RegisterRequest;
-import com.example.vuelav_app.Logico.Models.Usuario.Usuario;
-import com.example.vuelav_app.Logico.Request.UsuarioRequest;
 import com.example.vuelav_app.Logico.Response.UsuarioResponse;
 import com.example.vuelav_app.Logico.Service.UsuarioService;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -32,18 +30,16 @@ public class Registro extends AppCompatActivity {
     private UsuarioService usuarioService = Apis.getUsuarioService();
 
     private EditText nombre, apellido, cedula ,razonsocial, telefono, email, contra;
-    private String fechanacimiento;
     private DatePickerDialog btnDate;
     private Button btnDates;
+    private Date date1;
+        private String fecha2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
-        fechaelegida();
-        btnDates = findViewById(R.id.btnDate);
-        btnDates.setText(TodosDias());
-
+        btnDates = (Button) findViewById(R.id.btnDate);
         nombre = (EditText) findViewById(R.id.txtNombreRegistro);
         apellido = (EditText) findViewById(R.id.txtApellidoRegistro);
        cedula = (EditText) findViewById(R.id.txtCedulaRegistro);
@@ -51,89 +47,62 @@ public class Registro extends AppCompatActivity {
         razonsocial = (EditText)findViewById(R.id.txtRazonSocialRegistro);
         email = (EditText) findViewById(R.id.txtUsernameRegistro);
         contra = (EditText) findViewById(R.id.txtPasswordregistro);
+        findViewById(R.id.btnDate).setOnClickListener(l -> abrirfecha());
 
     }
-    private String TodosDias() {
-        Calendar cal = Calendar.getInstance();
-        int anio = cal.get(Calendar.YEAR);
-        int mes = cal.get(Calendar.MONTH);
-        mes = mes + 1;
-        int dia = cal.get(Calendar.DAY_OF_MONTH);
-        return obtenerfecha(anio, mes, dia);
-    }
-
-
     private void fechaelegida() {
-        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+       DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int anio, int mes, int dia) {
                 mes = mes + 1;
-                String date = obtenerfecha(anio, mes, dia);
-                btnDates.setText(date);
-                fechanacimiento = date;
+
+                 String fecha = anio + "-" + mes + "-" + dia;
+
+                try {
+                    SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                    fecha2 = formato.format(fecha);
+                    date1 = formato.parse(fecha2) ;
+                    System.out.println(date1);
+                    System.out.println(fecha);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+
+                btnDates.setText(anio + "    -   " + mes + "     -   " + dia);
+
             }
         };
         Calendar cal = Calendar.getInstance();
         int anio = cal.get(Calendar.YEAR);
         int mes = cal.get(Calendar.MONTH);
         int dia = cal.get(Calendar.DAY_OF_MONTH);
-
         int estilo = AlertDialog.BUTTON_POSITIVE;
 
         btnDate = new DatePickerDialog(this, estilo, date, anio, mes, dia);
         btnDate.getDatePicker().setMaxDate(System.currentTimeMillis());
     }
 
-    private String obtenerfecha(int anio, int mes, int dia) {
-        return ""+ anio + "      -     " + Formatomes(mes) + "      -      " + dia ;
-    }
 
-    private int Formatomes(int mes) {
-        if (mes == 1)
-            return 1;
-        if (mes == 2)
-            return 2;
-        if (mes == 3)
-            return 3;
-        if (mes == 4)
-            return 4;
-        if (mes == 5)
-            return 5;
-        if (mes == 6)
-            return 6;
-        if (mes == 7)
-            return 7;
-        if (mes == 8)
-            return 8;
-        if (mes == 9)
-            return 9;
-        if (mes == 10)
-            return 10;
-        if (mes == 11)
-            return 11;
-        if (mes == 12)
-            return 12;
-        return 6;
-
-    }
-    public void abrirfecha(View view) {
+    private void abrirfecha() {
+        fechaelegida();
         btnDate.show();
     }
 
     public void crearusuario(View view){
+        System.out.println( ":v entro");
         RegisterRequest usuario = new RegisterRequest();
         usuario.setDocIdentificacion(cedula.getText().toString());
         usuario.setNombres(nombre.getText().toString());
         usuario.setApellidos(apellido.getText().toString());
         usuario.setRazonSocial(razonsocial.getText().toString());
-
-
-
+       usuario.setFechaNacimiento(date1);
         usuario.setTelefono(telefono.getText().toString());
         usuario.setEmail(email.getText().toString());
         usuario.setClave(contra.getText().toString());
 
         Call<UsuarioResponse> call=usuarioService.signup(usuario);
+        System.out.println("paso los datosd");
         call.enqueue(new Callback<UsuarioResponse>() {
             @Override
             public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
@@ -146,6 +115,7 @@ public class Registro extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UsuarioResponse> call, Throwable t) {
+                System.out.println(t.toString());
 
             }
         });

@@ -31,32 +31,40 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:errorEnabled="true">
+                android:background="@drawable/bgborde"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/ic_baseline_perm_identity_24"
+                >
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtNombreRegistro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="  Nombre"
+                    android:hint="Nombre"
                     android:inputType="text"
-                    android:drawableStart="@drawable/ic_baseline_perm_identity_24"/>
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:errorEnabled="true">
+                android:layout_marginTop="10dp"
+                app:startIconDrawable="@drawable/ic_baseline_person_24"
+                app:errorEnabled="true"
+                android:background="@drawable/bgborde">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtApellidoRegistro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="  Apellido"
-                    android:inputType="text"
-                    android:drawableStart="@drawable/ic_baseline_person_24"/>
+                    android:hint="Apellido"
+                    android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bgborde"
+                app:startIconDrawable="@drawable/ic_baseline_payment_24"
                 app:errorEnabled="true"
                 app:counterMaxLength="10"
                 app:counterEnabled="true">
@@ -64,26 +72,28 @@
                     android:id="@+id/txtCedulaRegistro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="  Identificaión"
-                    android:inputType="number"
-                    android:drawableStart="@drawable/ic_baseline_payment_24"/>
+                    android:hint="Identificaión"
+                    android:inputType="number"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bgborde"
                 android:text="Fecha de Nacimiento:"
-                android:padding="12dp"
-                android:textColor="#020202"
-                android:textSize="18sp" />
+                android:textColor="#1B1919"
+                android:textSize="18dp" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="   Año               -             Mes              -       Día           "
-android:textAlignment="center"
+                android:hint="Año   -   Mes -   Día"
+                android:background="@drawable/bgborde"
+                android:textAlignment="center"
                 android:textSize="12sp" />
             <Button
                 android:id="@+id/btnDate"
+                android:background="@drawable/bgborde"
                 style="?android:absListViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -93,55 +103,60 @@ android:textAlignment="center"
                 android:drawableEnd="@drawable/ic_baseline_calendar_today_24"
                 android:textSize="18sp"/>
 
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:startIconDrawable="@drawable/ic_baseline_phone_android_24"
                 app:counterEnabled="true"
+                android:background="@drawable/bgborde"
                 app:counterMaxLength="10"
                 app:errorEnabled="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtCelularRegistro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="  Numero de Celular"
-                    android:inputType="number"
-                    android:drawableStart="@drawable/ic_baseline_phone_android_24"/>
+                    android:hint="Numero de Celular"
+                    android:inputType="number"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:startIconDrawable="@drawable/ic_baseline_home_work_24"
+                android:background="@drawable/bgborde"
                 app:errorEnabled="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtRazonSocialRegistro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="  Razón social"
-                    android:inputType="text"
-                    android:drawableStart="@drawable/ic_baseline_home_work_24"/>
+                    android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
             <Spinner
-                style="@style/Widget.AppCompat.Spinner.Underlined"
+                style="@style/CardView.Dark"
                 android:id="@+id/spPaisRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="10dp" />
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:background="@drawable/bgborde"
+                android:layout_marginTop="10dp"
                 android:text="Género:"
                 android:textColor="#020202"
                 android:textSize="16sp"
 
  />
             <RadioGroup
+                android:background="@drawable/bgborde"
                 android:id="@+id/rdregistrogenero"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintHorizontal_bias="0.554"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -151,8 +166,7 @@ android:textAlignment="center"
                     android:id="@+id/rdregistromasculino"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Femenino"
-                    tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
+                    android:text="Femenino" />
 
                 <RadioButton
                     android:id="@+id/rdregistrofemenino"
@@ -165,6 +179,8 @@ android:textAlignment="center"
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bgborde"
                 app:counterEnabled="true"
                 app:counterMaxLength="15"
                 app:errorEnabled="true"
@@ -189,32 +205,33 @@ android:textAlignment="center"
                     android:id="@+id/txtPasswordregistro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/bgborde"
                     android:hint="Password"
                     android:inputType="textPassword"
                     />
+            </com.google.android.material.textfield.TextInputLayout>
 
                 <CheckBox
                     android:id="@+id/boxterminoscondiciones"
-                    android:layout_marginVertical="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+
                     android:textColor="@color/teal_700"
                     android:text="Aceptar Términos y Condiciones" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/btnRegistrar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/bgboton"
-        android:text="Registrar"
-        android:onClick="crearusuario"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/txtregistroPassword" />
+
+            <Button
+                android:id="@+id/btnRegistrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bgboton"
+                android:onClick="crearusuario"
+                android:text="Registrar"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toBottomOf="@+id/txtregistroPassword" />
 
 
         </LinearLayout>

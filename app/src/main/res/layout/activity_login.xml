@@ -29,6 +29,7 @@
         android:layout_marginTop="50dp"
         app:counterEnabled="true"
         app:counterMaxLength="15"
+        android:background="@drawable/bgborde"
         app:errorEnabled="true"
         app:startIconDrawable="@drawable/ic_baseline_email_24">
 
@@ -43,6 +44,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bgborde"
         app:errorEnabled="true"
         android:layout_marginTop="20dp"
         app:passwordToggleEnabled="true"
