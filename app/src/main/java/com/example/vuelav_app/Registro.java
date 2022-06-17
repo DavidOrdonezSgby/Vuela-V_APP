@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -33,9 +35,6 @@ public class Registro extends AppCompatActivity {
     private UsuarioService usuarioService = Apis.getUsuarioService();
 
     private EditText nombre, apellido, cedula ,razonsocial, telefono, email, contra;
-    private Date date1;
-    private String fecha2;
-    private TextView visualizaFecha;
     private Button btnDates;
     private DatePickerDialog.OnDateSetListener setListener;
 
@@ -44,7 +43,6 @@ public class Registro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
         btnDates = (Button) findViewById(R.id.btnDate);
-        visualizaFecha = (TextView) findViewById(R.id.txtVisualizaFecha);
         nombre = (EditText) findViewById(R.id.txtNombreRegistro);
         apellido = (EditText) findViewById(R.id.txtApellidoRegistro);
        cedula = (EditText) findViewById(R.id.txtCedulaRegistro);
@@ -73,8 +71,9 @@ public class Registro extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayofMoth) {
                 month = month+1;
-                String date = year+"/"+month+"/"+day;
+                String date = year+"-"+month+"-"+day;
                 btnDates.setText(date);
+                System.out.println("FECHA REGISTRO "+date);
             }
         };
     }
@@ -86,8 +85,11 @@ public class Registro extends AppCompatActivity {
         usuario.setNombres(nombre.getText().toString());
         usuario.setApellidos(apellido.getText().toString());
         usuario.setRazonSocial(razonsocial.getText().toString());
-        usuario.setFechaNacimiento(date1);
-        System.out.println("FECHA REGISTRO"+ date1);
+
+        String sValue = (String) btnDates.getText();
+        java.sql.Date dtValue = java.sql.Date.valueOf(sValue);
+        usuario.setFechaNacimiento(dtValue);
+
         usuario.setTelefono(telefono.getText().toString());
         usuario.setEmail(email.getText().toString());
         usuario.setClave(contra.getText().toString());
@@ -99,16 +101,54 @@ public class Registro extends AppCompatActivity {
             public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
                 if(response.isSuccessful()){
                     System.out.println("entro y si valio \n Creadouski");
+                    showRegisterComplete();
                 }else{
                     System.out.println("Esta cedula ya esta creada");
+                    showRegisterError();
                 }
             }
 
             @Override
             public void onFailure(Call<UsuarioResponse> call, Throwable t) {
                 System.out.println(t.toString());
+                showRegisterError();
 
             }
         });
+    }
+
+    private void showRegisterComplete(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(Registro.this);
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialogo_confirmacion_registro, null);
+        builder.setView(view);
+        final AlertDialog dialog = builder.create();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Button btnComplete = view.findViewById(R.id.btnOk);
+        btnComplete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SesionIniciada.class);
+                startActivity(intent);
+            }
+        });
+        dialog.show();
+    }
+
+    private void showRegisterError(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(Registro.this);
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialogo_error_registro, null);
+        builder.setView(view);
+        final AlertDialog dialog = builder.create();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Button btnComplete = view.findViewById(R.id.btnOkError);
+        btnComplete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }

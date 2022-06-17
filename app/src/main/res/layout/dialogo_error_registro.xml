@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@drawable/layout_confirmacion_registro"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lo sentimos, algo salio mal"
+            android:textSize="20sp"
+            android:layout_marginBottom="24dp"
+            android:textColor="@android:color/background_dark"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/ImagenRC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/registroerror"/>
+
+        <Button
+            android:id="@+id/btnOkError"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="@drawable/btn_error"
+            android:text="Ok"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>
