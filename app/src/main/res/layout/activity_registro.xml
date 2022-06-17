@@ -17,7 +17,7 @@
         android:textSize="34sp"
         android:textStyle="bold"
         android:typeface="serif"
-        android:background="@color/teal_700"/>
+        android:background="@drawable/bgborder2"/>
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
         android:background="@color/teal_700"/>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="420dp"
         android:layout_margin="20dp"
         >
         <LinearLayout
@@ -87,17 +87,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bgborde"
-                android:text="Fecha de Nacimiento:"
                 android:textColor="#1B1919"
+                android:text="Fecha de Nacimiento"
                 android:textSize="18dp" />
             <TextView
                 android:id="@+id/txtVisualizaFecha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Año   -   Mes -   Día"
-                android:background="@drawable/bgborde"
-                android:textAlignment="center"
+               android:textAlignment="center"
                 android:textSize="12sp" />
             <Button
                 android:id="@+id/btnDate"
@@ -153,11 +151,10 @@
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bgborde"
                 android:layout_marginTop="10dp"
                 android:text="Género:"
                 android:textColor="#020202"
-                android:textSize="16sp"
+                android:textSize="18sp"
 
  />
             <RadioGroup
@@ -165,10 +162,7 @@
                 android:id="@+id/rdregistrogenero"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                app:layout_constraintHorizontal_bias="0.554"
-                app:layout_constraintStart_toStartOf="@+id/guideline3"
-                app:layout_constraintTop_toBottomOf="@+id/btnDate">
+                >
 
                 <RadioButton
                     android:id="@+id/rdregistromasculino"
@@ -218,27 +212,23 @@
                     android:inputType="textPassword"
                     />
             </com.google.android.material.textfield.TextInputLayout>
-
-                <CheckBox
-                    android:id="@+id/boxterminoscondiciones"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textColor="@color/teal_700"
-                    android:text="Aceptar Términos y Condiciones" />
-
-
-            <Button
-                android:id="@+id/btnRegistrar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bgboton"
-                android:onClick="crearusuario"
-                android:text="Registrar" />
-
-
         </LinearLayout>
     </ScrollView>
+    <CheckBox
+        android:id="@+id/boxterminoscondiciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/teal_700"
+        android:layout_marginStart="30dp"
+        android:text="Aceptar Términos y Condiciones" />
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_confirmacion"
+        android:onClick="crearusuario"
+        android:text="Registrar" />
 
 </LinearLayout>

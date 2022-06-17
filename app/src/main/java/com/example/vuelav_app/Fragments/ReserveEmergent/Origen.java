@@ -19,8 +19,8 @@ public class Origen extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_origen);
 
-        volver = (ImageButton) findViewById(R.id.imageButtonBackOrigen);
-        volver.setOnClickListener(this);
+//        volver = (ImageButton) findViewById(R.id.imageButtonBackOrigen);
+//        volver.setOnClickListener(this);
 
     }
 
@@ -31,11 +31,11 @@ public class Origen extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        int id = view.getId();
-        switch (id) {
-            case R.id.imageButtonBackOrigen:
-                goToReserve();
-                break;
-        }
+//        int id = view.getId();
+//        switch (id) {
+//            case R.id.imageButtonBackOrigen:
+//                goToReserve();
+//                break;
+//        }
     }
 }

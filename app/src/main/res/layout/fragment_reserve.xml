@@ -1,177 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.ReserveFragment">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="67dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="25dp" />
+    tools:context=".Fragments.ReserveFragment"
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="¿Dónde quieres ir?"
         android:textAlignment="center"
-        android:textColor="#673AB7"
-        android:textSize="24sp"
+        android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline10"
-        app:layout_constraintEnd_toStartOf="@+id/guideline16"
-        app:layout_constraintHorizontal_bias="0.004"
-        app:layout_constraintStart_toStartOf="@+id/guideline12"
-        app:layout_constraintTop_toTopOf="@+id/guideline11"
-        app:layout_constraintVertical_bias="0.4" />
+        android:typeface="serif"
+        android:background="@drawable/bgborder2"
+       />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline12"
-        android:layout_width="wrap_content"
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/teal_700"
+        android:src="@drawable/ic_baseline_airplane_ticket_24" />
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/txtclickTipoViaje"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="15dp" />
-
+        android:layout_marginStart="305dp"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
+        android:text="TextView"
+        tools:ignore="TouchTargetSizeCheck" />
+</LinearLayout>
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+        android:padding="20dp">
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="48dp"
         android:layout_height="49dp"
-        android:layout_marginBottom="12dp"
-        android:src="@android:drawable/ic_menu_month"
-        app:layout_constraintBottom_toTopOf="@+id/guideline15"
-        app:layout_constraintEnd_toStartOf="@+id/guideline13"
-        app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toStartOf="@+id/guideline12" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="48dp"
-        android:layout_height="49dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="15dp"
         android:src="@android:drawable/ic_menu_myplaces"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toStartOf="@+id/guideline13"
-        app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toStartOf="@+id/guideline12" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="48dp"
-        android:layout_height="49dp"
-        android:layout_marginBottom="20dp"
-        android:src="@android:drawable/ic_dialog_map"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
-        app:layout_constraintEnd_toStartOf="@+id/guideline13"
-        app:layout_constraintHorizontal_bias="0.807"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline14" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="74dp" />
-
+        />
     <TextView
         android:id="@+id/txtclickOrigen"
-        android:layout_width="268dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
         android:background="@drawable/margen"
         android:clickable="true"
         android:hint="Origen"
         android:gravity="center_vertical"
         android:paddingStart="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline16"
-        app:layout_constraintHorizontal_bias="0.03"
-        app:layout_constraintStart_toStartOf="@+id/guideline13"
-        app:layout_constraintTop_toTopOf="@+id/guideline14" />
+     />
+</LinearLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline14"
-        android:layout_width="wrap_content"
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="48dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="15dp"
+        android:src="@android:drawable/ic_dialog_map"
+        />
+
+
+<TextView
+    android:id="@+id/txtclickDestino"
+    android:layout_width="match_parent"
+    android:layout_height="49dp"
+    android:background="@drawable/margen"
+    android:clickable="true"
+    android:hint="Destino"
+    android:gravity="center_vertical"
+    android:paddingStart="16dp"
+
+    />
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="145dp" />
+        android:padding="20dp">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="365dp" />
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="48dp"
+            android:layout_height="49dp"
+            android:layout_marginEnd="15dp"
+            android:src="@android:drawable/ic_menu_month"
+            />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="395dp" />
 
-    <TextView
-        android:id="@+id/txtclickDestino"
-        android:layout_width="268dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/margen"
-        android:gravity="center_vertical"
-        android:hint="Destino"
-        android:clickable="true"
-        android:paddingStart="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline16"
-        app:layout_constraintHorizontal_bias="0.245"
-        app:layout_constraintStart_toStartOf="@+id/guideline13"
-        app:layout_constraintTop_toBottomOf="@+id/txtclickOrigen" />
+        <TextView
+            android:id="@+id/txtclickFecha"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:background="@drawable/margen"
+            android:clickable="true"
+            android:hint="Seleccione la fecha"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
 
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="268dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/margen"
-        android:clickable="true"
-        android:gravity="center_vertical"
-        android:hint="Agregar Fecha"
-        android:paddingStart="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline16"
-        app:layout_constraintHorizontal_bias="0.245"
-        app:layout_constraintStart_toStartOf="@+id/guideline13"
-        app:layout_constraintTop_toBottomOf="@+id/txtclickDestino" />
+            />
+    </LinearLayout>
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+        android:background="@drawable/btn_confirmacion"
         android:text="Buscar"
-        app:layout_constraintEnd_toStartOf="@+id/guideline16"
-        app:layout_constraintHorizontal_bias="0.373"
-        app:layout_constraintStart_toStartOf="@+id/guideline13"
-        app:layout_constraintTop_toTopOf="@+id/guideline15"
-        android:background="@drawable/bgboton"/>
+      />
 
-    <TextView
-        android:id="@+id/txtclickTipoViaje"
-        android:layout_width="115dp"
-        android:layout_height="24dp"
-        android:layout_marginEnd="12dp"
-        android:text="TextView"
-        android:clickable="true"
-        android:drawableRight="@drawable/ic_baseline_keyboard_arrow_down_24"
-        app:layout_constraintBottom_toTopOf="@+id/guideline14"
-        app:layout_constraintEnd_toStartOf="@+id/guideline16"
-        app:layout_constraintTop_toTopOf="@+id/guideline10" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

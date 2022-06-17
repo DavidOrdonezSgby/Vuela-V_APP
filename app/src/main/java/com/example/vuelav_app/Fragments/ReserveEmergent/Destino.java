@@ -12,7 +12,7 @@ import com.example.vuelav_app.R;
 
 public class Destino extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageButton volver;
+//    private ImageButton volver;
     ReserveFragment reserveFragment = new ReserveFragment();
 
     @Override
@@ -20,8 +20,8 @@ public class Destino extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_destino);
 
-        volver = (ImageButton) findViewById(R.id.imageButtonBackDestino);
-        volver.setOnClickListener(this);
+//        volver = (ImageButton) findViewById(R.id.imageButtonBackDestino);
+//        volver.setOnClickListener(this);
 
     }
 
@@ -33,11 +33,11 @@ public class Destino extends AppCompatActivity implements View.OnClickListener {
 
         @Override
         public void onClick (View view){
-            int id = view.getId();
-            switch (id) {
-                case R.id.imageButtonBackDestino:
-                    goToReserve();
-                    break;
-            }
-        }
+//            int id = view.getId();
+//            switch (id) {
+//                case R.id.imageButtonBackDestino:
+//                    goToReserve();
+//                    break;
+//            }
+       }
     }
