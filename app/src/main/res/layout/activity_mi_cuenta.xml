@@ -1,199 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.AccountFragmentModel.MiCuenta">
+    tools:context=".Fragments.AccountFragmentModel.MiCuenta"
+    android:padding="20dp"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="Fecha de nacimiento"
-        app:layout_constraintBottom_toTopOf="@+id/txtFecha"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline4" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Nombre"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
-
-    <TextView
-        android:id="@+id/txtNombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Nombre Usuario"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.545" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="Apellido"
-        app:layout_constraintBottom_toTopOf="@+id/txtApellido"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline4" />
-
-    <TextView
-        android:id="@+id/txtApellido"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:hint="Apellido Usuario"
-        app:layout_constraintBottom_toTopOf="@+id/textView8"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline4" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:text="Género"
-        app:layout_constraintBottom_toTopOf="@+id/txtGenero"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline4" />
-
-    <TextView
-        android:id="@+id/txtGenero"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:hint="Género Usuario"
-        app:layout_constraintBottom_toTopOf="@+id/textView12"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline4" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Email"
-        app:layout_constraintBottom_toTopOf="@+id/txtEmail"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline4" />
-
-    <TextView
-        android:id="@+id/txtEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:hint="Email Usuario"
-        app:layout_constraintBottom_toTopOf="@+id/textView14"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline4" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Teléfono"
-        app:layout_constraintBottom_toTopOf="@+id/txtTelefono"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline4" />
-
-    <TextView
-        android:id="@+id/txtTelefono"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:hint="Teléfono Usuario"
-        app:layout_constraintBottom_toTopOf="@+id/guideline7"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline4" />
-
-    <TextView
-        android:id="@+id/txtFecha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:hint="Fecha de nacimiento Usuario"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline4" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="359dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="101dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="612dp" />
 
     <TextView
         android:id="@+id/textView17"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Datos Personales"
+        android:text="Mi Cuenta"
+        android:background="@color/teal_700"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:typeface="serif" />
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:background="@color/teal_700"
+        android:src="@drawable/ic_baseline_account_circle_24" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="35dp"
+        android:text="Fecha de nacimiento:"
+        android:background="@drawable/bgborde"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline9"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHorizontal_bias="0.149"
-        app:layout_constraintStart_toEndOf="@id/guideline4"
-        app:layout_constraintTop_toTopOf="@+id/guideline8"
-        app:layout_constraintVertical_bias="0.0" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline8"
-        android:layout_width="wrap_content"
+        android:textStyle="bold|italic"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/txtFecha"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp" />
+        android:hint="Fecha de nacimiento Usuario"
+        android:textAlignment="center"
+        android:background="@drawable/bgborde"
+        android:textSize="18dp"
+        android:textStyle="bold"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline9"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="20dp"
+        android:text="Nombre:"
+        android:background="@drawable/bgborde"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/txtNombre"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="73dp" />
+        android:background="@drawable/bgborde"
+        android:hint="Nombre Usuario"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:textStyle="bold"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@drawable/bgborde"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold|italic"
+        android:textSize="20sp"
+        android:text="Apellido:" />
+
+    <TextView
+        android:id="@+id/txtApellido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:background="@drawable/bgborde"
+        android:hint="Apellido Usuario" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bgborde"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        android:text="Género:" />
+
+    <TextView
+        android:id="@+id/txtGenero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bgborde"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:hint="Género Usuario"  />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@drawable/bgborde"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        android:text="Email:"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/txtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+     android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:hint="Email Usuario"
+        android:background="@drawable/bgborde"/>
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        android:text="Teléfono:"
+        android:textColor="@color/black"
+        android:background="@drawable/bgborde"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/txtTelefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Teléfono Usuario"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textAlignment="center"
+        android:background="@drawable/bgborde"/>
+
+
+
+
+
+
+</LinearLayout>

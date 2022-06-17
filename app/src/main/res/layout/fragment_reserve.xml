@@ -25,7 +25,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="¿Dónde quieres ir?"
-        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textColor="#673AB7"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toStartOf="@+id/guideline16"
         app:layout_constraintHorizontal_bias="0.004"
@@ -157,7 +160,8 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline16"
         app:layout_constraintHorizontal_bias="0.373"
         app:layout_constraintStart_toStartOf="@+id/guideline13"
-        app:layout_constraintTop_toTopOf="@+id/guideline15" />
+        app:layout_constraintTop_toTopOf="@+id/guideline15"
+        android:background="@drawable/bgboton"/>
 
     <TextView
         android:id="@+id/txtclickTipoViaje"

@@ -1,6 +1,7 @@
 package com.example.vuelav_app.Logico;
 
 import com.example.vuelav_app.Logico.Service.UsuarioService;
+import com.example.vuelav_app.Logico.Service.VueloService;
 
 public class Apis {
 
@@ -9,5 +10,8 @@ public class Apis {
 
     public static UsuarioService getUsuarioService(){
         return Cliente.getCliente(URL).create(UsuarioService.class);
+    }
+    public static VueloService getVueloService(){
+        return Cliente.getCliente(URL).create(VueloService.class);
     }
 }

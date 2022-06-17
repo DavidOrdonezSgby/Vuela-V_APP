@@ -11,17 +11,21 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
         android:text="Iniciar Sesión"
         android:textAlignment="center"
-        android:textColor="#673AB7"
+        android:textColor="@color/white"
+        android:background="@color/teal_700"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:typeface="serif"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:typeface="serif" />
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/teal_700"
+        app:srcCompat="@drawable/ic_baseline_account_circle_24" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -93,5 +97,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+
+
 
 </LinearLayout>

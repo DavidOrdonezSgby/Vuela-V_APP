@@ -7,16 +7,23 @@
     tools:context=".Registro"
     android:padding="10dp"
     android:orientation="vertical">
+
     <TextView
         android:id="@+id/Registro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Registro"
-        android:textColor="#673AB7"
         android:textAlignment="center"
         android:textSize="34sp"
         android:textStyle="bold"
-        android:typeface="serif" />
+        android:typeface="serif"
+        android:background="@color/teal_700"/>
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/ic_baseline_perm_identity_24"
+        android:background="@color/teal_700"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -216,7 +223,7 @@
                     android:id="@+id/boxterminoscondiciones"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
+                    android:textAlignment="center"
                     android:textColor="@color/teal_700"
                     android:text="Aceptar Términos y Condiciones" />
 
@@ -228,11 +235,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bgboton"
                 android:onClick="crearusuario"
-                android:text="Registrar"
-                app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="@+id/guideline3"
-                app:layout_constraintTop_toBottomOf="@+id/txtregistroPassword" />
+                android:text="Registrar" />
 
 
         </LinearLayout>

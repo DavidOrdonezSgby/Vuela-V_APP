@@ -13,10 +13,16 @@
         android:theme="@style/Theme.Design.Light.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Reserva"
+            android:exported="false" />
+        <activity
+            android:name=".InformacionVuelo"
+            android:exported="false" />
+        <activity
             android:name=".Fragments.NotificationFragmentModel.NotificationSesionIniciada"
             android:exported="false" />
         <activity
-            android:name="com.example.vuelav_app.SesionIniciada"
+            android:name=".SesionIniciada"
             android:exported="false" />
         <activity
             android:name=".Fragments.ReserveEmergent.Destino"

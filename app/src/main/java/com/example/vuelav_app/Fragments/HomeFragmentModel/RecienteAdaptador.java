@@ -1,6 +1,8 @@
 package com.example.vuelav_app.Fragments.HomeFragmentModel;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.vuelav_app.InformacionVuelo;
+import com.example.vuelav_app.Logico.Response.VueloResponse;
 import com.example.vuelav_app.R;
 
 import java.util.List;
@@ -17,9 +21,9 @@ import java.util.List;
 public class RecienteAdaptador extends RecyclerView.Adapter<RecienteAdaptador.RecentsViewHolder> {
 
     Context context;
-    List<Reciente> recienteList;
+    List<VueloResponse> recienteList;
 
-    public RecienteAdaptador(Context context, List<Reciente> recienteList) {
+    public RecienteAdaptador(Context context, List<VueloResponse> recienteList) {
         this.context = context;
         this.recienteList = recienteList;
     }
@@ -32,11 +36,22 @@ public class RecienteAdaptador extends RecyclerView.Adapter<RecienteAdaptador.Re
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecentsViewHolder holder, int position) {
-        holder.ciudadL.setText(recienteList.get(position).getCiudadLugar());
-        holder.nombreL.setText(recienteList.get(position).getNombreLugar());
-        holder.precio.setText(recienteList.get(position).getPrecio());
-        holder.lugarimg.setImageResource(recienteList.get(position).getImgUrl());
+    public void onBindViewHolder(@NonNull RecentsViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        holder.ciudadL.setText(recienteList.get(position).getDestino());
+        holder.nombreL.setText(recienteList.get(position).getOrigen());
+        holder.precio.setText(recienteList.get(position).getPrecio().toString());
+        holder.idvuelo.setText(recienteList.get(position).getIdVuelo().toString());
+        holder.lugarimg.setImageResource(R.drawable.recentimage1);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.itemView.getContext(), InformacionVuelo.class);
+                intent.putExtra("idvuelo",recienteList.get(position).getIdVuelo().toString());
+                System.out.println(recienteList.get(position).getIdVuelo().toString());
+                holder.itemView.getContext().startActivity(intent);
+
+            }
+        });
     }
 
     @Override
@@ -47,7 +62,7 @@ public class RecienteAdaptador extends RecyclerView.Adapter<RecienteAdaptador.Re
     public static final class RecentsViewHolder extends RecyclerView.ViewHolder{
 
         ImageView lugarimg;
-        TextView nombreL, ciudadL, precio;
+        TextView nombreL, ciudadL, precio, idvuelo;
 
         public RecentsViewHolder(View itemView){
             super(itemView);
@@ -56,6 +71,7 @@ public class RecienteAdaptador extends RecyclerView.Adapter<RecienteAdaptador.Re
             nombreL = itemView.findViewById(R.id.txtNombreLugar);
             ciudadL = itemView.findViewById(R.id.txtCiudad);
             precio = itemView.findViewById(R.id.txtPrecio);
+            idvuelo=itemView.findViewById(R.id.txtvueloid);
 
         }
     }

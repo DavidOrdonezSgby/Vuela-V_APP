@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bottomSheetContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,38 +13,33 @@
         android:gravity="center_vertical"
         android:text="Tipo de Vuelo"
         android:padding="15dp"
-        android:textColor="@color/colorPrimaryText"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textColor="#673AB7"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <RadioGroup
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
         <RadioButton
             android:id="@+id/rbComercial"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Comercial"
             android:button="@null"
             android:checked="true"
             android:drawableRight="@android:drawable/btn_radio"
-            android:paddingStart="15dp"
-            android:drawablePadding="250dp"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"/>
+            android:drawablePadding="250dp" />
 
         <RadioButton
             android:id="@+id/rbPremium"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Premium"
             android:button="@null"
             android:drawableRight="@android:drawable/btn_radio"
-            android:paddingStart="15dp"
-            android:drawablePadding="257dp"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"/>
+            android:drawablePadding="257dp" />
 
     </RadioGroup>
 
@@ -51,8 +47,16 @@
         android:id="@+id/btnConfirmarTipoVuelo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:text="Confirmar" />
+        android:text="Confirmar"
+        android:background="@drawable/bgboton"/>
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp" />
 
 </LinearLayout>

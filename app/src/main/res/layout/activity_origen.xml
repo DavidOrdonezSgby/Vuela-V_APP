@@ -25,7 +25,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ingresa tu origen"
-        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textColor="#673AB7"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline20"
         app:layout_constraintEnd_toStartOf="@+id/guideline24"
         app:layout_constraintHorizontal_bias="0.064"
@@ -78,7 +81,8 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline23"
         app:layout_constraintEnd_toStartOf="@+id/guideline18"
         app:layout_constraintStart_toStartOf="@+id/guideline17"
-        app:layout_constraintTop_toTopOf="@+id/guideline22" />
+        app:layout_constraintTop_toTopOf="@+id/guideline22"
+        android:background="@drawable/bgboton"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline22"

@@ -1,5 +1,6 @@
 package com.example.vuelav_app.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,41 +10,75 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.vuelav_app.Fragments.HomeFragmentModel.Reciente;
 import com.example.vuelav_app.Fragments.HomeFragmentModel.RecienteAdaptador;
+import com.example.vuelav_app.InformacionVuelo;
+import com.example.vuelav_app.Logico.Apis;
+import com.example.vuelav_app.Logico.Response.VueloResponse;
+import com.example.vuelav_app.Logico.Service.VueloService;
+import com.example.vuelav_app.Login;
 import com.example.vuelav_app.R;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment{
 
     RecyclerView recyclerView;
-    RecienteAdaptador recienteAdaptador;
-    ArrayList<Reciente> recientes;
+
+    VueloService vueloService = Apis.getVueloService();
+    List<VueloResponse> listvuelo = new ArrayList<VueloResponse>();
+    TextView txtidvuelo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
+        ObtenerVuelos();
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        recientes = new ArrayList<>();
-
         recyclerView = view.findViewById(R.id.reciente_recycler);
+        txtidvuelo = view.findViewById(R.id.txtvueloid);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), recyclerView.HORIZONTAL, false));
-
-        llenar();
-
-        RecienteAdaptador adaptador = new RecienteAdaptador(getContext(),recientes);
+        RecienteAdaptador adaptador = new RecienteAdaptador(getContext(),listvuelo);
         recyclerView.setAdapter(adaptador);
 
+
         return view;
+
+
     }
 
-    private void llenar(){
-        recientes.add(new Reciente("Fondo de Bikini","Narnia","$200",R.drawable.recentimage1));
-        recientes.add(new Reciente("Springfield","EE.UU","$500",R.drawable.recentimage1));
-        recientes.add(new Reciente("Namekusei","España","$300",R.drawable.recentimage1));
+    private void ObtenerVuelos(){
+        System.out.println("Entro al metodo");
+        Call<List<VueloResponse>> call = vueloService.listAll();
+        call.enqueue(new Callback<List<VueloResponse>>() {
+            @Override
+            public void onResponse(Call<List<VueloResponse>> call, Response<List<VueloResponse>> response) {
+                if(response.isSuccessful()){
+                    System.out.println("Obtuvo los datos");
+                        listvuelo.addAll(response.body());
+                        System.out.println("xxxxxxx");
+                }else{
+                    System.out.println("No obtuvo los datos");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<VueloResponse>> call, Throwable t) {
+                System.out.println(t.toString());
+            }
+        });
     }
+
 }
