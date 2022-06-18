@@ -1,6 +1,8 @@
 package com.example.vuelav_app.actividades;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -21,6 +23,10 @@ public class SplaActivity extends AppCompatActivity {
             public void run() {
                 Intent intent=new Intent(SplaActivity.this, MainActivity.class);
                 TokenController.setToken(SplaActivity.this,"");
+                SharedPreferences sharedPreferences = getSharedPreferences("email", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear().commit();
+                System.out.println("ELIMINAR SHA" +sharedPreferences.getString("emailShared", "Predefinido"));
                 startActivity(intent);
                finish();
                //edy gay

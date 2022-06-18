@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,13 +29,6 @@ public class MiCuenta extends Fragment {
 
     private TextView nombre, apellido, fecha, genero, emailU, telefono;
     private UsuarioService usuarioService = Apis.getUsuarioService();
-    String email = "";
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        email=getArguments().getString("email");
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,11 +42,8 @@ public class MiCuenta extends Fragment {
         genero = (TextView) view.findViewById(R.id.txtGenero);
         emailU = (TextView) view.findViewById(R.id.txtEmail);
         telefono = (TextView) view.findViewById(R.id.txtTelefono);
-        //System.out.println(getIntent().getStringExtra("cedula"));
-        //obtusuario(getIntent().getStringExtra("email"));
-        //Bundle bundle = new Bundle();
-        //obtusuario(bundle.getString("email"));
-        obtusuario(email);
+
+        obtusuario(cargarDatos());
 
         return view;
     }
@@ -82,5 +73,11 @@ public class MiCuenta extends Fragment {
 
             }
         });
+    }
+
+    public String cargarDatos(){
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("email", Context.MODE_PRIVATE);
+        System.out.println("MI CUENTA SHARED "+sharedPreferences.getString("emailShared", "Predefinido"));
+        return sharedPreferences.getString("emailShared", "Predefinido");
     }
 }
