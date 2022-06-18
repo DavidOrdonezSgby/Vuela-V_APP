@@ -28,6 +28,13 @@ public class MiCuenta extends Fragment {
 
     private TextView nombre, apellido, fecha, genero, emailU, telefono;
     private UsuarioService usuarioService = Apis.getUsuarioService();
+    String email = "";
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        email=getArguments().getString("email");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,8 +50,9 @@ public class MiCuenta extends Fragment {
         telefono = (TextView) view.findViewById(R.id.txtTelefono);
         //System.out.println(getIntent().getStringExtra("cedula"));
         //obtusuario(getIntent().getStringExtra("email"));
-        Bundle bundle = new Bundle();
-        obtusuario(bundle.getString("email"));
+        //Bundle bundle = new Bundle();
+        //obtusuario(bundle.getString("email"));
+        obtusuario(email);
 
         return view;
     }

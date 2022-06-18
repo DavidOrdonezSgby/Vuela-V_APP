@@ -112,7 +112,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener{
                 if(response.isSuccessful()){
                     System.out.println("entro y si valio \n Creadouski");
                     DespuesTerminos();
-                    showRegisterComplete();
                 }else{
                     System.out.println("Esta cedula ya esta creada");
                     showRegisterError();
@@ -139,6 +138,8 @@ public class Registro extends AppCompatActivity implements View.OnClickListener{
         btnComplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Ya puede iniciar sesión",
+                        Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), Login.class);
                 startActivity(intent);
             }

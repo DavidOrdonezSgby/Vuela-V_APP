@@ -55,9 +55,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         //Intent intent = new Intent(getApplicationContext(), MiCuenta.class);
                         //intent.putExtra("token", response.body().getToken());
                         //intent.putExtra("email", response.body().getEmail());
+
                         Bundle bundle = new Bundle();
                         bundle.putString("token", response.body().getToken());
                         bundle.putString("email", response.body().getEmail());
+                        MiCuenta miCuenta = new MiCuenta();
+                        miCuenta.setArguments(bundle);
+
                         TokenController.setToken(Login.this, response.body().getToken());
                         System.out.println("Cedula login" +response.body().getDocIdentificacion());
                         System.out.println("TOKEN login" +response.body().getToken());
