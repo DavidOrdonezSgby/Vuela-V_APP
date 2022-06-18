@@ -15,7 +15,7 @@
         android:layout_height="50dp"
         android:text="NOTIFICACIONES"
         android:textAlignment="center"
-        android:background="@color/teal_700"
+        android:background="@drawable/bgborder2"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"

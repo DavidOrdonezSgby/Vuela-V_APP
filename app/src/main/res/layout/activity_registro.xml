@@ -40,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bgborde"
                 app:errorEnabled="true"
+
                 app:startIconDrawable="@drawable/ic_baseline_perm_identity_24"
                 >
                 <com.google.android.material.textfield.TextInputEditText
@@ -146,6 +147,7 @@
                 android:id="@+id/spPaisRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+               android:textAlignment="center"
                 android:layout_marginTop="10dp" />
             <TextView
                 android:id="@+id/textView4"
@@ -165,13 +167,13 @@
                 >
 
                 <RadioButton
-                    android:id="@+id/rdregistromasculino"
+                    android:id="@+id/rdregistrofemenino"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Femenino" />
 
                 <RadioButton
-                    android:id="@+id/rdregistrofemenino"
+                    android:id="@+id/rdregistromasculino"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Masculino" />

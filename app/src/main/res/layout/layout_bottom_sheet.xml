@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bottom_sheet_background"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -13,7 +14,8 @@
         android:gravity="center_vertical"
         android:text="Tipo de Vuelo"
         android:padding="15dp"
-        android:textColor="#673AB7"
+        android:textColor="#090909"
+        android:background="@drawable/bgborder2"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -48,10 +50,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+
         android:text="Confirmar"
-        android:background="@drawable/bgboton"/>
+        android:background="@drawable/btn_confirmacion"/>
 
     <ImageView
         android:id="@+id/imageView7"
