@@ -230,7 +230,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/btn_confirmacion"
-        android:onClick="crearusuario"
         android:text="Registrar" />
 
 </LinearLayout>
