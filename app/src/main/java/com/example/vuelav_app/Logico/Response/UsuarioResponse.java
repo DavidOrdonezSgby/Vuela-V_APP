@@ -29,7 +29,7 @@ public class UsuarioResponse {
 
     @SerializedName("fechaNacimiento")
     @Expose
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
 
     @SerializedName("genero")
     @Expose
@@ -70,7 +70,7 @@ public class UsuarioResponse {
     public UsuarioResponse() {
     }
 
-    public UsuarioResponse(Long id, String pais, String docIdentificacion, String nombres, String apellidos, Date fechaNacimiento, String genero, String telefono, String email, String clave, String razonSocial, Boolean terminosCondiciones, Boolean autorizacion, String rol, String token) {
+    public UsuarioResponse(Long id, String pais, String docIdentificacion, String nombres, String apellidos, String fechaNacimiento, String genero, String telefono, String email, String clave, String razonSocial, Boolean terminosCondiciones, Boolean autorizacion, String rol, String token) {
         this.id = id;
         this.pais = pais;
         this.docIdentificacion = docIdentificacion;
@@ -128,11 +128,11 @@ public class UsuarioResponse {
         this.apellidos = apellidos;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

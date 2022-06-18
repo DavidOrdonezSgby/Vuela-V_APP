@@ -12,7 +12,7 @@ public class RegisterRequest {
 
     private String apellidos;
 
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
 
     private String genero;
 
@@ -68,11 +68,11 @@ public class RegisterRequest {
         this.apellidos = apellidos;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

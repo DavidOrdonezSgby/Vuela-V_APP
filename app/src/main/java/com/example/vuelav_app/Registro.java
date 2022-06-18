@@ -13,17 +13,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.vuelav_app.Logico.Apis;
 import com.example.vuelav_app.Logico.Models.RegisterRequest;
 import com.example.vuelav_app.Logico.Response.UsuarioResponse;
 import com.example.vuelav_app.Logico.Service.UsuarioService;
 
-import java.text.ParseException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,6 +36,7 @@ public class Registro extends AppCompatActivity {
     private EditText nombre, apellido, cedula ,razonsocial, telefono, email, contra;
     private Button btnDates;
     private DatePickerDialog.OnDateSetListener setListener;
+    private String fecha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,10 +70,17 @@ public class Registro extends AppCompatActivity {
         setListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayofMoth) {
-                month = month+1;
-                String date = year+"-"+month+"-"+day;
-                btnDates.setText(date);
-                System.out.println("FECHA REGISTRO "+date);
+                Calendar mCalendar = Calendar.getInstance();
+                mCalendar.set(Calendar.YEAR, year);
+                mCalendar.set(Calendar.MONTH, month);
+                mCalendar.set(Calendar.DAY_OF_MONTH, dayofMoth);
+                String selectDate = DateFormat.getDateInstance(DateFormat.FULL).format(mCalendar.getTime());
+                btnDates.setText(selectDate);
+                System.out.println(selectDate);
+
+                SimpleDateFormat formats = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                fecha = formats.format(mCalendar.getTime());
+
             }
         };
     }
@@ -86,9 +93,7 @@ public class Registro extends AppCompatActivity {
         usuario.setApellidos(apellido.getText().toString());
         usuario.setRazonSocial(razonsocial.getText().toString());
 
-        String sValue = (String) btnDates.getText();
-        java.sql.Date dtValue = java.sql.Date.valueOf(sValue);
-        usuario.setFechaNacimiento(dtValue);
+        usuario.setFechaNacimiento(fecha);
 
         usuario.setTelefono(telefono.getText().toString());
         usuario.setEmail(email.getText().toString());

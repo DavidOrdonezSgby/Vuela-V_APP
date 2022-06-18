@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     AccountFragment accountFragment = new AccountFragment();
     ReserveFragment reserveFragment = new ReserveFragment();
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
