@@ -1,5 +1,8 @@
 package com.example.vuelav_app.Logico;
 
+import com.example.vuelav_app.Logico.Service.ManifiestoService;
+import com.example.vuelav_app.Logico.Service.ReservaService;
+import com.example.vuelav_app.Logico.Service.ServicioService;
 import com.example.vuelav_app.Logico.Service.UsuarioService;
 import com.example.vuelav_app.Logico.Service.VueloService;
 
@@ -13,5 +16,14 @@ public class Apis {
     }
     public static VueloService getVueloService(){
         return Cliente.getCliente(URL).create(VueloService.class);
+    }
+    public static ManifiestoService getManifiestoService(){
+        return Cliente.getCliente(URL).create(ManifiestoService.class);
+    }
+    public static ReservaService getReservaService(){
+        return Cliente.getCliente(URL).create(ReservaService.class);
+    }
+    public static ServicioService getServicioService(){
+        return Cliente.getCliente(URL).create(ServicioService.class);
     }
 }

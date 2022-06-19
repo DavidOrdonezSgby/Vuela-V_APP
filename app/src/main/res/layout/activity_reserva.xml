@@ -1,9 +1,279 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Reserva">
+    tools:context=".Reserva"
+    android:orientation="vertical"
+    android:padding="10dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/Registro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reseva de Vuelo"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:typeface="serif"
+        android:background="@drawable/bgborder2"/>
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/ic_baseline_local_airport_24"
+        android:background="@color/teal_700"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="500dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#C1C0C0"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:text="Código:"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/viewid_reserva"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="ID"
+                    android:textAlignment="center"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:text="Estado:"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/viewestadoreserva"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Estado"
+                    android:textAlignment="center"
+                    android:textSize="19dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        <TextView
+            android:id="@+id/textView3a"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:background="#C1C0C0"
+            android:text="Destino"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/viewDestinovuelo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bgborde"
+            android:text="Destino"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+            <TextView
+            android:id="@+id/textView25"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:text="Fecha de Ida"
+            android:background="#C1C0C0"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/viewFechaIda_Vuelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bgborde"
+                android:text="Fecha de IDA"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:text="Fecha de Reserva"
+                android:background="#C1C0C0"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/viewFechareserva_Vuelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bgborde"
+                android:text="Fecha de Reserva"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:text="Fecha de Vuelta:"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:background="#C1C0C0"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/viewFechaVuelta_Vuelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bgborde"
+                android:text="Fecha de vuelta"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:text="Hora de Llegada"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:background="#C1C0C0"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/viewHoraLlegada_Vuelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bgborde"
+                android:text="Hora de llegada"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:text="Hora de salida"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:background="#C1C0C0"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/viewHorasalida_Vuelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bgborde"
+                android:text="Hora de salida"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+
+            <TextView
+            android:id="@+id/textView21"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="#C1C0C0"
+            android:layout_marginTop="20dp"
+            android:text="Observación"
+
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/viewobservación_vuelo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bgborde"
+            android:text="Observación"
+            android:textAlignment="center"
+            android:textSize="19dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView33"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:text="Origen"
+            android:background="#C1C0C0"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/viewOrigen_Vuelo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bgborde"
+            android:text="Origen"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView35"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:text="Pago"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:background="#C1C0C0"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/viewPrecio_Vuelo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bgborde"
+            android:text="Pago"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </ScrollView>
+    <Button
+        android:id="@+id/btnReservar_vuelo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_confirmacion"
+        android:text="Reservar Vuelo" />
+
+</LinearLayout>

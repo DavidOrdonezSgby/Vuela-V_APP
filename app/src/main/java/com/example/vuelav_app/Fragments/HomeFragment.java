@@ -3,6 +3,7 @@ package com.example.vuelav_app.Fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,11 +38,11 @@ public class HomeFragment extends Fragment{
     VueloService vueloService = Apis.getVueloService();
     List<VueloResponse> listvuelo = new ArrayList<VueloResponse>();
     TextView txtidvuelo;
+    private int validar=0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 
         ObtenerVuelos();
         View view = inflater.inflate(R.layout.fragment_home, container, false);
@@ -53,32 +54,36 @@ public class HomeFragment extends Fragment{
         RecienteAdaptador adaptador = new RecienteAdaptador(getContext(),listvuelo);
         recyclerView.setAdapter(adaptador);
 
-
         return view;
 
 
     }
 
     private void ObtenerVuelos(){
-        System.out.println("Entro al metodo");
-        Call<List<VueloResponse>> call = vueloService.listAll();
-        call.enqueue(new Callback<List<VueloResponse>>() {
-            @Override
-            public void onResponse(Call<List<VueloResponse>> call, Response<List<VueloResponse>> response) {
-                if(response.isSuccessful()){
-                    System.out.println("Obtuvo los datos");
+        if(validar==0){
+            System.out.println("Entro al metodo");
+            Call<List<VueloResponse>> call = vueloService.listAll();
+            call.enqueue(new Callback<List<VueloResponse>>() {
+                @Override
+                public void onResponse(Call<List<VueloResponse>> call, Response<List<VueloResponse>> response) {
+                    if(response.isSuccessful()){
+                        System.out.println("Obtuvo los datos");
                         listvuelo.addAll(response.body());
-                        System.out.println("xxxxxxx");
-                }else{
-                    System.out.println("No obtuvo los datos");
-                }
-            }
 
-            @Override
-            public void onFailure(Call<List<VueloResponse>> call, Throwable t) {
-                System.out.println(t.toString());
-            }
-        });
+                        System.out.println(listvuelo.size());
+                        validar=1;
+                    }else{
+                        System.out.println("No obtuvo los datos");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<VueloResponse>> call, Throwable t) {
+                    System.out.println(t.toString());
+                }
+            });
+        }
+
     }
 
 }

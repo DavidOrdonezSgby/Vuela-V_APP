@@ -33,7 +33,6 @@
         android:layout_height="32dp"
         android:layout_marginTop="35dp"
         android:text="Fecha de nacimiento:"
-        android:background="@drawable/bgborde"
         android:textSize="20sp"
         android:textStyle="bold|italic"
         android:textColor="@color/black"/>
@@ -53,7 +52,6 @@
         android:layout_height="32dp"
         android:layout_marginTop="20dp"
         android:text="Nombre:"
-        android:background="@drawable/bgborde"
         android:textSize="20sp"
         android:textStyle="bold|italic"
         android:textColor="@color/black"/>
@@ -72,7 +70,6 @@
         android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="32dp"
-        android:background="@drawable/bgborde"
         android:textColor="@color/black"
         android:layout_marginTop="20dp"
         android:textStyle="bold|italic"
@@ -94,7 +91,6 @@
         android:layout_width="match_parent"
         android:layout_height="32dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/bgborde"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold|italic"
@@ -114,7 +110,6 @@
         android:id="@+id/textView12"
         android:layout_width="match_parent"
         android:layout_height="32dp"
-        android:background="@drawable/bgborde"
         android:textSize="20dp"
         android:textStyle="bold|italic"
         android:text="Email:"
@@ -139,7 +134,6 @@
         android:textStyle="bold|italic"
         android:text="Teléfono:"
         android:textColor="@color/black"
-        android:background="@drawable/bgborde"
         android:layout_marginTop="20dp"/>
 
     <TextView
