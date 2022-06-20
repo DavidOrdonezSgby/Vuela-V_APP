@@ -69,7 +69,6 @@ private int idvuelo;
 
                 }
             }
-
             @Override
             public void onFailure(Call<VueloResponse> call, Throwable t) {
 
