@@ -36,7 +36,7 @@ public class ReservaResponse  {
 
     private Long idTripulacion;
 
-    private Long idVuelo;
+    private int idVuelo;
 
     private Long idManifiesto;
 

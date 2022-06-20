@@ -13,7 +13,7 @@ import retrofit2.http.Path;
 public interface ReservaService {
 
     @POST("/api/reserva")
-    Call<?> Create(ReservaRequest reservaRequest);
+    Call<ReservaResponse> Create(ReservaRequest reservaRequest);
 
     @GET("/api/reserva/reservasByUsuario/{id}")
     Call<List<ReservaResponse>> obtReservacion(@Path("id") int id);

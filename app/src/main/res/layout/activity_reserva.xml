@@ -26,7 +26,7 @@
         android:background="@color/teal_700"/>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="500dp">
+        android:layout_height="400dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
@@ -244,30 +244,26 @@
             android:textSize="18dp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView35"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginTop="20dp"
-            android:text="Pago"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:background="#C1C0C0"
-            android:textStyle="bold|italic" />
-
-        <TextView
-            android:id="@+id/viewPrecio_Vuelo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bgborde"
-            android:text="Pago"
-            android:textAlignment="center"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
         </LinearLayout>
 
     </ScrollView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bgborde"
+        app:errorEnabled="true"
+        android:layout_marginTop="15dp"
+        app:startIconDrawable="@drawable/ic_baseline_comment_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Observación"
+
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
     <Button
         android:id="@+id/btnReservar_vuelo"
         android:layout_width="match_parent"

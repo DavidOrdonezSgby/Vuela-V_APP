@@ -80,12 +80,14 @@ public class InformacionVuelo extends AppCompatActivity {
     }
     private void irReserva(){
         if (TokenController.getToken(InformacionVuelo.this).equals("")) {
+
             Toast.makeText(this,"Para la Reserva, Necesita Iniciar Sesion",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getApplicationContext(), Login.class);
-            intent.putExtra("id",datoLong);
             startActivity(intent);
         }else{
             Intent intent = new Intent(getApplicationContext(), Reserva.class);
+            intent.putExtra("id",datoLong);
+            System.out.println("Info -> " + datoLong);
             startActivity(intent);
         }
     }
