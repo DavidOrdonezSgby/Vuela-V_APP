@@ -30,7 +30,7 @@
         android:layout_alignTop="@id/Texto"
         android:layout_centerInParent="true"
         android:textColor="#9BFA80"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="111dp"
         android:background="@drawable/btn_confirmacion"
         android:text="Iniciar Sesión" />
 

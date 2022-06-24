@@ -1,10 +1,8 @@
 package com.example.vuelav_app.Fragments.AccountFragmentModel;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,7 +10,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,6 +29,7 @@ public class MiCuenta extends Fragment implements View.OnClickListener{
     private TextView nombre, apellido, fecha, genero, emailU, telefono;
     private ImageView cerrar;
     private UsuarioService usuarioService = Apis.getUsuarioService();
+    ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -87,6 +85,7 @@ public class MiCuenta extends Fragment implements View.OnClickListener{
     }
 
     private void salir(){
+        progressDialog = new ProgressDialog(getContext());
         TokenController.setId(getContext().getApplicationContext(), 0);
         TokenController.setToken(getContext().getApplicationContext(), "");
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("email", Context.MODE_PRIVATE);
@@ -95,6 +94,8 @@ public class MiCuenta extends Fragment implements View.OnClickListener{
         Intent intent = new Intent(getContext(), MainActivity.class);
         startActivity(intent);
         getActivity().finish();
+        progressDialog.setMessage("Cerrando sesión...");
+        progressDialog.show();
     }
 
     @Override

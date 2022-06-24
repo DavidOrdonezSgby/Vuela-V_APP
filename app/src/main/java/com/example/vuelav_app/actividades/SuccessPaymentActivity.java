@@ -7,22 +7,31 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.vuelav_app.Login;
 import com.example.vuelav_app.R;
 
+import com.example.vuelav_app.Registro;
+import com.example.vuelav_app.SesionIniciada;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class SuccessPaymentActivity extends AppCompatActivity {
@@ -61,6 +70,7 @@ public class SuccessPaymentActivity extends AppCompatActivity {
             public void onClick(View v) {
                 EviarNotificacion();
                 createNotificationChanne();
+                showReserveComplete();
                 finish();
             }
         });
@@ -198,6 +208,16 @@ public class SuccessPaymentActivity extends AppCompatActivity {
             index += period;
         }
         return builder.toString();
+    }
+
+    private void showReserveComplete(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(SuccessPaymentActivity.this);
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialogo_reserva_completada, null);
+        builder.setView(view);
+        final AlertDialog dialog = builder.create();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
     }
 
 }
