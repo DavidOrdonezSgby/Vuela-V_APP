@@ -150,7 +150,6 @@ private void MostrarFecha(){
             public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
                 if(response.isSuccessful()){
                     DespuesTerminos();
-
                     System.out.println("entro y si valio \n Creadouski");
 
                 }else{

@@ -2,7 +2,10 @@ package com.example.vuelav_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -11,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.vuelav_app.Logico.Apis;
 import com.example.vuelav_app.Logico.Response.VueloResponse;
+import com.example.vuelav_app.Logico.SQLite.AdminSQLiteOpenHelper;
 import com.example.vuelav_app.Logico.Service.VueloService;
 import com.example.vuelav_app.Logico.Token.TokenController;
 
@@ -46,6 +50,7 @@ public class InformacionVuelo extends AppCompatActivity {
         System.out.println(getIntent().getStringExtra("idvuelo"));
 
         findViewById(R.id.btnReservar_InformacionVuelo).setOnClickListener(l -> irReserva());
+        findViewById(R.id.btnAgregarFavoritos).setOnClickListener(l->guardarfavoritos());
 
     }
     private void Obtenerdatos(int aLong){
@@ -88,6 +93,46 @@ public class InformacionVuelo extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), Reserva.class);
             intent.putExtra("id",datoLong);
             System.out.println("Info -> " + datoLong);
+            startActivity(intent);
+        }
+    }
+
+    private void guardarfavoritos(){
+        if(!TokenController.getToken(this).equals("")) {
+            AdminSQLiteOpenHelper admin= new AdminSQLiteOpenHelper(this,"base",null,1);
+            SQLiteDatabase baseDatos=admin.getWritableDatabase();
+            Cursor fila=baseDatos.rawQuery("select id from usuario where id="+TokenController.getId(this),null);
+            if(fila.moveToFirst()){
+                System.out.println("y esta creado");
+            }else{
+                ContentValues cv = new ContentValues();
+                cv.put("id",TokenController.getId(this));
+                baseDatos.insert("usuario",null,cv);
+            }
+
+            Cursor fila2=baseDatos.rawQuery("select id from vuelo where id="+datoLong,null);
+            if(fila2.moveToFirst()){
+                System.out.println();
+            }else{
+                ContentValues cv = new ContentValues();
+                cv.put("id",datoLong);
+                baseDatos.insert("vuelo",null,cv);
+            }
+
+            Cursor fila3=baseDatos.rawQuery("select id_vuelo from guardados where id_vuelo="+datoLong,null);
+            if(fila3.moveToFirst()){
+                System.out.println("ya existe esta reserva");
+            }else{
+                ContentValues cv3=new ContentValues();
+                cv3.put("id_usuario",TokenController.getId(this));
+                cv3.put("id_vuelo",datoLong);
+                baseDatos.insert("guardados",null,cv3);
+                baseDatos.close();
+            }
+
+        }else{
+            Toast.makeText(this,"Para guardar en favoritos, Necesita Iniciar Sesion",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
         }
     }

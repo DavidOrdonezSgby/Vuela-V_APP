@@ -5,6 +5,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +22,24 @@ public class SplaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_spla);
+
+        //Animaciones
+        Animation animacion1 = AnimationUtils.loadAnimation(this,R.anim.desplazmientoarriba);
+        Animation animacion2 = AnimationUtils.loadAnimation(this,R.anim.desplazamientoabajo);
+
+        TextView txtspla1 = findViewById(R.id.txtspla1);
+        TextView txtspla2 = findViewById(R.id.txtspla2);
+        ImageView logo = findViewById(R.id.imgspla);
+
+        txtspla1.setAnimation(animacion2);
+        txtspla2.setAnimation(animacion2);
+        logo.setAnimation(animacion1);
+
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -27,9 +49,11 @@ public class SplaActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.clear().commit();
                 System.out.println("ELIMINAR SHA" +sharedPreferences.getString("emailShared", "Predefinido"));
+
+                TokenController.setId(SplaActivity.this,0);
+
                 startActivity(intent);
                finish();
-               //edy gay
             }
         },3000);
     }

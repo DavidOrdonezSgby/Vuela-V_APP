@@ -1,66 +1,97 @@
 package com.example.vuelav_app.Logico.Request;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-
-import java.io.Serializable;
-import java.sql.Time;
 import java.util.Date;
 
 public class ReservaRequest  {
 
-    private Long idReserva;
+    @SerializedName("idReserva")
+    @Expose
+    private Integer idReserva;
 
-    private Date fechaIda;
+    @SerializedName("fechaIda")
+    @Expose
+    private String fechaIda;
 
-    private Date fechaVuelta;
+    @SerializedName("fechaVuelta")
+    @Expose
+    private String fechaVuelta;
 
+    @SerializedName("horaSalida")
+    @Expose
     private String horaSalida;
 
+    @SerializedName("horaLlegada")
+    @Expose
     private String horaLlegada;
 
-    private Long estado;
+    @SerializedName("estado")
+    @Expose
+    private Integer estado;
 
+    @SerializedName("observacion")
+    @Expose
     private String observacion;
 
-    private Date fechaRegistro;
+    @SerializedName("fechaRegistro")
+    @Expose
+    private String fechaRegistro;
 
+    @SerializedName("origen")
+    @Expose
     private String origen;
 
+    @SerializedName("destino")
+    @Expose
     private String destino;
 
+    @SerializedName("pago")
+    @Expose
     private Boolean pago;
 
-    private Long idServicio;
+    @SerializedName("idServicio")
+    @Expose
+    private Integer idServicio;
 
-    //private Long idTripulacion;
+    @SerializedName("idTripulacion")
+    @Expose
+    private Integer idTripulacion;
 
-    private int idVuelo;
+    @SerializedName("idVuelo")
+    @Expose
+    private Integer idVuelo;
 
-    //private Long idManifiesto;
+    @SerializedName("idManifiesto")
+    @Expose
+    private Integer idManifiesto;
 
-    private Long idUsuario;
+    @SerializedName("idUsuario")
+    @Expose
+    private Integer idUsuario;
 
-    public Long getIdReserva() {
+    public Integer getIdReserva() {
         return idReserva;
     }
 
-    public void setIdReserva(Long idReserva) {
+    public void setIdReserva(Integer idReserva) {
         this.idReserva = idReserva;
     }
 
-    public Date getFechaIda() {
+    public String getFechaIda() {
         return fechaIda;
     }
 
-    public void setFechaIda(Date fechaIda) {
+    public void setFechaIda(String fechaIda) {
         this.fechaIda = fechaIda;
     }
 
-    public Date getFechaVuelta() {
+    public String getFechaVuelta() {
         return fechaVuelta;
     }
 
-    public void setFechaVuelta(Date fechaVuelta) {
+    public void setFechaVuelta(String fechaVuelta) {
         this.fechaVuelta = fechaVuelta;
     }
 
@@ -80,11 +111,11 @@ public class ReservaRequest  {
         this.horaLlegada = horaLlegada;
     }
 
-    public Long getEstado() {
+    public Integer getEstado() {
         return estado;
     }
 
-    public void setEstado(Long estado) {
+    public void setEstado(Integer estado) {
         this.estado = estado;
     }
 
@@ -96,11 +127,11 @@ public class ReservaRequest  {
         this.observacion = observacion;
     }
 
-    public Date getFechaRegistro() {
+    public String getFechaRegistro() {
         return fechaRegistro;
     }
 
-    public void setFechaRegistro(Date fechaRegistro) {
+    public void setFechaRegistro(String fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
 
@@ -128,27 +159,43 @@ public class ReservaRequest  {
         this.pago = pago;
     }
 
-    public Long getIdServicio() {
+    public Integer getIdServicio() {
         return idServicio;
     }
 
-    public void setIdServicio(Long idServicio) {
+    public void setIdServicio(Integer idServicio) {
         this.idServicio = idServicio;
     }
 
-    public int getIdVuelo() {
+    public Integer getIdTripulacion() {
+        return idTripulacion;
+    }
+
+    public void setIdTripulacion(Integer idTripulacion) {
+        this.idTripulacion = idTripulacion;
+    }
+
+    public Integer getIdVuelo() {
         return idVuelo;
     }
 
-    public void setIdVuelo(int idVuelo) {
+    public void setIdVuelo(Integer idVuelo) {
         this.idVuelo = idVuelo;
     }
 
-    public Long getIdUsuario() {
+    public Integer getIdManifiesto() {
+        return idManifiesto;
+    }
+
+    public void setIdManifiesto(Integer idManifiesto) {
+        this.idManifiesto = idManifiesto;
+    }
+
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Long idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 }

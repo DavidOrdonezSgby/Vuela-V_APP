@@ -11,11 +11,12 @@
     <TextView
         android:id="@+id/Registro"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:text="Reseva de Vuelo"
         android:textAlignment="center"
-        android:textSize="34sp"
-        android:textStyle="bold"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+       android:textColor="#DFFFD6"
         android:typeface="serif"
         android:background="@drawable/bgborder2"/>
     <ImageView
@@ -23,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         app:srcCompat="@drawable/ic_baseline_local_airport_24"
-        android:background="@color/teal_700"/>
+ />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="400dp">
@@ -268,6 +269,7 @@
         android:id="@+id/btnReservar_vuelo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#9BFA80"
         android:layout_marginTop="10dp"
         android:background="@drawable/btn_confirmacion"
         android:text="Reservar Vuelo" />

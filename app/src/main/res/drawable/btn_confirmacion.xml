@@ -4,6 +4,6 @@
     <corners android:bottomLeftRadius="16dp"
         android:topRightRadius="16dp"/>
 
-    <solid android:color="@color/teal_700"/>
+    <solid android:color="#145302"/>
 
 </shape>

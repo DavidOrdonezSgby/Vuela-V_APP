@@ -4,43 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7F7"
+    android:background="#F7FFF7"
     tools:context=".Fragments.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="200dp"
-        android:background="@color/teal_700"
+        android:background="#027006"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints">
+
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="36dp"
             android:text="Encuentra tu siguiente destino"
             android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:textColor="#DDD3D3"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            android:typeface="serif"
             app:layout_constraintEnd_toStartOf="@+id/guideline27"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline28"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName2"
-            android:layout_width="318dp"
+        <SearchView
+            android:id="@+id/search_view"
+            android:layout_width="310dp"
             android:layout_height="42dp"
             android:layout_marginTop="44dp"
+            android:iconifiedByDefault="false"
             android:background="@drawable/search_bg"
-            android:drawableLeft="@drawable/ic_baseline_search_24"
             android:drawablePadding="16dp"
             android:ems="10"
-            android:hint="Buscar Destinos"
-            android:inputType="textPersonName"
+            android:queryHint="Buscar Destinos"
             android:paddingStart="16dp"
             android:textColor="#62878F"
             app:layout_constraintEnd_toStartOf="@+id/guideline27"
@@ -62,6 +64,17 @@
             android:orientation="vertical"
             app:layout_constraintGuide_begin="20dp" />
 
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="116dp"
+            android:src="@drawable/ic_baseline_airlines_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.956"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -70,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Reciente"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
@@ -79,7 +92,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="Ver todo"
+
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/textView11"
         app:layout_constraintEnd_toEndOf="parent"

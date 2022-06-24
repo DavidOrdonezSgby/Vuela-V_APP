@@ -5,10 +5,10 @@
         android:title="Inicio"
         android:icon="@drawable/ic_baseline_home_24" />
 
-    <item android:id="@+id/reserve"
+   <!--! <item android:id="@+id/reserve"
         android:title="Reservar"
         android:icon="@drawable/ic_baseline_map_24" />
-
+-->
     <item android:id="@+id/notification"
         android:title="Notificaciones"
         android:icon="@drawable/ic_baseline_notifications_24" />

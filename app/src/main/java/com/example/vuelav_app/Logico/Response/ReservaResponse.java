@@ -2,53 +2,226 @@ package com.example.vuelav_app.Logico.Response;
 
 
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
 
-
 public class ReservaResponse  {
 
+    @SerializedName("idReserva")
+    @Expose
+    private Integer idReserva;
 
-    private Long idReserva;
-
+    @SerializedName("fechaIda")
+    @Expose
     private Date fechaIda;
 
+    @SerializedName("fechaVuelta")
+    @Expose
     private Date fechaVuelta;
 
+    @SerializedName("horaSalida")
+    @Expose
     private String horaSalida;
 
+    @SerializedName("horaLlegada")
+    @Expose
     private String horaLlegada;
 
-    private Long estado;
+    @SerializedName("estado")
+    @Expose
+    private Integer estado;
 
+    @SerializedName("observacion")
+    @Expose
     private String observacion;
 
+    @SerializedName("fechaRegistro")
+    @Expose
     private Date fechaRegistro;
 
+    @SerializedName("origen")
+    @Expose
     private String origen;
 
+    @SerializedName("destino")
+    @Expose
     private String destino;
 
+    @SerializedName("pago")
+    @Expose
     private Boolean pago;
 
-    private Long idServicio;
+    @SerializedName("idServicio")
+    @Expose
+    private Integer idServicio;
 
-    private Long idTripulacion;
+    @SerializedName("idTripulacion")
+    @Expose
+    private Integer idTripulacion;
 
-    private int idVuelo;
+    @SerializedName("idVuelo")
+    @Expose
+    private Integer idVuelo;
 
-    private Long idManifiesto;
+    @SerializedName("idManifiesto")
+    @Expose
+    private Integer idManifiesto;
 
-    private Long idUsuario;
+    @SerializedName("idUsuario")
+    @Expose
+    private Integer idUsuario;
 
     public ReservaResponse() {
-        
     }
 
-    public ReservaResponse(Long id, Date fechaIda, Date fechaVuelta, String horaSalida, String horaLlegada, Long estado, String observacion, Date fechaRegistro, String origen, String destino, Boolean pago, Long id1, Long id2) {
+    public ReservaResponse(Integer idReserva, Date fechaIda, Date fechaVuelta, String horaSalida, String horaLlegada, Integer estado, String observacion, Date fechaRegistro, String origen, String destino, Boolean pago, Integer idServicio, Integer idTripulacion, Integer idVuelo, Integer idManifiesto, Integer idUsuario) {
+        this.idReserva = idReserva;
+        this.fechaIda = fechaIda;
+        this.fechaVuelta = fechaVuelta;
+        this.horaSalida = horaSalida;
+        this.horaLlegada = horaLlegada;
+        this.estado = estado;
+        this.observacion = observacion;
+        this.fechaRegistro = fechaRegistro;
+        this.origen = origen;
+        this.destino = destino;
+        this.pago = pago;
+        this.idServicio = idServicio;
+        this.idTripulacion = idTripulacion;
+        this.idVuelo = idVuelo;
+        this.idManifiesto = idManifiesto;
+        this.idUsuario = idUsuario;
     }
 
-    public ReservaResponse(Long id, Date fechaIda, Date fechaVuelta, String horaSalida, String horaLlegada, Long estado, String observacion, Date fechaRegistro, String origen, String destino, Boolean pago, Long id1) {
+    public Integer getIdReserva() {
+        return idReserva;
+    }
+
+    public void setIdReserva(Integer idReserva) {
+        this.idReserva = idReserva;
+    }
+
+    public Date getFechaIda() {
+        return fechaIda;
+    }
+
+    public void setFechaIda(Date fechaIda) {
+        this.fechaIda = fechaIda;
+    }
+
+    public Date getFechaVuelta() {
+        return fechaVuelta;
+    }
+
+    public void setFechaVuelta(Date fechaVuelta) {
+        this.fechaVuelta = fechaVuelta;
+    }
+
+    public String getHoraSalida() {
+        return horaSalida;
+    }
+
+    public void setHoraSalida(String horaSalida) {
+        this.horaSalida = horaSalida;
+    }
+
+    public String getHoraLlegada() {
+        return horaLlegada;
+    }
+
+    public void setHoraLlegada(String horaLlegada) {
+        this.horaLlegada = horaLlegada;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
+    }
+
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+
+    public Date getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(Date fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
+
+    public String getOrigen() {
+        return origen;
+    }
+
+    public void setOrigen(String origen) {
+        this.origen = origen;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
+    }
+
+    public Boolean getPago() {
+        return pago;
+    }
+
+    public void setPago(Boolean pago) {
+        this.pago = pago;
+    }
+
+    public Integer getIdServicio() {
+        return idServicio;
+    }
+
+    public void setIdServicio(Integer idServicio) {
+        this.idServicio = idServicio;
+    }
+
+    public Integer getIdTripulacion() {
+        return idTripulacion;
+    }
+
+    public void setIdTripulacion(Integer idTripulacion) {
+        this.idTripulacion = idTripulacion;
+    }
+
+    public Integer getIdVuelo() {
+        return idVuelo;
+    }
+
+    public void setIdVuelo(Integer idVuelo) {
+        this.idVuelo = idVuelo;
+    }
+
+    public Integer getIdManifiesto() {
+        return idManifiesto;
+    }
+
+    public void setIdManifiesto(Integer idManifiesto) {
+        this.idManifiesto = idManifiesto;
+    }
+
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 }

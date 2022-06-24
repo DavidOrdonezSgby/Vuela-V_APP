@@ -18,19 +18,19 @@
         android:textColor="@color/white"
         android:background="@drawable/bgborder2"
         android:textSize="24sp"
-        android:textStyle="bold"
+        android:textStyle="bold|italic"
         android:typeface="serif" />
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@color/teal_700"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
         app:srcCompat="@drawable/ic_baseline_account_circle_24" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         app:counterEnabled="true"
         app:counterMaxLength="15"
         android:background="@drawable/bgborde"
@@ -70,6 +70,7 @@
         android:background="@drawable/btn_confirmacion"
         android:text="INICIAR SESION"
         android:layout_margin="15dp"
+       android:textColor="#9BFA80"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnrecuperarCuenta" />
@@ -81,6 +82,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/btn_confirmacion"
         android:text="REGISTRARSE"
+        android:textColor="#9BFA80"
         android:layout_margin="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +95,7 @@
         android:layout_marginTop="16dp"
         android:text="¿Olvidaste tu usuario o Contraseña?"
         android:textAlignment="textEnd"
-        android:textColor="#673AB7"
+        android:textColor="#145302"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPassword" />

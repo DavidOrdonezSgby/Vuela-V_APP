@@ -11,19 +11,21 @@
     <TextView
         android:id="@+id/Registro"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bgborder2"
         android:text="Registro"
         android:textAlignment="center"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        android:typeface="serif"
-        android:background="@drawable/bgborder2"/>
+        android:textColor="#DFFFD6"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        android:typeface="serif" />
+
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        app:srcCompat="@drawable/ic_baseline_perm_identity_24"
-        android:background="@color/teal_700"/>
+        app:srcCompat="@drawable/ic_baseline_perm_identity_24" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="420dp"
@@ -221,13 +223,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textColor="@color/teal_700"
+        android:textColor="#145302"
         android:layout_marginStart="30dp"
         android:text="Aceptar Términos y Condiciones" />
     <Button
         android:id="@+id/btnRegistrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#9BFA80"
         android:layout_marginTop="10dp"
         android:background="@drawable/btn_confirmacion"
         android:text="Registrar" />

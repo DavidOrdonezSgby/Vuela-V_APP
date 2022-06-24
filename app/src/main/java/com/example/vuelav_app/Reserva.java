@@ -1,7 +1,24 @@
 package com.example.vuelav_app;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+
+import com.example.vuelav_app.Logico.Token.TokenController;
+import com.example.vuelav_app.R;
+
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.ProgressDialog;
+import android.app.TaskStackBuilder;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,6 +28,12 @@ import com.example.vuelav_app.Logico.Response.ReservaResponse;
 import com.example.vuelav_app.Logico.Response.VueloResponse;
 import com.example.vuelav_app.Logico.Service.ReservaService;
 import com.example.vuelav_app.Logico.Service.VueloService;
+import com.example.vuelav_app.actividades.SuccessPaymentActivity;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,9 +42,21 @@ import retrofit2.Response;
 public class Reserva extends AppCompatActivity {
 TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltareserva, horallegadareserva,
         fechareserva,horasalidareserva, observacionvuelo,origenreserva,pagoreserva;;
-private int idvuelo;
-        VueloService vueloService = Apis.getVueloService();
-        ReservaService reservaService=Apis.getReservaService();
+        Button btnReservar_vuelo;
+    private int idvuelo;
+    VueloService vueloService = Apis.getVueloService();
+    ReservaService reservaService=Apis.getReservaService();
+    private final static  String CHANNEL_ID="NOFTIFICACION";
+    private final static int NOTIFICACION_ID =0;
+    private PendingIntent pendingIntent;
+    ProgressDialog progressDialog;
+    private Date ida, vuelta, actual;
+    SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd");
+    Calendar calendar = Calendar.getInstance();
+
+    Date dateObj = calendar.getTime();
+    String formattedDate = dtf.format(dateObj);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,13 +71,26 @@ private int idvuelo;
         horasalidareserva = findViewById(R.id.viewHorasalida_Vuelo);
         observacionvuelo = findViewById(R.id.viewobservación_vuelo);
         origenreserva = findViewById(R.id.viewOrigen_Vuelo);
-        System.out.println("edi gay -> "+getIntent().getIntExtra("id",0));
+        System.out.println("id -> "+getIntent().getIntExtra("id",0));
         Obtenervuelo();
+        btnReservar_vuelo = findViewById(R.id.btnReservar_vuelo);
+
+        btnReservar_vuelo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                crearReserva();
+            }
+        });
+        setPendingIntent();
 
 
+        //findViewById(R.id.btnReservar_vuelo).setOnClickListener(l->crearReserva());
 
+    }
 
-        findViewById(R.id.btnReservar_vuelo).setOnClickListener(l->crearReserva());
+    public String transformar(Date date){
+        SimpleDateFormat formats = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        return formats.format(date).toString();
     }
 
     private void IniciarAccion() {
@@ -63,8 +111,13 @@ private int idvuelo;
                     fechavueltareserva.setText(response.body().getFechaVuelta().toString());
                     horallegadareserva.setText(response.body().getHoraLlegada());
                     horasalidareserva.setText(response.body().getHoraSalida());
+                    System.out.println("Hora salida "+response.body().getHoraSalida());
+                    System.out.println("i " +response.body().getImagen());
                     //observacionvuelo.setText(response.body().);
-                    origenreserva.setText(response.body().getOrigen());
+
+                    ida = response.body().getFechaIda();
+                    vuelta = response.body().getFechaVuelta();
+                    actual = null;
                 }else{
 
                 }
@@ -78,32 +131,98 @@ private int idvuelo;
 
 
     private void crearReserva(){
+
+        progressDialog = new ProgressDialog(this);
+        System.out.println("Procesando");
+        System.out.println("token reserva"+TokenController.getToken(this));
+        progressDialog.setMessage("Procesando solicitud espere...");
+        progressDialog.show();
+
+        System.out.println("IDUSER "+TokenController.getId(this));
+
         ReservaRequest reservaRequest= new ReservaRequest();
-        reservaRequest.setIdVuelo(idvuelo);
+
+        reservaRequest.setIdUsuario(TokenController.getId(this));
+        reservaRequest.setFechaRegistro(formattedDate);
+        reservaRequest.setObservacion(observacionvuelo.getText().toString());
+        reservaRequest.setIdVuelo(getIntent().getIntExtra("id",0));
         reservaRequest.setDestino(destinoreserva.getText().toString());
-        reservaRequest.setEstado(Long.valueOf(estadoreserva.getText().toString()));
-        //reservaRequest.setFechaIda();
+        reservaRequest.setEstado(Integer.parseInt(estadoreserva.getText().toString()));
+        reservaRequest.setFechaIda(transformar(ida));
+        reservaRequest.setFechaVuelta(transformar(vuelta));
         reservaRequest.setHoraLlegada(horallegadareserva.getText().toString());
         reservaRequest.setHoraSalida(horasalidareserva.getText().toString());
         reservaRequest.setOrigen(origenreserva.getText().toString());
         reservaRequest.setPago(true);
 
-        Call<ReservaResponse> call = reservaService.Create(reservaRequest);
+        Call<ReservaResponse> call = reservaService.creaReserva("Bearer "+TokenController.getToken(this), reservaRequest);
         call.enqueue(new Callback<ReservaResponse>() {
             @Override
             public void onResponse(Call<ReservaResponse> call, Response<ReservaResponse> response) {
+                progressDialog.dismiss();
                 if(response.isSuccessful()){
                     System.out.println("Obtuvo los datos");
+                    createNotificationChannel();
+                    Intent intent = new Intent(Reserva.this, SuccessPaymentActivity.class);
+                    startActivity(intent);
+                    finish();
                 }else{
-                    System.out.println("No Obtuvo los datos");
+                    //Quitar este código por que no funciona ya que es un error
+                    /**createNotificationChannel();
+                    Intent intent = new Intent(Reserva.this, SuccessPaymentActivity.class);
+                    startActivity(intent);
+                    finish();**/
+                    System.out.println(response.message());
+                    System.out.println(response.code());
+
+
                 }
             }
 
             @Override
             public void onFailure(Call<ReservaResponse> call, Throwable t) {
-
+                progressDialog.dismiss();
                 System.out.println(t.toString()+"<- Este es el error");
             }
         });
+    }
+
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "Registro";
+            String description = "Gracias por la reservación";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    private void showMessage() {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID);
+        builder.setSmallIcon(R.drawable.ic_baseline_how_to_reg_24);
+        builder.setContentTitle("Notificacion - Registro con éxito");
+        builder.setColor(Color.BLUE);
+        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        builder.setLights(Color.MAGENTA,1000,1000);
+        builder.setVibrate(new long[]{1000,1000,1000});
+        builder.setDefaults(Notification.DEFAULT_SOUND);
+        builder.setContentIntent(pendingIntent);
+
+        NotificationManagerCompat notificationManagerCompat= NotificationManagerCompat.from(this);
+        notificationManagerCompat.notify(NOTIFICACION_ID,builder.build());
+    }
+
+    private void setPendingIntent(){
+        Intent intent = new Intent(this, SesionIniciada.class);
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addParentStack(SesionIniciada.class);
+        stackBuilder.addNextIntent(intent);
+        pendingIntent = stackBuilder.getPendingIntent(1, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 }

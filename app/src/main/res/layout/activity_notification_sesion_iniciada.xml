@@ -10,38 +10,29 @@
 
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/Registro"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="NOTIFICACIONES"
-        android:textAlignment="center"
-        android:background="@drawable/bgborder2"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline30"
-        app:layout_constraintEnd_toStartOf="@+id/guideline26"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline25"
-        app:layout_constraintTop_toTopOf="@+id/guideline29"
-        app:layout_constraintVertical_bias="0.375" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline30"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="55dp" />
+        android:text="Notificación de Reservas"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="#DFFFD6"
+        android:typeface="serif"
+        android:background="@drawable/bgborder2"/>
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/ic_baseline_notifications_24" />
+
 
     <ListView
-        android:id="@+id/ListViewNotificaciones"
+        android:id="@+id/notificaciones_recycler"
+        android:dividerHeight="10.0sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp" />
+        android:layout_below="@+id/textViewTituloListar" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline31"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" />
+
 </LinearLayout>

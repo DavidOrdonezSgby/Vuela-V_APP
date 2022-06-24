@@ -4,24 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_700">
+    android:background="#E3E3E3">
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/txtspla1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="208dp"
-        android:text="VUELA V"
+        android:text="Bienvenido a"
+        android:textColor="#145302"
         android:textSize="34sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/imgspla" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imgspla"
         android:layout_width="190dp"
         android:layout_height="171dp"
         android:layout_marginTop="168dp"
@@ -30,4 +31,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_local_airport_24" />
+
+    <TextView
+        android:id="@+id/txtspla2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vuela V"
+        android:textColor="#145302"
+        android:textSize="48sp"
+        android:textStyle="bold|italic"
+        android:typeface="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtspla1"
+        app:layout_constraintVertical_bias="0.164" />
 </androidx.constraintlayout.widget.ConstraintLayout>

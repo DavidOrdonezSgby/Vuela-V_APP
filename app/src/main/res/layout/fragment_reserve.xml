@@ -8,18 +8,17 @@
     android:orientation="vertical"
     android:padding="10dp">
 
+
     <TextView
         android:id="@+id/textView9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bgborder2"
         android:text="¿Dónde quieres ir?"
         android:textAlignment="center"
         android:textSize="34sp"
         android:textStyle="bold"
-        android:typeface="serif"
-        android:background="@drawable/bgborder2"
-       />
-
+        android:typeface="serif" />
 
     <ImageView
         android:id="@+id/imageView11"

@@ -64,8 +64,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         editor.commit();
 
                         TokenController.setToken(Login.this, response.body().getToken());
+                        TokenController.setId(Login.this, Integer.parseInt(response.body().getId().toString()));
+                        System.out.println("ID "+response.body().getId().toString());
                         System.out.println("Cedula login " +response.body().getDocIdentificacion());
                         System.out.println("TOKEN login " +response.body().getToken());
+
+                        Intent intent = new Intent(getApplicationContext(), SesionIniciada.class);
+                        startActivity(intent);
                         //startActivity(intent);
                     } else {
                         System.out.println("No coincide");
@@ -101,8 +106,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             case R.id.btnIniciarSesion:
                 UsuarioRequest usuario = new UsuarioRequest(a1.getText().toString(),a2.getText().toString());
                 revisarcorreo(usuario);
-                Intent intent = new Intent(getApplicationContext(), SesionIniciada.class);
-                startActivity(intent);
                 break;
 
         }

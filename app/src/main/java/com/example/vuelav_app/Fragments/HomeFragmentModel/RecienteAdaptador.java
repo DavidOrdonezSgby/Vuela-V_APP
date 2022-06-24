@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,16 +18,20 @@ import com.example.vuelav_app.InformacionVuelo;
 import com.example.vuelav_app.Logico.Response.VueloResponse;
 import com.example.vuelav_app.R;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
-public class RecienteAdaptador extends RecyclerView.Adapter<RecienteAdaptador.RecentsViewHolder> {
+public class RecienteAdaptador extends RecyclerView.Adapter<RecienteAdaptador.RecentsViewHolder> implements Filterable {
 
     Context context;
     List<VueloResponse> recienteList;
+    List<VueloResponse>mDataFiltrable;
 
     public RecienteAdaptador(Context context, List<VueloResponse> recienteList) {
         this.context = context;
         this.recienteList = recienteList;
+        this.mDataFiltrable = recienteList;
     }
 
     @NonNull
@@ -37,17 +43,17 @@ public class RecienteAdaptador extends RecyclerView.Adapter<RecienteAdaptador.Re
 
     @Override
     public void onBindViewHolder(@NonNull RecentsViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        holder.ciudadL.setText(recienteList.get(position).getDestino());
-        holder.nombreL.setText(recienteList.get(position).getOrigen());
-        holder.precio.setText(recienteList.get(position).getPrecio().toString());
-        holder.idvuelo.setText(recienteList.get(position).getIdVuelo().toString());
+        holder.ciudadL.setText(mDataFiltrable.get(position).getDestino());
+        holder.nombreL.setText(mDataFiltrable.get(position).getOrigen());
+        holder.precio.setText(mDataFiltrable.get(position).getPrecio().toString());
+        holder.idvuelo.setText(mDataFiltrable.get(position).getIdVuelo().toString());
         holder.lugarimg.setImageResource(R.drawable.recentimage1);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(holder.itemView.getContext(), InformacionVuelo.class);
-                intent.putExtra("idvuelo",recienteList.get(position).getIdVuelo().toString());
-                System.out.println(recienteList.get(position).getIdVuelo().toString());
+                intent.putExtra("idvuelo",mDataFiltrable.get(position).getIdVuelo().toString());
+                System.out.println(mDataFiltrable.get(position).getIdVuelo().toString());
                 holder.itemView.getContext().startActivity(intent);
 
             }
@@ -56,7 +62,41 @@ public class RecienteAdaptador extends RecyclerView.Adapter<RecienteAdaptador.Re
 
     @Override
     public int getItemCount() {
-        return recienteList.size();
+        return mDataFiltrable.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String filter = constraint.toString();
+
+                if (filter.isEmpty()){
+                    mDataFiltrable = recienteList;
+                }else {
+                    List<VueloResponse> filtroVuelos = new ArrayList<>();
+
+                    for (VueloResponse row : recienteList){
+                        if (row.getOrigen().toLowerCase().contains(filter) || row.getDestino().toLowerCase().contains(filter)){
+                            filtroVuelos.add(row);
+                        }
+                    }
+                    mDataFiltrable = filtroVuelos;
+                }
+
+                FilterResults results = new FilterResults();
+                results.values = mDataFiltrable;
+
+                return results;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                mDataFiltrable = (ArrayList<VueloResponse>) results.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public static final class RecentsViewHolder extends RecyclerView.ViewHolder{

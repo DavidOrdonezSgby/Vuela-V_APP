@@ -15,11 +15,10 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase Base) {
-        Base.execSQL("create table usuario(id int primary key, pais text, cedula text, nombre text, apellido text,fechanacimiento text, genero text, email text, telefono text, clave text, terminoscondiciones boolean, autorizacion boolean, razonsocial text, rol text)");
-        Base.execSQL("create table guardados(id_guardado int primary key, id_usuario int, id_vuelo text)");
-        Base.execSQL("create table vuelo(id int primary key, precio double, destino text, estado int, tipo_vuelo text, origen text)");
+        Base.execSQL("create table usuario(id int primary key)");
+        Base.execSQL("create table guardados(id_usuario int, id_vuelo text)");
+        Base.execSQL("create table vuelo(id int primary key)");
     }
-
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 

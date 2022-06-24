@@ -1,6 +1,8 @@
 package com.example.vuelav_app.Fragments;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -12,8 +14,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.vuelav_app.Fragments.HomeFragmentModel.Reciente;
 import com.example.vuelav_app.Fragments.HomeFragmentModel.RecienteAdaptador;
@@ -25,6 +30,7 @@ import com.example.vuelav_app.Login;
 import com.example.vuelav_app.R;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -37,21 +43,46 @@ public class HomeFragment extends Fragment{
 
     VueloService vueloService = Apis.getVueloService();
     List<VueloResponse> listvuelo = new ArrayList<VueloResponse>();
+    SearchView searchView;
     TextView txtidvuelo;
     private int validar=0;
+    RecienteAdaptador adaptador;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
+        //iniData();
         ObtenerVuelos();
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+
+
+        searchView = view.findViewById(R.id.search_view);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                    adaptador.getFilter().filter(query);
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adaptador.getFilter().filter(newText);
+                return false;
+            }
+        });
 
         recyclerView = view.findViewById(R.id.reciente_recycler);
         txtidvuelo = view.findViewById(R.id.txtvueloid);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), recyclerView.HORIZONTAL, false));
-        RecienteAdaptador adaptador = new RecienteAdaptador(getContext(),listvuelo);
+        adaptador = new RecienteAdaptador(getContext(),listvuelo);
         recyclerView.setAdapter(adaptador);
 
         return view;
@@ -59,8 +90,42 @@ public class HomeFragment extends Fragment{
 
     }
 
+    private void iniData(){
+        VueloResponse item = new VueloResponse();
+        item.setIdVuelo(Long.valueOf(1));
+        item.setPrecio(12.8);
+        item.setOrigen("Mexico");
+        item.setDestino("Marruecos");
+        item.setEstado(Long.valueOf(1));
+        item.setIdTipoVuelo(Long.valueOf(2));
+        item.setFechaIda(new Date());
+        item.setFechaVuelta(new Date());
+        item.setHoraSalida("09:00:00");
+        item.setHoraLlegada("12:23:11");
+        item.setImagen("");
+        item.setIdAvion(Long.valueOf(1));
+
+
+        VueloResponse item2 = new VueloResponse();
+        item2.setIdVuelo(Long.valueOf(1));
+        item2.setPrecio(12.8);
+        item2.setOrigen("Los angeles");
+        item2.setDestino("Tokio");
+        item2.setEstado(Long.valueOf(1));
+        item2.setIdTipoVuelo(Long.valueOf(2));
+        item2.setFechaIda(new Date());
+        item2.setFechaVuelta(new Date());
+        item2.setHoraSalida("09:00:00");
+        item2.setHoraLlegada("12:23:11");
+        item2.setImagen("");
+        item2.setIdAvion(Long.valueOf(1));
+        listvuelo.add(item);
+        listvuelo.add(item2);
+    }
+
     private void ObtenerVuelos(){
-        if(validar==0){
+        listvuelo = new ArrayList<>();
+       // if(validar==0){
             System.out.println("Entro al metodo");
             Call<List<VueloResponse>> call = vueloService.listAll();
             call.enqueue(new Callback<List<VueloResponse>>() {
@@ -82,7 +147,7 @@ public class HomeFragment extends Fragment{
                     System.out.println(t.toString());
                 }
             });
-        }
+       // }
 
     }
 

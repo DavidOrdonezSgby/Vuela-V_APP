@@ -15,12 +15,16 @@ import com.example.vuelav_app.R;
 
 public class NotificationFragment extends Fragment implements View.OnClickListener {
 
+
     private Button iniciarsesionNotificaciones;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_notification, container, false);
+        View view = inflater.inflate(R.layout.fragment_notification, container, false);
+
+
+        return view;
     }
 
     @Override
@@ -35,6 +39,7 @@ public class NotificationFragment extends Fragment implements View.OnClickListen
         Intent intent = new Intent(getActivity(), Login.class);
         startActivity(intent);
     }
+
 
     @Override
     public void onClick(View view) {

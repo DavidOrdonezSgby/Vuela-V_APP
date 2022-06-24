@@ -13,21 +13,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.vuelav_app.Logico.Apis;
 import com.example.vuelav_app.Logico.Response.UsuarioResponse;
 import com.example.vuelav_app.Logico.Service.UsuarioService;
 import com.example.vuelav_app.Logico.Token.TokenController;
+import com.example.vuelav_app.MainActivity;
 import com.example.vuelav_app.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MiCuenta extends Fragment {
+public class MiCuenta extends Fragment implements View.OnClickListener{
 
     private TextView nombre, apellido, fecha, genero, emailU, telefono;
+    private ImageView cerrar;
     private UsuarioService usuarioService = Apis.getUsuarioService();
 
     @Override
@@ -42,6 +45,8 @@ public class MiCuenta extends Fragment {
         genero = (TextView) view.findViewById(R.id.txtGenero);
         emailU = (TextView) view.findViewById(R.id.txtEmail);
         telefono = (TextView) view.findViewById(R.id.txtTelefono);
+        cerrar = (ImageView) view.findViewById(R.id.ic_cerrar_click);
+        cerrar.setOnClickListener(this);
 
         obtusuario(cargarDatos());
 
@@ -79,5 +84,26 @@ public class MiCuenta extends Fragment {
         SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("email", Context.MODE_PRIVATE);
         System.out.println("MI CUENTA SHARED "+sharedPreferences.getString("emailShared", "Predefinido"));
         return sharedPreferences.getString("emailShared", "Predefinido");
+    }
+
+    private void salir(){
+        TokenController.setId(getContext().getApplicationContext(), 0);
+        TokenController.setToken(getContext().getApplicationContext(), "");
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("email", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear().commit();
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        startActivity(intent);
+        getActivity().finish();
+    }
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        switch (id) {
+            case R.id.ic_cerrar_click:
+                salir();
+                break;
+        }
     }
 }

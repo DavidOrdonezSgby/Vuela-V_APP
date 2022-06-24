@@ -7,6 +7,8 @@ public class TokenController {
 
     private final static String SHARED_PREF_NAME = "net.rouk1.SHARED_PREF_NAME";
     private final static String TOKEN_KEY = "net.rouk1.TOKEN_KEY";
+    private final static String ID_CLIENT="idBase";
+    private final static String NOMSP="AR";
 
     public static String getToken(Context c) {
         SharedPreferences prefs = c.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
@@ -18,5 +20,16 @@ public class TokenController {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(TOKEN_KEY, token);
         editor.apply();
+    }
+    public static void setId(Context context,int id){
+        SharedPreferences prefs = context.getSharedPreferences(NOMSP, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(ID_CLIENT, id);
+        editor.apply();
+    }
+
+    public static int getId(Context context){
+        SharedPreferences id = context.getSharedPreferences(NOMSP, Context.MODE_PRIVATE);
+        return id.getInt(ID_CLIENT, 0);
     }
 }

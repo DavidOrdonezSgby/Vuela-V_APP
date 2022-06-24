@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
 
 import com.example.vuelav_app.Fragments.AccountFragment;
 import com.example.vuelav_app.Fragments.AccountFragmentModel.MiCuenta;
@@ -36,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         getSupportFragmentManager().beginTransaction().replace(R.id.container, homeFragment).commit();
 
+
+
+
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -52,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, accountFragment).commit();
                         homeFragment.onPause();
                         return true;
-                    case R.id.reserve:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, reserveFragment).commit();
-                        homeFragment.onPause();
-                        return true;
+//                    case R.id.reserve:
+//                        getSupportFragmentManager().beginTransaction().replace(R.id.container, reserveFragment).commit();
+//                        homeFragment.onPause();
+//                        return true;
                 }
                 return false;
             }
