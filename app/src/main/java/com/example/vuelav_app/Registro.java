@@ -17,6 +17,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,6 +39,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -330,9 +332,11 @@ private void MostrarFecha(){
             telefono.setError("Ingresar el teléfono");
             retorno = false;
         }
-        if (c6.isEmpty()) {
+        if (c6.isEmpty() ) {
             email.setError("Ingresar el email");
             retorno = false;
+        }else if(!Patterns.EMAIL_ADDRESS.matcher(c6).matches()){
+            email.setError("Email invalido");
         }
         if (c7.isEmpty()) {
             contra.setError("Ingresar una contraseña");
@@ -341,7 +345,7 @@ private void MostrarFecha(){
         if(sppais.getSelectedItem().toString().equals("Seleccione el país de origen...")){
             System.out.println("Seleccione el pais" );
             Toast.makeText(Registro.this,"Seleccione su pais de origen",Toast.LENGTH_LONG).show();
-    retorno = false;
+            retorno = false;
         }
         if(boxAceptarterminos.isChecked()==false){
             Toast.makeText(Registro.this,"Debe Aceptar los Términos y Condiciones",Toast.LENGTH_LONG).show();
