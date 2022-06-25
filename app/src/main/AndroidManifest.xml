@@ -33,14 +33,6 @@
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".Fragments.ReserveEmergent.Destino"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Fragments.ReserveEmergent.Origen"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".Registro"
             android:exported="false"
             android:screenOrientation="portrait" />
