@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Reserva"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="#F7FFF7">
 
     <TextView
         android:id="@+id/Registro"

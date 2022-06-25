@@ -24,4 +24,6 @@ public interface UsuarioService {
     @GET("/api/usuario/{email}")
     Call<UsuarioResponse> findByemail(@Header("Authorization") String token, @Path(value="email") String email);
 
+    @GET("api/usuario/user/id_user/{id}")
+    Call<UsuarioResponse> findById(@Header("Authorization") String token, @Path(value="id") int id);
 }

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.AccountFragmentModel.MiCuenta"
     android:padding="20dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#F7FFF7">
 
 
 
@@ -63,7 +64,7 @@
         android:layout_height="wrap_content"
         android:hint="Fecha de nacimiento Usuario"
         android:textAlignment="center"
-        android:background="@drawable/bgborde"
+
         android:textSize="18dp"
         android:textStyle="bold"/>
 
@@ -81,7 +82,6 @@
         android:id="@+id/txtNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bgborde"
         android:hint="Nombre Usuario"
         android:textAlignment="center"
         android:textSize="18dp"
@@ -104,7 +104,6 @@
         android:textSize="18dp"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:background="@drawable/bgborde"
         android:hint="Apellido Usuario" />
 
     <TextView
@@ -121,7 +120,6 @@
         android:id="@+id/txtGenero"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bgborde"
         android:textAlignment="center"
         android:textStyle="bold"
         android:textSize="18dp"
@@ -144,8 +142,7 @@
      android:textStyle="bold"
         android:textAlignment="center"
         android:textSize="18sp"
-        android:hint="Email Usuario"
-        android:background="@drawable/bgborde"/>
+        android:hint="Email Usuario" />
 
     <TextView
         android:id="@+id/textView14"
@@ -164,8 +161,7 @@
         android:hint="Teléfono Usuario"
         android:textStyle="bold"
         android:textSize="18dp"
-        android:textAlignment="center"
-        android:background="@drawable/bgborde"/>
+        android:textAlignment="center"/>
 
 
 

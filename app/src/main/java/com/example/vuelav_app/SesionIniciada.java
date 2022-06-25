@@ -10,12 +10,10 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 
-import com.example.vuelav_app.Fragments.AccountFragment;
 import com.example.vuelav_app.Fragments.AccountFragmentModel.MiCuenta;
 import com.example.vuelav_app.Fragments.HomeFragment;
 import com.example.vuelav_app.Fragments.NotificationFragment;
 import com.example.vuelav_app.Fragments.NotificationFragmentModel.NotificationSesionIniciada;
-import com.example.vuelav_app.Fragments.ReserveFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -24,7 +22,6 @@ public class SesionIniciada extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     HomeFragment homeFragment = new HomeFragment();
     NotificationFragment notificationFragment = new NotificationFragment();
-    ReserveFragment reserveFragment = new ReserveFragment();
     MiCuenta miCuenta = new MiCuenta();
     NotificationSesionIniciada notificationSesionIniciada = new NotificationSesionIniciada();
 
@@ -49,9 +46,6 @@ public class SesionIniciada extends AppCompatActivity {
                     case R.id.account:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, miCuenta).commit();
                         return true;
-//                    case R.id.reserve:
-//                        getSupportFragmentManager().beginTransaction().replace(R.id.container, reserveFragment).commit();
-//                        return true;
                 }
                 return false;
             }

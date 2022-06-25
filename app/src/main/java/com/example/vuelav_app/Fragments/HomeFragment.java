@@ -1,11 +1,7 @@
 package com.example.vuelav_app.Fragments;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,20 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.vuelav_app.Fragments.HomeFragmentModel.Reciente;
 import com.example.vuelav_app.Fragments.HomeFragmentModel.RecienteAdaptador;
-import com.example.vuelav_app.InformacionVuelo;
 import com.example.vuelav_app.Logico.Apis;
 import com.example.vuelav_app.Logico.Response.VueloResponse;
 import com.example.vuelav_app.Logico.Service.VueloService;
-import com.example.vuelav_app.Login;
 import com.example.vuelav_app.R;
 
 import java.util.ArrayList;
@@ -49,28 +38,20 @@ public class HomeFragment extends Fragment{
     RecienteAdaptador adaptador;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-        //iniData();
-        ObtenerVuelos();
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-
-
         searchView = view.findViewById(R.id.search_view);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-
                     adaptador.getFilter().filter(query);
-
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 adaptador.getFilter().filter(newText);
@@ -80,14 +61,9 @@ public class HomeFragment extends Fragment{
 
         recyclerView = view.findViewById(R.id.reciente_recycler);
         txtidvuelo = view.findViewById(R.id.txtvueloid);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), recyclerView.HORIZONTAL, false));
-        adaptador = new RecienteAdaptador(getContext(),listvuelo);
-        recyclerView.setAdapter(adaptador);
-
+        ObtenerVuelos(recyclerView);
         return view;
-
-
     }
 
     private void iniData(){
@@ -123,9 +99,10 @@ public class HomeFragment extends Fragment{
         listvuelo.add(item2);
     }
 
-    private void ObtenerVuelos(){
-        listvuelo = new ArrayList<>();
-       // if(validar==0){
+
+    private void ObtenerVuelos(RecyclerView recycler){
+       // listvuelo = new ArrayList<>();
+        if(validar==0){
             System.out.println("Entro al metodo");
             Call<List<VueloResponse>> call = vueloService.listAll();
             call.enqueue(new Callback<List<VueloResponse>>() {
@@ -134,6 +111,8 @@ public class HomeFragment extends Fragment{
                     if(response.isSuccessful()){
                         System.out.println("Obtuvo los datos");
                         listvuelo.addAll(response.body());
+                        adaptador = new RecienteAdaptador(getContext(),response.body());
+                        recyclerView.setAdapter(adaptador);
 
                         System.out.println(listvuelo.size());
                         validar=1;
@@ -147,8 +126,7 @@ public class HomeFragment extends Fragment{
                     System.out.println(t.toString());
                 }
             });
-       // }
-
+        }
     }
 
 }

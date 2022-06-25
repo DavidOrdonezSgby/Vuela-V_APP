@@ -4,6 +4,15 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 
+import com.example.vuelav_app.Logico.Models.Usuario.Asiento;
+import com.example.vuelav_app.Logico.Request.AsientoRequest;
+import com.example.vuelav_app.Logico.Request.PasajeroRequest;
+import com.example.vuelav_app.Logico.Response.AsientoResponse;
+import com.example.vuelav_app.Logico.Response.PasajeroResponse;
+import com.example.vuelav_app.Logico.Response.UsuarioResponse;
+import com.example.vuelav_app.Logico.Service.AsientoService;
+import com.example.vuelav_app.Logico.Service.PasajeroService;
+import com.example.vuelav_app.Logico.Service.UsuarioService;
 import com.example.vuelav_app.Logico.Token.TokenController;
 import com.example.vuelav_app.R;
 
@@ -30,10 +39,12 @@ import com.example.vuelav_app.Logico.Service.ReservaService;
 import com.example.vuelav_app.Logico.Service.VueloService;
 import com.example.vuelav_app.actividades.SuccessPaymentActivity;
 
+import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,6 +57,7 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
     private int idvuelo;
     VueloService vueloService = Apis.getVueloService();
     ReservaService reservaService=Apis.getReservaService();
+
     private final static  String CHANNEL_ID="NOFTIFICACION";
     private final static int NOTIFICACION_ID =0;
     private PendingIntent pendingIntent;
@@ -53,9 +65,16 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
     private Date ida, vuelta, actual;
     SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd");
     Calendar calendar = Calendar.getInstance();
-
     Date dateObj = calendar.getTime();
+    private int idasiento;
+    private String nombreUsuario;
     String formattedDate = dtf.format(dateObj);
+    Asiento asiento;
+
+
+    PasajeroService pasajeroService=Apis.getPasajeroService();
+    UsuarioService usuarioService=Apis.getUsuarioService();
+    UsuarioResponse usuarioResponse1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,13 +107,62 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
 
     }
 
-    public String transformar(Date date){
+    private String transformar(Date date){
         SimpleDateFormat formats = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         return formats.format(date).toString();
     }
 
-    private void IniciarAccion() {
-        Toast.makeText(Reserva.this,"Debe Aceptar los Términos y Condiciones",Toast.LENGTH_LONG).show();
+
+
+    private void obCliente(){
+        Call<UsuarioResponse> call=usuarioService.findById("Bearer "+TokenController.getToken(Reserva.this),TokenController.getId(Reserva.this));
+        call.enqueue(new Callback<UsuarioResponse>() {
+            @Override
+            public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
+                if(response.isSuccessful()){
+                    System.out.println("Ingreso obt cliente");
+                    usuarioResponse1=response.body();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UsuarioResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+    private void crearPasajero(int idReserva){
+
+        System.out.println("ID ASIENTO --> "+idasiento);
+        PasajeroRequest pasajeroRequest=new PasajeroRequest();
+        pasajeroRequest.setNombres("Pedro");
+        pasajeroRequest.setDocIdentificacion("1511651561");
+        pasajeroRequest.setEstado(true);
+        pasajeroRequest.setEquipaje(500.00);
+        pasajeroRequest.setIdReserva(idReserva);
+        pasajeroRequest.setIdAsiento(Integer.parseInt(getIntent().getStringExtra("idasiento")));
+
+        Call<PasajeroResponse> call=pasajeroService.create("Bearer "+TokenController.getToken(Reserva.this),pasajeroRequest);
+        call.enqueue(new Callback<PasajeroResponse>() {
+            @Override
+            public void onResponse(Call<PasajeroResponse> call, Response<PasajeroResponse> response) {
+                if(response.isSuccessful()){
+
+                    System.out.println("Se creo el pasajero");
+
+                }else{
+                    System.out.println("Hay un error");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PasajeroResponse> call, Throwable t) {
+                System.out.println("Este es el error al crear el pasajero ->"+t.toString());
+            }
+        });
     }
 
     private void Obtenervuelo(){
@@ -132,6 +200,7 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
 
     private void crearReserva(){
 
+
         progressDialog = new ProgressDialog(this);
         System.out.println("Procesando");
         System.out.println("token reserva"+TokenController.getToken(this));
@@ -160,18 +229,18 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
             @Override
             public void onResponse(Call<ReservaResponse> call, Response<ReservaResponse> response) {
                 progressDialog.dismiss();
+
                 if(response.isSuccessful()){
-                    System.out.println("Obtuvo los datos");
+                 //   obCliente();
+                    System.out.println("Paso el metodo ob Cliente");
+                    System.out.println("Crea el Asiento");
+                    crearPasajero(response.body().getIdReserva());
                     createNotificationChannel();
                     Intent intent = new Intent(Reserva.this, SuccessPaymentActivity.class);
                     startActivity(intent);
                     finish();
-                }else{
-                    //Quitar este código por que no funciona ya que es un error
-                    /**createNotificationChannel();
-                    Intent intent = new Intent(Reserva.this, SuccessPaymentActivity.class);
-                    startActivity(intent);
-                    finish();**/
+                }
+                else{
                     System.out.println(response.message());
                     System.out.println(response.code());
 
@@ -201,21 +270,6 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
-    }
-
-    private void showMessage() {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID);
-        builder.setSmallIcon(R.drawable.ic_baseline_how_to_reg_24);
-        builder.setContentTitle("Notificacion - Registro con éxito");
-        builder.setColor(Color.BLUE);
-        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-        builder.setLights(Color.MAGENTA,1000,1000);
-        builder.setVibrate(new long[]{1000,1000,1000});
-        builder.setDefaults(Notification.DEFAULT_SOUND);
-        builder.setContentIntent(pendingIntent);
-
-        NotificationManagerCompat notificationManagerCompat= NotificationManagerCompat.from(this);
-        notificationManagerCompat.notify(NOTIFICACION_ID,builder.build());
     }
 
     private void setPendingIntent(){

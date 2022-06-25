@@ -34,9 +34,8 @@
 
   <ScrollView
       android:layout_width="match_parent"
-      android:layout_height="400dp"
-      android:layout_marginTop="10dp"
-      android:background="@drawable/bgborde">
+      android:layout_height="350dp"
+      android:layout_marginTop="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,8 +46,7 @@
           android:id="@+id/textView3a"
           android:layout_width="match_parent"
           android:layout_height="35dp"
-          android:layout_marginTop="20dp"
-          android:background="#C1C0C0"
+          android:layout_marginTop="5dp"
           android:text="Avion"
           android:textColor="@color/black"
           android:textSize="20dp"
@@ -58,7 +56,7 @@
           android:id="@+id/viewAvion_InformacionVuelo"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:background="@drawable/bgborde"
+
           android:text="Avión"
           android:textAlignment="center"
           android:textSize="18dp"
@@ -68,7 +66,6 @@
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:background="#C1C0C0"
           android:orientation="horizontal"
           android:padding="10dp"
           android:layout_marginTop="10dp">
@@ -115,7 +112,6 @@
           android:id="@+id/textView21"
           android:layout_width="match_parent"
           android:layout_height="35dp"
-          android:background="#C1C0C0"
           android:layout_marginTop="20dp"
           android:text="Destino"
 
@@ -127,7 +123,6 @@
           android:id="@+id/viewdestino_informacionvuelo"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:background="@drawable/bgborde"
           android:text="Destino"
           android:textAlignment="center"
           android:textSize="19dp"
@@ -139,7 +134,7 @@
           android:layout_height="35dp"
           android:layout_marginTop="20dp"
           android:text="Origen"
-          android:background="#C1C0C0"
+
           android:textColor="@color/black"
           android:textSize="20dp"
           android:textStyle="bold|italic" />
@@ -148,7 +143,6 @@
           android:id="@+id/viewOrigen_InformacionVuelo"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:background="@drawable/bgborde"
           android:text="Origen"
           android:textAlignment="center"
           android:textSize="18dp"
@@ -161,7 +155,6 @@
           android:layout_height="35dp"
           android:layout_marginTop="20dp"
           android:text="Fecha de Ida"
-          android:background="#C1C0C0"
           android:textColor="@color/black"
           android:textSize="20dp"
           android:textStyle="bold|italic" />
@@ -170,7 +163,6 @@
           android:id="@+id/viewFechaIda_InformacionVuelo"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:background="@drawable/bgborde"
           android:text="Fecha de IDA"
           android:textAlignment="center"
           android:textSize="18dp"
@@ -184,14 +176,12 @@
           android:text="Fecha de Vuelta:"
           android:textColor="@color/black"
           android:textSize="20dp"
-          android:background="#C1C0C0"
           android:textStyle="bold|italic" />
 
       <TextView
           android:id="@+id/viewFechaVuelta_InformacionVuelo"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:background="@drawable/bgborde"
           android:text="Fecha de vuelta"
           android:textAlignment="center"
           android:textSize="18dp"
@@ -205,14 +195,12 @@
           android:text="Hora de Llegada"
           android:textColor="@color/black"
           android:textSize="20dp"
-          android:background="#C1C0C0"
           android:textStyle="bold|italic" />
 
       <TextView
           android:id="@+id/viewHoraLlegada_InformacionVuelo"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:background="@drawable/bgborde"
           android:text="Hora de llegada"
           android:textAlignment="center"
           android:textSize="18dp"
@@ -226,14 +214,13 @@
           android:text="Hora de salida"
           android:textColor="@color/black"
           android:textSize="20dp"
-          android:background="#C1C0C0"
+
           android:textStyle="bold|italic" />
 
       <TextView
           android:id="@+id/viewHorasalida__InformacionVuelo"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:background="@drawable/bgborde"
           android:text="Hora de salida"
           android:textAlignment="center"
           android:textSize="18dp"
@@ -248,14 +235,12 @@
           android:text="Precio"
           android:textColor="@color/black"
           android:textSize="20dp"
-          android:background="#C1C0C0"
           android:textStyle="bold|italic" />
 
       <TextView
           android:id="@+id/viewPrecio_InformacionVuelo"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:background="@drawable/bgborde"
           android:text="Precio"
           android:textAlignment="center"
           android:textSize="18dp"
@@ -269,14 +254,12 @@
           android:text="Tipo de Vuelo"
           android:textColor="@color/black"
           android:textSize="20dp"
-          android:background="#C1C0C0"
           android:textStyle="bold|italic" />
 
       <TextView
           android:id="@+id/ViewTipoVuelo_InformacionVuelo"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:background="@drawable/bgborde"
           android:text="Tipo de Vuelo"
           android:textAlignment="center"
           android:textSize="18dp"
@@ -284,19 +267,50 @@ android:layout_marginVertical="10dp"
           android:textStyle="bold" />
 
 
-
     </LinearLayout>
   </ScrollView>
 
-  <Button
-      android:id="@+id/btnReservar_InformacionVuelo"
+  <TextView
+      android:id="@+id/textView3"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="Continuar"
-      android:textStyle="bold"
-      android:textColor="#9BFA80"
       android:layout_marginTop="10dp"
-      android:background="@drawable/btn_confirmacion" />
+      android:text="Para CONTINUAR seleccione el tipo de Vuelo:"
+      android:textColor="#145302"
+      />
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal"
+     android:layout_marginTop="10dp">
+   <Button
+       android:id="@+id/btn_light"
+       android:layout_width="110dp"
+       android:layout_height="wrap_content"
+       android:layout_marginEnd="10dp"
+       android:text="Light"
+       android:textColor="#9BFA80"
+       android:background="@drawable/btn_confirmacion"/>
+
+   <Button
+       android:id="@+id/btn_normal"
+       android:layout_width="110dp"
+       android:layout_height="wrap_content"
+       android:layout_marginEnd="10dp"
+       android:text="NORMAL"
+       android:textColor="#9BFA80"
+      android:background="@drawable/btn_confirmacion"/>
+
+   <Button
+       android:id="@+id/btn_premium"
+       android:layout_width="100dp"
+       android:layout_height="wrap_content"
+       android:textColor="#9BFA80"
+       android:background="@drawable/btn_confirmacion"
+       android:text="PREMIUM" />
+ </LinearLayout>
+
+
   <Button
       android:id="@+id/btnAgregarFavoritos"
       android:layout_width="175dp"
@@ -305,7 +319,7 @@ android:layout_marginVertical="10dp"
       android:text="Agregar a Favoritos"
       android:layout_marginTop="10dp"
       android:textStyle="bold"
-      android:background="@drawable/btn_orange"
+      android:background="@drawable/bgboton"
       android:drawableStart="@drawable/ic_baseline_star_border_24"/>
 
 

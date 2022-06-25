@@ -11,11 +11,11 @@
         android:id="@+id/Registro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Reseva de Vuelo"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        android:textColor="#868687"
         android:layout_marginTop="10dp"
+        android:text="Reserva de Vuelo"
+        android:textAlignment="center"
+        android:textColor="#868687"
+        android:textSize="34sp"
         android:textStyle="bold|italic"
         android:typeface="serif" />
     <ImageView

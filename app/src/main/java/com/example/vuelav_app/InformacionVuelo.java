@@ -8,26 +8,38 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vuelav_app.Logico.Apis;
+import com.example.vuelav_app.Logico.Request.AsientoRequest;
+import com.example.vuelav_app.Logico.Response.AsientoResponse;
+import com.example.vuelav_app.Logico.Response.PasajeroResponse;
 import com.example.vuelav_app.Logico.Response.VueloResponse;
 import com.example.vuelav_app.Logico.SQLite.AdminSQLiteOpenHelper;
+import com.example.vuelav_app.Logico.Service.AsientoService;
 import com.example.vuelav_app.Logico.Service.VueloService;
 import com.example.vuelav_app.Logico.Token.TokenController;
+
+import java.nio.charset.Charset;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class InformacionVuelo extends AppCompatActivity {
+public class InformacionVuelo extends AppCompatActivity implements View.OnClickListener{
     TextView viewidvuelo, viewdestinovuelo, viewestadovuelo,viewfechaidavuelo,viewfechavueltavuelo, viewhorallegadavuelo,
             viewhorasalidavuelo, viewpreciovuelo,viewtipovuelo,viewavionvuelo;
     ImageView imagenvuelo;
     VueloService vueloService = Apis.getVueloService();
-    int datoLong;
+    private int datoLong;
+    Button btnlight, btnnormal, btnpremium;
+    AsientoService asientoService=Apis.getAsientoService();
+    private int idasiento;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +61,14 @@ public class InformacionVuelo extends AppCompatActivity {
         Obtenerdatos(datoLong);
         System.out.println(getIntent().getStringExtra("idvuelo"));
 
-        findViewById(R.id.btnReservar_InformacionVuelo).setOnClickListener(l -> irReserva());
-        findViewById(R.id.btnAgregarFavoritos).setOnClickListener(l->guardarfavoritos());
+        btnlight = (Button) findViewById(R.id.btn_light);
+        btnlight.setOnClickListener(this);
+        btnnormal = (Button) findViewById(R.id.btn_normal);
+        btnnormal.setOnClickListener(this);
+        btnpremium = (Button) findViewById(R.id.btn_premium);
+        btnpremium.setOnClickListener(this);
+
+       findViewById(R.id.btnAgregarFavoritos).setOnClickListener(l->guardarfavoritos());
 
     }
     private void Obtenerdatos(int aLong){
@@ -83,19 +101,52 @@ public class InformacionVuelo extends AppCompatActivity {
             }
         });
     }
-    private void irReserva(){
-        if (TokenController.getToken(InformacionVuelo.this).equals("")) {
 
-            Toast.makeText(this,"Para la Reserva, Necesita Iniciar Sesion",Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(getApplicationContext(), Login.class);
-            startActivity(intent);
-        }else{
-            Intent intent = new Intent(getApplicationContext(), Reserva.class);
-            intent.putExtra("id",datoLong);
-            System.out.println("Info -> " + datoLong);
-            startActivity(intent);
-        }
+    private void crearAsiento(){
+
+
+
     }
+
+    private String getRandomString(int i)
+    {
+
+        // bind the length
+        byte[] bytearray;
+        bytearray = new byte[256];
+        String mystring;
+        StringBuffer thebuffer;
+        String theAlphaNumericS;
+
+        new Random().nextBytes(bytearray);
+
+        mystring
+                = new String(bytearray, Charset.forName("UTF-8"));
+
+        thebuffer = new StringBuffer();
+
+        //remove all spacial char
+        theAlphaNumericS
+                = mystring
+                .replaceAll("[^A-Z0-9]", "");
+
+        //random selection
+        for (int m = 0; m < theAlphaNumericS.length(); m++) {
+
+            if (Character.isLetter(theAlphaNumericS.charAt(m))
+                    && (i > 0)
+                    || Character.isDigit(theAlphaNumericS.charAt(m))
+                    && (i > 0)) {
+
+                thebuffer.append(theAlphaNumericS.charAt(m));
+                i--;
+            }
+        }
+
+        // the resulting string
+        return thebuffer.toString();
+    }
+
 
     private void guardarfavoritos(){
         if(!TokenController.getToken(this).equals("")) {
@@ -134,6 +185,134 @@ public class InformacionVuelo extends AppCompatActivity {
             Toast.makeText(this,"Para guardar en favoritos, Necesita Iniciar Sesion",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        System.out.println("Entro obn click");
+        switch (id) {
+            case R.id.btn_light:
+                System.out.println("Entro en ejecucion");
+                if(!TokenController.getToken(this).equals("")){
+                    AsientoRequest asientoRequest=new AsientoRequest();
+                    asientoRequest.setNombre(getRandomString(1));
+                    asientoRequest.setEstado(1);
+                    asientoRequest.setIdAvion(1);
+                    asientoRequest.setPrecio(500.00);
+                    Call<AsientoResponse> call=asientoService.create("Bearer "+TokenController.getToken(this),asientoRequest);
+                    call.enqueue(new Callback<AsientoResponse>() {
+                        @Override
+                        public void onResponse(Call<AsientoResponse> call, Response<AsientoResponse> response) {
+                            if(response.isSuccessful()){
+                                idasiento=Integer.parseInt(response.body().getIdAsiento().toString());
+                                System.out.println("este es el id asiento .---->"+idasiento);
+                                System.out.println("Creo el asiento correcto");
+                                Intent intent = new Intent(getApplicationContext(), Reserva.class);
+                                System.out.println("EL asiento <<<>>>>>>"+response.body().getIdAsiento());
+                                intent.putExtra("id",datoLong);
+                                Long id = response.body().getIdAsiento();
+                                intent.putExtra("idasiento",id.toString());
+                                intent.putExtra("precio",100.00);
+                                System.out.println("Info -> " + datoLong);
+                                startActivity(intent);
+                            }else{
+                                System.out.println("No se creo el asiento");
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<AsientoResponse> call, Throwable t) {
+                            System.out.println("El error es este-> "+t.toString());
+                        }
+                    });
+
+                }else{
+                    Toast.makeText(this,"Para reservar su vuelo, Necesita Iniciar Sesion",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), Login.class);
+                    startActivity(intent);
+                }
+                break;
+                case R.id.btn_normal:
+                    if(!TokenController.getToken(this).equals("")){
+                        AsientoRequest asientoRequest=new AsientoRequest();
+                        asientoRequest.setNombre(getRandomString(1));
+                        asientoRequest.setEstado(1);
+                        asientoRequest.setIdAvion(1);
+                        asientoRequest.setPrecio(500.00);
+                        Call<AsientoResponse> call=asientoService.create("Bearer "+TokenController.getToken(this),asientoRequest);
+                        call.enqueue(new Callback<AsientoResponse>() {
+                            @Override
+                            public void onResponse(Call<AsientoResponse> call, Response<AsientoResponse> response) {
+                                if(response.isSuccessful()){
+                                    idasiento=Integer.parseInt(response.body().getIdAsiento().toString());
+                                    System.out.println("este es el id asiento .---->"+idasiento);
+                                    System.out.println("Creo el asiento correcto");
+                                    Intent intent = new Intent(getApplicationContext(), Reserva.class);
+                                    intent.putExtra("id",datoLong);
+                                    intent.putExtra("idasiento",response.body().getIdAsiento());
+                                    intent.putExtra("precio",100.00);
+                                    System.out.println("Info -> " + datoLong);
+                                    startActivity(intent);
+                                }else{
+                                    System.out.println("No se creo el asiento");
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<AsientoResponse> call, Throwable t) {
+                                System.out.println("El error es este-> "+t.toString());
+                            }
+                        });
+
+                    }else{
+                        Toast.makeText(this,"Para reservar su vuelo, Necesita Iniciar Sesion",Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getApplicationContext(), Login.class);
+                        startActivity(intent);
+                    }
+                    break;
+
+                    case R.id.btn_premium:
+
+                        if(!TokenController.getToken(this).equals("")){
+                            AsientoRequest asientoRequest=new AsientoRequest();
+                            asientoRequest.setNombre(getRandomString(1));
+                            asientoRequest.setEstado(1);
+                            asientoRequest.setIdAvion(1);
+                            asientoRequest.setPrecio(500.00);
+                            Call<AsientoResponse> call=asientoService.create("Bearer "+TokenController.getToken(this),asientoRequest);
+                            call.enqueue(new Callback<AsientoResponse>() {
+                                @Override
+                                public void onResponse(Call<AsientoResponse> call, Response<AsientoResponse> response) {
+                                    if(response.isSuccessful()){
+                                        idasiento=Integer.parseInt(response.body().getIdAsiento().toString());
+                                        System.out.println("este es el id asiento .---->"+idasiento);
+                                        System.out.println("Creo el asiento correcto");
+                                        Intent intent = new Intent(getApplicationContext(), Reserva.class);
+                                        intent.putExtra("id",datoLong);
+                                        intent.putExtra("idasiento",response.body().getIdAsiento());
+                                        intent.putExtra("precio",100.00);
+                                        System.out.println("Info -> " + datoLong);
+                                        startActivity(intent);
+                                    }else{
+                                        System.out.println("No se creo el asiento");
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<AsientoResponse> call, Throwable t) {
+                                    System.out.println("El error es este-> "+t.toString());
+                                }
+                            });
+
+                        }else{
+                            Toast.makeText(this,"Para reservar su vuelo, Necesita Iniciar Sesion",Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getApplicationContext(), Login.class);
+                            startActivity(intent);
+                        }
+
+                        break;
         }
     }
 }
