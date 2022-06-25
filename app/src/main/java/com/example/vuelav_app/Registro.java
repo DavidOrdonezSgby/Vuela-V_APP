@@ -39,6 +39,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import retrofit2.Call;
@@ -46,7 +47,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Registro extends AppCompatActivity implements View.OnClickListener{
-
 
     private UsuarioService usuarioService = Apis.getUsuarioService();
 
@@ -106,6 +106,7 @@ private void MostrarFecha(){
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     Registro.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth
                     ,setListener, year, month, day);
+            datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
             datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             datePickerDialog.show();
         }
@@ -119,7 +120,7 @@ private void MostrarFecha(){
             mCalendar.set(Calendar.MONTH, month);
             mCalendar.set(Calendar.DAY_OF_MONTH, dayofMoth);
             String selectDate = DateFormat.getDateInstance(DateFormat.FULL).format(mCalendar.getTime());
-            btnDates.setText(selectDate);
+            btnDates.setHint(selectDate);
             System.out.println(selectDate);
 
             SimpleDateFormat formats = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
@@ -311,9 +312,13 @@ private void MostrarFecha(){
         String c5 = telefono.getText().toString();
         String c6 = email.getText().toString();
         String c7 = contra.getText().toString();
+        String c8 = btnDates.getHint().toString();
 
         if (c1.isEmpty()) {
             cedula.setError("Ingresar la cédula");
+            retorno = false;
+        }else if(c1.length()<10){
+            cedula.setError("Cédula incorrecta");
             retorno = false;
         }
         if (c2.isEmpty()) {
@@ -331,16 +336,29 @@ private void MostrarFecha(){
         if (c5.isEmpty()) {
             telefono.setError("Ingresar el teléfono");
             retorno = false;
+        }else if(c5.length()<10){
+            telefono.setError("Celular incorrecto");
+            retorno = false;
         }
         if (c6.isEmpty() ) {
             email.setError("Ingresar el email");
             retorno = false;
         }else if(!Patterns.EMAIL_ADDRESS.matcher(c6).matches()){
             email.setError("Email invalido");
+            retorno = false;
         }
         if (c7.isEmpty()) {
             contra.setError("Ingresar una contraseña");
             retorno = false;
+        }else if(c7.length()<8){
+            contra.setError("Contraseña debe tener más de 8 caracteres");
+            retorno = false;
+        }
+        if (("Seleccione la fecha").equals(c8)) {
+            btnDates.setError("Seleccione una fecha");
+            retorno = false;
+        }else{
+            btnDates.setError(null);
         }
         if(sppais.getSelectedItem().toString().equals("Seleccione el país de origen...")){
             System.out.println("Seleccione el pais" );
@@ -357,6 +375,7 @@ private void MostrarFecha(){
 
         return retorno;
     }
+
 
     @Override
     public void onClick(View view) {
