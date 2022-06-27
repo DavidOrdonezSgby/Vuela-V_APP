@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import com.example.vuelav_app.Fragments.NotificationFragmentModel.NotificacionesAdaptador;
+import com.example.vuelav_app.Logico.Models.Usuario.Vuelo;
 import com.example.vuelav_app.Logico.Response.ReservaResponse;
+import com.example.vuelav_app.Logico.Response.VueloResponse;
 import com.example.vuelav_app.R;
 
 import java.util.ArrayList;
@@ -16,7 +18,7 @@ public class Favoritos extends AppCompatActivity {
 
     //ArrayList<String> strings = new ArrayList<>();
 
-    //List<String> rv = new ArrayList<String>();
+    List<VueloResponse> rv = new ArrayList<VueloResponse>();
     private ListView listviewFavoritos = null;
     FavoritosAdapter adaptador = null;
 
@@ -25,7 +27,7 @@ public class Favoritos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favoritos);
 
-        //adaptador = new NotificacionesAdaptador(getApplicationContext(), R.layout.item_favoritos, rv);
+        adaptador = new NotificacionesAdaptador(getApplicationContext(), R.layout.item_favoritos, rv);
         listviewFavoritos = findViewById(R.id.favoritos_list);
     }
 }

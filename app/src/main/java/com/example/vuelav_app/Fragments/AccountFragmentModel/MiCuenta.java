@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.vuelav_app.Fragments.Favoritos.Favoritos;
 import com.example.vuelav_app.Logico.Apis;
 import com.example.vuelav_app.Logico.Response.UsuarioResponse;
 import com.example.vuelav_app.Logico.Service.UsuarioService;
@@ -28,8 +29,10 @@ public class MiCuenta extends Fragment implements View.OnClickListener{
 
     private TextView nombre, apellido, fecha, genero, emailU, telefono;
     private ImageView cerrar;
+    private ImageView favoritos;
     private UsuarioService usuarioService = Apis.getUsuarioService();
     ProgressDialog progressDialog;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,7 +47,9 @@ public class MiCuenta extends Fragment implements View.OnClickListener{
         emailU = (TextView) view.findViewById(R.id.txtEmail);
         telefono = (TextView) view.findViewById(R.id.txtTelefono);
         cerrar = (ImageView) view.findViewById(R.id.ic_cerrar_click);
+        favoritos=view.findViewById(R.id.ic_favoritos);
         cerrar.setOnClickListener(this);
+        favoritos.setOnClickListener(this);
 
         obtusuario(cargarDatos());
 
@@ -104,6 +109,11 @@ public class MiCuenta extends Fragment implements View.OnClickListener{
         switch (id) {
             case R.id.ic_cerrar_click:
                 salir();
+                break;
+            case R.id.ic_favoritos:
+                Intent intent = new Intent(getContext(), Favoritos.class);
+                startActivity(intent);
+                getActivity().finish();
                 break;
         }
     }

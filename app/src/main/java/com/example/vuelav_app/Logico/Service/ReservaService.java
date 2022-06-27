@@ -20,4 +20,7 @@ public interface ReservaService {
     @GET("/api/reserva/reservasByUsuario/{id}")
     Call<List<ReservaResponse>> obtReservacion(@Header("Authorization") String token, @Path("id") int id);
 
+    @GET("/api/reserva/{id}")
+    Call<ReservaResponse> obtReservacionId(@Header("Authorization") String token, @Path("id") int id);
+
 }
