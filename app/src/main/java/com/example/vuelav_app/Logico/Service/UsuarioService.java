@@ -11,6 +11,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface UsuarioService {
@@ -24,6 +25,9 @@ public interface UsuarioService {
     @GET("/api/usuario/{email}")
     Call<UsuarioResponse> findByemail(@Header("Authorization") String token, @Path(value="email") String email);
 
-    @GET("api/usuario/user/id_user/{id}")
+    @GET("/api/usuario/user/id_user/{id}")
     Call<UsuarioResponse> findById(@Header("Authorization") String token, @Path(value="id") int id);
+
+    @PUT("/api/usuario")
+    Call<UsuarioResponse> update(@Header("Authorization") String token, @Body UsuarioRequest usuarioRequest);
 }
