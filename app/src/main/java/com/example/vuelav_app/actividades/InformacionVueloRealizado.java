@@ -11,9 +11,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vuelav_app.Logico.Apis;
+import com.example.vuelav_app.Logico.Response.ReservaResponse;
 import com.example.vuelav_app.Logico.Response.VueloResponse;
+import com.example.vuelav_app.Logico.Service.ReservaService;
 import com.example.vuelav_app.Logico.Service.VueloService;
+import com.example.vuelav_app.Logico.Token.TokenController;
 import com.example.vuelav_app.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,8 +30,9 @@ import retrofit2.Response;
 public class InformacionVueloRealizado extends AppCompatActivity {
 
     VueloService vueloService= Apis.getVueloService();
+    ReservaService reservaService = Apis.getReservaService();
     TextView idavion,idvuelo,estadovuelo,fechareserva,destino,origen,
-            fechaida, fechavuelta,precio,tipovuelo;
+            fechaida, fechavuelta,precio,tipovuelo, salida, llegada;
     ImageView hola;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +48,15 @@ public class InformacionVueloRealizado extends AppCompatActivity {
         fechavuelta=findViewById(R.id.viewFechaVuelta_InformacionVuelorealizado);
         precio=findViewById(R.id.viewPrecio_InformacionVuelorealizado);
         tipovuelo=findViewById(R.id.ViewTipoVuelo_InformacionVuelorealizado);
+        salida = findViewById(R.id.viewHorasalida_InformacionVuelorealizado);
+        llegada= findViewById(R.id.viewHoraLlegada_InformacionVuelorealizado);
         hola=findViewById(R.id.img_informacionvuelorealizado);
-        ObtenerVuelos(Integer.parseInt(getIntent().getStringExtra("idVuelo")));
+        ObtenerVuelos(getIntent().getIntExtra("idVuelo",0));
+    }
+
+    private String transformarD(Date date) {
+        SimpleDateFormat formats = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        return formats.format(date).toString();
     }
 
     private void ObtenerVuelos(int aLong){
@@ -52,6 +68,15 @@ public class InformacionVueloRealizado extends AppCompatActivity {
 
                     idavion.setText(response.body().getIdAvion().toString());
                     idvuelo.setText(response.body().getIdVuelo().toString());
+                    destino.setText(response.body().getDestino().toString());
+                    origen.setText(response.body().getOrigen().toString());
+                    salida.setText(response.body().getHoraSalida().toString());
+                    llegada.setText(response.body().getHoraLlegada().toString());
+                    precio.setText(response.body().getPrecio().toString());
+                    tipovuelo.setText(response.body().getIdTipoVuelo().toString());
+                    fechaida.setText(transformarD(response.body().getFechaIda()));
+                    fechavuelta.setText(transformarD(response.body().getFechaVuelta()));
+                    estadovuelo.setText(response.body().getEstado().toString());
 
                     if(response.body().getImagen()==null) {
                         hola.setImageResource(R.drawable.img2);
@@ -70,6 +95,23 @@ public class InformacionVueloRealizado extends AppCompatActivity {
             @Override
             public void onFailure(Call<VueloResponse> call, Throwable t) {
                 System.out.println(t.toString()+"<- Este es el error ");
+            }
+        });
+    }
+
+    private void obtenerfechaR(int r){
+        Call<List<ReservaResponse>> reservaResponseCall = reservaService.obtReservacion("Bearer "+TokenController.getToken(getApplicationContext()), r);
+        reservaResponseCall.enqueue(new Callback<List<ReservaResponse>>() {
+            @Override
+            public void onResponse(Call<List<ReservaResponse>> call, Response<List<ReservaResponse>> response) {
+                if(response.isSuccessful()){
+                    //fechareserva.setText(transformarD(response.body().));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ReservaResponse>> call, Throwable t) {
+
             }
         });
     }

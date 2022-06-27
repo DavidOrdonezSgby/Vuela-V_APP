@@ -256,7 +256,7 @@
           android:textStyle="bold|italic" />
 
       <TextView
-          android:id="@+id/viewHorasalida__InformacionVuelorealizado"
+          android:id="@+id/viewHorasalida_InformacionVuelorealizado"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:text="Hora de salida"
