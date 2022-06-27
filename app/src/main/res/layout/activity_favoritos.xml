@@ -29,7 +29,7 @@
         app:srcCompat="@drawable/ic_baseline_favorite_24" />
 
     <ListView
-        android:id="@+id/favoritos_recycler"
+        android:id="@+id/favoritos_list"
         android:dividerHeight="10.0sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

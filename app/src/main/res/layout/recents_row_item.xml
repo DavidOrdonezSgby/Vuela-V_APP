@@ -6,8 +6,6 @@
     android:layout_height="wrap_content"
     android:background="@drawable/card_bg">
 
-
-
     <ImageView
         android:id="@+id/LugarImg"
         android:layout_width="0dp"
