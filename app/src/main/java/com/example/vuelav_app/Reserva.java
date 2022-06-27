@@ -80,6 +80,7 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reserva);
+
         idreserva= findViewById(R.id.viewid_reserva);
         destinoreserva = findViewById(R.id.viewDestinovuelo);
         estadoreserva = findViewById(R.id.viewestadoreserva);
@@ -91,6 +92,7 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
         observacionvuelo = findViewById(R.id.viewobservación_vuelo);
         origenreserva = findViewById(R.id.viewOrigen_Vuelo);
         System.out.println("id -> "+getIntent().getIntExtra("id",0));
+        obCliente();
         Obtenervuelo();
         btnReservar_vuelo = findViewById(R.id.btnReservar_vuelo);
 
@@ -120,15 +122,20 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
             @Override
             public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
                 if(response.isSuccessful()){
-                    System.out.println("Ingreso obt cliente");
+                    System.out.println("Linea 125 Ingreso obt cliente");
                     usuarioResponse1=response.body();
+
+                }else{
+
+                    System.out.println(response.message().toString());
+                    System.out.println(response.code());
 
                 }
             }
 
             @Override
             public void onFailure(Call<UsuarioResponse> call, Throwable t) {
-
+                System.out.println("Error de llamar al usuario en Reserva-> "+t.toString());
             }
         });
     }
@@ -138,12 +145,12 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
 
         System.out.println("ID ASIENTO --> "+idasiento);
         PasajeroRequest pasajeroRequest=new PasajeroRequest();
-        pasajeroRequest.setNombres("Pedro");
-        pasajeroRequest.setDocIdentificacion("1511651561");
+        pasajeroRequest.setNombres(usuarioResponse1.getNombres());
+        pasajeroRequest.setDocIdentificacion(usuarioResponse1.getDocIdentificacion());
         pasajeroRequest.setEstado(true);
         pasajeroRequest.setEquipaje(500.00);
         pasajeroRequest.setIdReserva(idReserva);
-        pasajeroRequest.setIdAsiento(Integer.parseInt(getIntent().getStringExtra("idasiento")));
+        pasajeroRequest.setIdAsiento(TokenController.getIdAsiento(this));
 
         Call<PasajeroResponse> call=pasajeroService.create("Bearer "+TokenController.getToken(Reserva.this),pasajeroRequest);
         call.enqueue(new Callback<PasajeroResponse>() {
@@ -155,6 +162,8 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
 
                 }else{
                     System.out.println("Hay un error");
+                    System.out.println(response.message());
+                    System.out.println(response.code());
                 }
             }
 
@@ -179,8 +188,7 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
                     fechavueltareserva.setText(response.body().getFechaVuelta().toString());
                     horallegadareserva.setText(response.body().getHoraLlegada());
                     horasalidareserva.setText(response.body().getHoraSalida());
-                    System.out.println("Hora salida "+response.body().getHoraSalida());
-                    System.out.println("i " +response.body().getImagen());
+                    System.out.println("linea 183 Hora salida "+response.body().getHoraSalida());
                     //observacionvuelo.setText(response.body().);
 
                     ida = response.body().getFechaIda();
@@ -229,9 +237,8 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
             @Override
             public void onResponse(Call<ReservaResponse> call, Response<ReservaResponse> response) {
                 progressDialog.dismiss();
-
+                System.out.println("Entro al enqueue de la reserva");
                 if(response.isSuccessful()){
-                 //   obCliente();
                     System.out.println("Paso el metodo ob Cliente");
                     System.out.println("Crea el Asiento");
                     crearPasajero(response.body().getIdReserva());

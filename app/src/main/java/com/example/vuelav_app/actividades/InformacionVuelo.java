@@ -231,7 +231,7 @@ public class InformacionVuelo extends AppCompatActivity implements View.OnClickL
                                 System.out.println("EL asiento <<<>>>>>>"+response.body().getIdAsiento());
                                 intent.putExtra("id",datoLong);
                                 Long id = response.body().getIdAsiento();
-                                intent.putExtra("idasiento",id.toString());
+                                TokenController.setIdAsiento(getApplicationContext(),Integer.parseInt(response.body().getIdAsiento().toString()));
                                 intent.putExtra("precio",10.0);
                                 startActivity(intent);
                             }else{
@@ -268,7 +268,7 @@ public class InformacionVuelo extends AppCompatActivity implements View.OnClickL
                                     System.out.println("Creo el asiento correcto");
                                     Intent intent = new Intent(getApplicationContext(), Reserva.class);
                                     intent.putExtra("id",datoLong);
-                                    intent.putExtra("idasiento",response.body().getIdAsiento());
+                                    TokenController.setIdAsiento(getApplicationContext(),Integer.parseInt(response.body().getIdAsiento().toString()));
                                     intent.putExtra("precio",20.00);
                                     System.out.println("Info -> " + datoLong);
                                     startActivity(intent);
@@ -308,7 +308,7 @@ public class InformacionVuelo extends AppCompatActivity implements View.OnClickL
                                         System.out.println("Creo el asiento correcto");
                                         Intent intent = new Intent(getApplicationContext(), Reserva.class);
                                         intent.putExtra("id",datoLong);
-                                        intent.putExtra("idasiento",response.body().getIdAsiento());
+                                        TokenController.setIdAsiento(getApplicationContext(),Integer.parseInt(response.body().getIdAsiento().toString()));
                                         intent.putExtra("precio",30.00);
                                         System.out.println("Info -> " + datoLong);
                                         startActivity(intent);
