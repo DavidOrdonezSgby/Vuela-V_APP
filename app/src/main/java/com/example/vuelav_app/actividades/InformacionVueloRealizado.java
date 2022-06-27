@@ -100,17 +100,17 @@ public class InformacionVueloRealizado extends AppCompatActivity {
     }
 
     private void obtenerfechaR(int r){
-        Call<List<ReservaResponse>> reservaResponseCall = reservaService.obtReservacion("Bearer "+TokenController.getToken(getApplicationContext()), r);
-        reservaResponseCall.enqueue(new Callback<List<ReservaResponse>>() {
+        Call<ReservaResponse> call=Apis.getReservaService().obtReservacionId("Bearer "+TokenController.getToken(this),r);
+        call.enqueue(new Callback<ReservaResponse>() {
             @Override
-            public void onResponse(Call<List<ReservaResponse>> call, Response<List<ReservaResponse>> response) {
+            public void onResponse(Call<ReservaResponse> call, Response<ReservaResponse> response) {
                 if(response.isSuccessful()){
-                    //fechareserva.setText(transformarD(response.body().));
+                    fechareserva.setText(transformarD(response.body().getFechaRegistro()));
                 }
             }
 
             @Override
-            public void onFailure(Call<List<ReservaResponse>> call, Throwable t) {
+            public void onFailure(Call<ReservaResponse> call, Throwable t) {
 
             }
         });
