@@ -1,111 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7FFF7"
-    tools:context=".Fragments.HomeFragment">
+    tools:context=".Fragments.HomeFragment"
+    android:orientation="vertical"
+    android:padding="10dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:background="#027006"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:background="@drawable/bgborde"
+        tools:ignore="MissingConstraints"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img"
+            android:transitionName="imgtransition"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/viajar" />
+        <TextView
+            android:id="@+id/txtasd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vuela V "
+            android:gravity="center"
+            style="@android:style/Animation.Dialog"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:transitionName="txttransition"
+            android:textColor="#145302"
+            android:textSize="25sp"
+            android:textStyle="bold|italic"
+            android:typeface="serif" />
 
 
         <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
+            android:id="@+id/txt"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:text="Encuentra tu siguiente destino"
-            android:textAlignment="center"
-            android:textColor="#DDD3D3"
+            android:text="Bienvenido "
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:transitionName="txttransition"
+            android:textColor="#145302"
             android:textSize="20sp"
-            android:textStyle="bold|italic"
-            android:typeface="serif"
-            app:layout_constraintEnd_toStartOf="@+id/guideline27"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline28"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textStyle="bold"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Encuentra tu destino:"
+            android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+            android:textColor="#145302"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:typeface="serif" />
 
         <SearchView
             android:id="@+id/search_view"
-            android:layout_width="310dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="44dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:iconifiedByDefault="false"
             android:background="@drawable/search_bg"
-            android:drawablePadding="16dp"
-            android:ems="10"
             android:queryHint="Buscar Destinos"
-            android:paddingStart="16dp"
-            android:textColor="#62878F"
-            app:layout_constraintEnd_toStartOf="@+id/guideline27"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline28"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="#62878F" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline27"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="395dp" />
+    </LinearLayout>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline28"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="20dp" />
-
-        <ImageView
-            android:id="@+id/imageView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="116dp"
-            android:src="@drawable/ic_baseline_airlines_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.956"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:textStyle="bold|italic"
+        android:text="Vuelos Disponibles:"
+        android:textColor="#145302"
+        />
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/textView11"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.0" />
+    <ProgressBar
+        android:id="@+id/progres1"
+        style="@android:style/Widget.Material.Light.ProgressBar.Small.Inverse"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+        android:progress="60" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reciente_recycler"
-        android:layout_width="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        android:layout_marginTop="20dp"
+    />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

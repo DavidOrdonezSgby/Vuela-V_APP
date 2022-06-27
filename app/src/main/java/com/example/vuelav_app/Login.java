@@ -30,7 +30,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private Button Registro, Iniciar;
     private UsuarioService usuarioService = Apis.getUsuarioService();
     private EditText a1, a2;
-    String m;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +46,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         a2 = (EditText) findViewById(R.id.password);
 
     }
+    //FALTA UN PROGRES BAR EN MI CUENTA Y LOGIN
 
     public void revisarcorreo(UsuarioRequest usuario) {
         System.out.println("LOGIN");

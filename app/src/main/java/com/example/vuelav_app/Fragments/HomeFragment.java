@@ -3,12 +3,14 @@ package com.example.vuelav_app.Fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -28,8 +30,8 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment{
 
-    RecyclerView recyclerView;
-
+    private RecyclerView recyclerView;
+    private ProgressBar progressBar;
     VueloService vueloService = Apis.getVueloService();
     List<VueloResponse> listvuelo = new ArrayList<VueloResponse>();
     SearchView searchView;
@@ -43,8 +45,11 @@ public class HomeFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
         searchView = view.findViewById(R.id.search_view);
+        progressBar = view.findViewById(R.id.progres1);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -66,38 +71,39 @@ public class HomeFragment extends Fragment{
         return view;
     }
 
-    private void iniData(){
-        VueloResponse item = new VueloResponse();
-        item.setIdVuelo(Long.valueOf(1));
-        item.setPrecio(12.8);
-        item.setOrigen("Mexico");
-        item.setDestino("Marruecos");
-        item.setEstado(Long.valueOf(1));
-        item.setIdTipoVuelo(Long.valueOf(2));
-        item.setFechaIda(new Date());
-        item.setFechaVuelta(new Date());
-        item.setHoraSalida("09:00:00");
-        item.setHoraLlegada("12:23:11");
-        item.setImagen("");
-        item.setIdAvion(Long.valueOf(1));
-
-
-        VueloResponse item2 = new VueloResponse();
-        item2.setIdVuelo(Long.valueOf(1));
-        item2.setPrecio(12.8);
-        item2.setOrigen("Los angeles");
-        item2.setDestino("Tokio");
-        item2.setEstado(Long.valueOf(1));
-        item2.setIdTipoVuelo(Long.valueOf(2));
-        item2.setFechaIda(new Date());
-        item2.setFechaVuelta(new Date());
-        item2.setHoraSalida("09:00:00");
-        item2.setHoraLlegada("12:23:11");
-        item2.setImagen("");
-        item2.setIdAvion(Long.valueOf(1));
-        listvuelo.add(item);
-        listvuelo.add(item2);
-    }
+//PARA QUE ES???
+//        private void iniData(){
+//        VueloResponse item = new VueloResponse();
+//        item.setIdVuelo(Long.valueOf(1));
+//        item.setPrecio(12.8);
+//        item.setOrigen("Mexico");
+//        item.setDestino("Marruecos");
+//        item.setEstado(Long.valueOf(1));
+//        item.setIdTipoVuelo(Long.valueOf(2));
+//        item.setFechaIda(new Date());
+//        item.setFechaVuelta(new Date());
+//        item.setHoraSalida("09:00:00");
+//        item.setHoraLlegada("12:23:11");
+//        item.setImagen("");
+//        item.setIdAvion(Long.valueOf(1));
+//
+//
+//        VueloResponse item2 = new VueloResponse();
+//        item2.setIdVuelo(Long.valueOf(1));
+//        item2.setPrecio(12.8);
+//        item2.setOrigen("Los angeles");
+//        item2.setDestino("Tokio");
+//        item2.setEstado(Long.valueOf(1));
+//        item2.setIdTipoVuelo(Long.valueOf(2));
+//        item2.setFechaIda(new Date());
+//        item2.setFechaVuelta(new Date());
+//        item2.setHoraSalida("09:00:00");
+//        item2.setHoraLlegada("12:23:11");
+//        item2.setImagen("");
+//        item2.setIdAvion(Long.valueOf(1));
+//        listvuelo.add(item);
+//        listvuelo.add(item2);
+//    }
 
 
     private void ObtenerVuelos(RecyclerView recycler){
@@ -113,9 +119,9 @@ public class HomeFragment extends Fragment{
                         listvuelo.addAll(response.body());
                         adaptador = new RecienteAdaptador(getContext(),response.body());
                         recyclerView.setAdapter(adaptador);
-
                         System.out.println(listvuelo.size());
                         validar=1;
+                        progressBar.setVisibility(View.GONE);
                     }else{
                         System.out.println("No obtuvo los datos");
                     }

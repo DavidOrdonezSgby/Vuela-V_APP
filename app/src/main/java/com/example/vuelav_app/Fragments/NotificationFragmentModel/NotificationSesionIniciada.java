@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.vuelav_app.Logico.Apis;
 import com.example.vuelav_app.Logico.Models.Usuario.ReservaModel;
@@ -52,12 +53,16 @@ public class NotificationSesionIniciada extends Fragment {
         call.enqueue(new Callback<List<ReservaResponse>>() {
             @Override
             public void onResponse(Call<List<ReservaResponse>> call, Response<List<ReservaResponse>> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     System.out.println("Bien");
+
                     List<ReservaResponse> data = response.body();
-                    for (int i = 0; i < response.body().size(); i++){
+                    if(response.body().isEmpty()){
+                        Toast.makeText(getContext(), "No tiene Notificaciones de reserva", Toast.LENGTH_SHORT).show();
+                    for (int i = 0; i < response.body().size(); i++) {
                         System.out.println(response.body().get(i).getFechaIda().toString());
                     }
+                }
                     rv.addAll(response.body());
                     adaptador.notifyDataSetChanged();
                     validador = 1;

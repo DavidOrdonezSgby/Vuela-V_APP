@@ -88,6 +88,8 @@ public class InformacionVuelo extends AppCompatActivity implements View.OnClickL
                     viewavionvuelo.setText(response.body().getIdAvion().toString());
                     imagenvuelo.setImageResource(R.drawable.img2);
 
+
+                    Toast.makeText(getApplicationContext(), "Deslice para revisar la Información", Toast.LENGTH_SHORT).show();
                     System.out.println("CONSIGUIO LOS DATOS");
                 }else {
                     System.out.println("No Consiguio los datos");
