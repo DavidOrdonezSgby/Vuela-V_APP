@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import com.example.vuelav_app.Logico.Models.Usuario.ReservaModel;
 import com.example.vuelav_app.Logico.Response.ReservaResponse;
 import com.example.vuelav_app.R;
+import com.example.vuelav_app.actividades.InformacionVueloRealizado;
 
 import java.util.List;
 
@@ -40,9 +41,18 @@ public class NotificacionesAdaptador extends ArrayAdapter<ReservaResponse> {
         TextView detalle = (TextView) row.findViewById(R.id.textView_llegada_salida);
 
         Nomvuelo.setText(reserva.get(position).getDestino());
-        idVuelo.setText(reserva.get(position).getOrigen());
+        idVuelo.setText(reserva.get(position).getIdVuelo().toString());
         detalle.setText("Hora de Salida: "+reserva.get(position).getHoraSalida()+", Hora de Llegada:"+reserva.get(position).getHoraLlegada());
 
+        row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, InformacionVueloRealizado.class);
+                intent.putExtra("idVuelo", reserva.get(position).getIdVuelo());
+                intent.putExtra("idReserva", reserva.get(position).getIdReserva());
+                context.startActivity(intent);
+            }
+        });
 
         return row;
     }

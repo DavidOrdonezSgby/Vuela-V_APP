@@ -126,49 +126,9 @@ public class InformacionVuelo extends AppCompatActivity implements View.OnClickL
     }
 
 
-    private String getRandomString(int i)
-    {
-
-        // bind the length
-        byte[] bytearray;
-        bytearray = new byte[256];
-        String mystring;
-        StringBuffer thebuffer;
-        String theAlphaNumericS;
-
-        new Random().nextBytes(bytearray);
-
-        mystring
-                = new String(bytearray, Charset.forName("UTF-8"));
-
-        thebuffer = new StringBuffer();
-
-        //remove all spacial char
-        theAlphaNumericS
-                = mystring
-                .replaceAll("[^A-Z0-9]", "");
-
-        //random selection
-        for (int m = 0; m < theAlphaNumericS.length(); m++) {
-
-            if (Character.isLetter(theAlphaNumericS.charAt(m))
-                    && (i > 0)
-                    || Character.isDigit(theAlphaNumericS.charAt(m))
-                    && (i > 0)) {
-
-                thebuffer.append(theAlphaNumericS.charAt(m));
-                i--;
-            }
-        }
-
-        // the resulting string
-        return thebuffer.toString();
-    }
-
-
     private void guardarfavoritos(){
         if(!TokenController.getToken(this).equals("")) {
-            AdminSQLiteOpenHelper admin= new AdminSQLiteOpenHelper(this,"base",null,1);
+            AdminSQLiteOpenHelper admin= new AdminSQLiteOpenHelper(this,"admin",null,1);
             SQLiteDatabase baseDatos=admin.getWritableDatabase();
             Cursor fila=baseDatos.rawQuery("select id from usuario where id="+TokenController.getId(this),null);
             if(fila.moveToFirst()){

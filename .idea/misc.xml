@@ -3,27 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/drawable/bgborder2.xml" value="0.152" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/activity_favoritos.xml" value="0.29322916666666665" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/activity_favoritos_adapter.xml" value="0.29322916666666665" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/activity_favoritos_list.xml" value="0.29322916666666665" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/activity_informacion_vuelo2.xml" value="0.33" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/activity_login.xml" value="0.22282608695652173" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/activity_mi_cuenta.xml" value="0.22" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/activity_notification_sesion_iniciada.xml" value="0.29322916666666665" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/activity_registro.xml" value="0.17" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/activity_reserva.xml" value="0.29322916666666665" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/activity_spla.xml" value="0.29322916666666665" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/activity_success_payment.xml" value="0.25" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/dialogo_confirmacion_registro.xml" value="0.22282608695652173" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/dialogo_error_login.xml" value="0.25" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/dialogo_error_registro.xml" value="0.22282608695652173" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/dialogo_reserva_completada.xml" value="0.22282608695652173" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/fragment_account.xml" value="0.22282608695652173" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/fragment_notification.xml" value="0.22282608695652173" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/item_favoritos.xml" value="0.29322916666666665" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/item_notificacion.xml" value="0.29322916666666665" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.227" />
         <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/drawable/bgborde.xml" value="0.114" />
         <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/drawable/bgboton.xml" value="0.114" />
@@ -64,6 +43,7 @@
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/drawable/ic_baseline_payment_24.xml" value="0.166" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2865" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/drawable/margen.xml" value="0.2865" />
+        <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/activity_destino.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/activity_informacion_vuelo2.xml" value="0.29393115942028986" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/activity_login.xml" value="0.27134146341463417" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/activity_main.xml" value="0.25" />
@@ -72,14 +52,16 @@
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/activity_origen.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/activity_principal.xml" value="0.365625" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/activity_registro.xml" value="0.33" />
-        <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/activity_reserva.xml" value="0.12352941176470589" />
+        <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/activity_reserva.xml" value="0.33" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/activity_sesion_iniciada.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/activity_spla.xml" value="0.15526849037487336" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/activity_success_payment.xml" value="0.20652173913043478" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/dialogo_confirmacion_registro.xml" value="0.20425724637681159" />
+        <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/dialogo_error_login.xml" value="0.26358695652173914" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/dialogo_error_registro.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/dialogo_reserva_completada.xml" value="0.26358695652173914" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/fragment_account.xml" value="0.3509963768115942" />
-        <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/fragment_home.xml" value="0.3509963768115942" />
+        <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/fragment_home.xml" value="0.5" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/fragment_notification.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/fragment_reserve.xml" value="0.25" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/item_notificacion.xml" value="0.1" />
@@ -87,10 +69,13 @@
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/recents_row_item.xml" value="0.67" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/layout/spla.xml" value="0.365625" />
         <entry key="..\:/Users/Elvis/Documents/GitHub/Vuela-V_APP/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/edigo/Documents/Proyectos/Vuela-V_APP/app/src/main/res/layout/activity_informacion_vuelo2.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/edigo/Documents/Proyectos/Vuela-V_APP/app/src/main/res/layout/activity_informacion_vuelo_realizado.xml" value="0.3625" />
+        <entry key="..\:/Users/edigo/Documents/Proyectos/Vuela-V_APP/app/src/main/res/layout/activity_registro.xml" value="0.18385416666666668" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16_PREVIEW" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

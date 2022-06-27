@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/bgborder2"
+      android:orientation="horizontal"
+      android:layout_gravity="center"
+      android:gravity="center">
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="Información de Vuelo"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="#DFFFD6"
+        android:textSize="20dp"
+        android:textStyle="bold|italic" />
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/img_informacionvuelorealizado"
+        app:civ_border_color="#145302"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:civ_shadow="true"
+        app:civ_shadow_radius="0dp"
+        />
+
+
+  </LinearLayout>
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="10dp"
+          android:orientation="horizontal"
+          android:padding="10dp">
+
+        <TextView
+            android:id="@+id/textView3aa"
+            android:layout_width="65dp"
+            android:layout_height="35dp"
+            android:text="Avion: "
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/viewAvion_InformacionVuelorealizado"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="Avión"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="10dp"
+          android:orientation="horizontal"
+          android:padding="10dp">
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Código: "
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/viewid_informacionvuelorealizado"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="ID"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Estado: "
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/viewestado_informacionvuelorealizado"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Estado"
+            android:textAlignment="center"
+            android:textSize="19dp"
+            android:textStyle="bold" />
+
+      </LinearLayout>
+
+      <TextView
+          android:id="@+id/textView300"
+          android:layout_width="match_parent"
+          android:layout_height="35dp"
+          android:layout_marginTop="20dp"
+          android:text="Fecha de la Reserva"
+          android:textColor="@color/black"
+          android:textSize="20dp"
+          android:textStyle="bold|italic" />
+
+      <TextView
+          android:id="@+id/ViewFechaReserva_InformacionVuelorealizado"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginVertical="10dp"
+          android:text="Tipo de Vuelo"
+          android:textAlignment="center"
+          android:textSize="18dp"
+          android:textStyle="bold" />
+
+
+      <TextView
+          android:id="@+id/textView21"
+          android:layout_width="match_parent"
+          android:layout_height="35dp"
+          android:layout_marginTop="20dp"
+          android:text="Destino"
+          android:textColor="@color/black"
+          android:textSize="20dp"
+          android:textStyle="bold|italic" />
+
+      <TextView
+          android:id="@+id/viewdestino_informacionvuelorealizado"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Destino"
+          android:textAlignment="center"
+          android:textSize="19dp"
+          android:textStyle="bold" />
+
+
+
+      <TextView
+          android:id="@+id/textView33"
+          android:layout_width="match_parent"
+          android:layout_height="35dp"
+          android:layout_marginTop="20dp"
+          android:text="Origen"
+
+          android:textColor="@color/black"
+          android:textSize="20dp"
+          android:textStyle="bold|italic" />
+
+      <TextView
+          android:id="@+id/viewOrigen_InformacionVuelorealizado"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Origen"
+          android:textAlignment="center"
+          android:textSize="18dp"
+          android:textStyle="bold" />
+
+
+      <TextView
+          android:id="@+id/textView25"
+          android:layout_width="match_parent"
+          android:layout_height="35dp"
+          android:layout_marginTop="20dp"
+          android:text="Fecha de Ida"
+          android:textColor="@color/black"
+          android:textSize="20dp"
+          android:textStyle="bold|italic" />
+
+      <TextView
+          android:id="@+id/viewFechaIda_InformacionVuelorealizado"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Fecha de IDA"
+          android:textAlignment="center"
+          android:textSize="18dp"
+          android:textStyle="bold" />
+
+      <TextView
+          android:id="@+id/textView27"
+          android:layout_width="match_parent"
+          android:layout_height="35dp"
+          android:layout_marginTop="20dp"
+          android:text="Fecha de Vuelta"
+          android:textColor="@color/black"
+          android:textSize="20dp"
+          android:textStyle="bold|italic" />
+
+      <TextView
+          android:id="@+id/viewFechaVuelta_InformacionVuelorealizado"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Fecha de vuelta"
+          android:textAlignment="center"
+          android:textSize="18dp"
+          android:textStyle="bold" />
+
+      <TextView
+          android:id="@+id/textView29"
+          android:layout_width="match_parent"
+          android:layout_height="35dp"
+          android:layout_marginTop="20dp"
+          android:text="Hora de Llegada"
+          android:textColor="@color/black"
+          android:textSize="20dp"
+          android:textStyle="bold|italic" />
+
+      <TextView
+          android:id="@+id/viewHoraLlegada_InformacionVuelorealizado"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Hora de llegada"
+          android:textAlignment="center"
+          android:textSize="18dp"
+          android:textStyle="bold" />
+
+      <TextView
+          android:id="@+id/textView31"
+          android:layout_width="match_parent"
+          android:layout_height="35dp"
+          android:layout_marginTop="20dp"
+          android:text="Hora de salida"
+          android:textColor="@color/black"
+          android:textSize="20dp"
+
+          android:textStyle="bold|italic" />
+
+      <TextView
+          android:id="@+id/viewHorasalida__InformacionVuelorealizado"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Hora de salida"
+          android:textAlignment="center"
+          android:textSize="18dp"
+          android:textStyle="bold" />
+
+
+      <TextView
+          android:id="@+id/textView35"
+          android:layout_width="match_parent"
+          android:layout_height="35dp"
+          android:layout_marginTop="20dp"
+          android:text="Precio"
+          android:textColor="@color/black"
+          android:textSize="20dp"
+          android:textStyle="bold|italic" />
+
+      <TextView
+          android:id="@+id/viewPrecio_InformacionVuelorealizado"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Precio"
+          android:textAlignment="center"
+          android:textSize="18dp"
+          android:textStyle="bold" />
+
+      <TextView
+          android:id="@+id/textView37"
+          android:layout_width="match_parent"
+          android:layout_height="35dp"
+          android:layout_marginTop="20dp"
+          android:text="Tipo de Vuelo"
+          android:textColor="@color/black"
+          android:textSize="20dp"
+          android:textStyle="bold|italic" />
+
+      <TextView
+          android:id="@+id/ViewTipoVuelo_InformacionVuelorealizado"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginVertical="10dp"
+          android:text="Tipo de Vuelo"
+          android:textAlignment="center"
+          android:textSize="18dp"
+          android:textStyle="bold" />
+
+
+    </LinearLayout>
+  </ScrollView>
+
+
+
+</LinearLayout>
