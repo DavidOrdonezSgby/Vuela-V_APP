@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.vuelav_app.Login;
+import com.example.vuelav_app.actividades.Login;
 import com.example.vuelav_app.R;
 
 public class NotificationFragment extends Fragment implements View.OnClickListener {

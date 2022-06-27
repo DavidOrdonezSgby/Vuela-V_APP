@@ -1,4 +1,4 @@
-package com.example.vuelav_app;
+package com.example.vuelav_app.actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +20,8 @@ import com.example.vuelav_app.Logico.Request.UsuarioRequest;
 import com.example.vuelav_app.Logico.Response.UsuarioResponse;
 import com.example.vuelav_app.Logico.Service.UsuarioService;
 import com.example.vuelav_app.Logico.Token.TokenController;
+import com.example.vuelav_app.R;
+import com.example.vuelav_app.SesionIniciada;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -117,7 +119,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void goToRegistro() {
-        Intent intent = new Intent(getApplicationContext(), Registro.class);
+        Intent intent = new Intent(getApplicationContext(), com.example.vuelav_app.Registro.class);
         startActivity(intent);
     }
 

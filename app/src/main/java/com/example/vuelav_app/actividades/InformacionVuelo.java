@@ -1,4 +1,4 @@
-package com.example.vuelav_app;
+package com.example.vuelav_app.actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
@@ -20,12 +19,13 @@ import android.widget.Toast;
 import com.example.vuelav_app.Logico.Apis;
 import com.example.vuelav_app.Logico.Request.AsientoRequest;
 import com.example.vuelav_app.Logico.Response.AsientoResponse;
-import com.example.vuelav_app.Logico.Response.PasajeroResponse;
 import com.example.vuelav_app.Logico.Response.VueloResponse;
 import com.example.vuelav_app.Logico.SQLite.AdminSQLiteOpenHelper;
 import com.example.vuelav_app.Logico.Service.AsientoService;
 import com.example.vuelav_app.Logico.Service.VueloService;
 import com.example.vuelav_app.Logico.Token.TokenController;
+import com.example.vuelav_app.R;
+import com.example.vuelav_app.Reserva;
 
 import java.nio.charset.Charset;
 import java.util.Random;
@@ -125,11 +125,6 @@ public class InformacionVuelo extends AppCompatActivity implements View.OnClickL
         });
     }
 
-    private void crearAsiento(){
-
-
-
-    }
 
     private String getRandomString(int i)
     {

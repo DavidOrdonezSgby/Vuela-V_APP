@@ -17,7 +17,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.vuelav_app.InformacionVuelo;
+import com.example.vuelav_app.actividades.InformacionVuelo;
 import com.example.vuelav_app.Logico.Response.VueloResponse;
 import com.example.vuelav_app.R;
 

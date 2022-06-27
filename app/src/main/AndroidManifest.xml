@@ -13,7 +13,10 @@
         android:theme="@style/Theme.Design.Light.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".FavoritosList"
+            android:name="com.example.vuelav_app.Fragments.Favoritos.FavoritosAdapter"
+            android:exported="false" />
+        <activity
+            android:name="com.example.vuelav_app.Fragments.Favoritos.Favoritos"
             android:exported="false" />
         <activity
             android:name=".actividades.SuccessPaymentActivity"
@@ -24,7 +27,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".InformacionVuelo"
+            android:name=".actividades.InformacionVuelo"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
@@ -40,7 +43,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Login"
+            android:name=".actividades.Login"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

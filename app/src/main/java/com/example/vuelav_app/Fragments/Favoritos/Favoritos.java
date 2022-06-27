@@ -1,19 +1,16 @@
-package com.example.vuelav_app;
+package com.example.vuelav_app.Fragments.Favoritos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class FavoritosList extends AppCompatActivity {
+import com.example.vuelav_app.R;
+
+public class Favoritos extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favoritos_list);
+        setContentView(R.layout.activity_favoritos);
     }
-
-
-
-
-
 }
