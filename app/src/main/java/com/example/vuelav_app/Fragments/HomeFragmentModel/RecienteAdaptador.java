@@ -3,6 +3,9 @@ package com.example.vuelav_app.Fragments.HomeFragmentModel;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +23,6 @@ import com.example.vuelav_app.R;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class RecienteAdaptador extends RecyclerView.Adapter<RecienteAdaptador.RecentsViewHolder> implements Filterable {
 
@@ -47,7 +49,11 @@ public class RecienteAdaptador extends RecyclerView.Adapter<RecienteAdaptador.Re
         holder.nombreL.setText(mDataFiltrable.get(position).getOrigen());
         holder.precio.setText(mDataFiltrable.get(position).getPrecio().toString());
         holder.idvuelo.setText(mDataFiltrable.get(position).getIdVuelo().toString());
-        holder.lugarimg.setImageResource(R.drawable.recentimage1);
+        if(mDataFiltrable.get(position).getImagen()==null) {
+            holder.lugarimg.setImageResource(R.drawable.recentimage1);
+        }else{
+            holder.lugarimg.setImageBitmap(transformar(mDataFiltrable.get(position).getImagen()));
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,6 +69,16 @@ public class RecienteAdaptador extends RecyclerView.Adapter<RecienteAdaptador.Re
     @Override
     public int getItemCount() {
         return mDataFiltrable.size();
+    }
+
+    public Bitmap transformar(String string){
+
+        String base64Image = string.split(",")[1];
+
+        byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            return decodedByte;
+
     }
 
     @Override

@@ -6,8 +6,11 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -32,7 +35,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class InformacionVuelo extends AppCompatActivity implements View.OnClickListener{
-    TextView viewidvuelo, viewdestinovuelo, viewestadovuelo,viewfechaidavuelo,viewfechavueltavuelo, viewhorallegadavuelo,
+    TextView vieworigen,viewidvuelo, viewdestinovuelo, viewestadovuelo,viewfechaidavuelo,viewfechavueltavuelo, viewhorallegadavuelo,
             viewhorasalidavuelo, viewpreciovuelo,viewtipovuelo,viewavionvuelo;
     ImageView imagenvuelo;
     VueloService vueloService = Apis.getVueloService();
@@ -46,6 +49,7 @@ public class InformacionVuelo extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_informacion_vuelo2);
         viewidvuelo = findViewById(R.id.viewid_informacionvuelo);
         viewdestinovuelo = findViewById(R.id.viewdestino_informacionvuelo);
+        vieworigen=findViewById(R.id.viewOrigen_InformacionVuelo);
         viewestadovuelo = findViewById(R.id.viewestado_informacionvuelo);
         viewfechaidavuelo = findViewById(R.id.viewFechaIda_InformacionVuelo);
         viewfechavueltavuelo = findViewById(R.id.viewFechaVuelta_InformacionVuelo);
@@ -71,6 +75,19 @@ public class InformacionVuelo extends AppCompatActivity implements View.OnClickL
        findViewById(R.id.btnAgregarFavoritos).setOnClickListener(l->guardarfavoritos());
 
     }
+
+
+    public Bitmap transformar(String string){
+
+        String base64Image = string.split(",")[1];
+
+        byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return decodedByte;
+
+    }
+
+
     private void Obtenerdatos(int aLong){
         Call<VueloResponse> vueloResponseCall= vueloService.findById(aLong);
         vueloResponseCall.enqueue(new Callback<VueloResponse>() {
@@ -81,13 +98,17 @@ public class InformacionVuelo extends AppCompatActivity implements View.OnClickL
                     viewestadovuelo.setText(response.body().getEstado().toString());
                     viewfechaidavuelo.setText(response.body().getFechaIda().toString());
                     viewfechavueltavuelo.setText(response.body().getFechaVuelta().toString());
+                    vieworigen.setText(response.body().getOrigen());
                     viewhorallegadavuelo.setText(response.body().getHoraLlegada());
                     viewhorasalidavuelo.setText(response.body().getHoraSalida());
                     viewpreciovuelo.setText(response.body().getPrecio().toString());
                     viewtipovuelo.setText(response.body().getIdTipoVuelo().toString());
                     viewavionvuelo.setText(response.body().getIdAvion().toString());
-                    imagenvuelo.setImageResource(R.drawable.img2);
-
+                    if(response.body().getImagen()==null) {
+                        imagenvuelo.setImageResource(R.drawable.img2);
+                    }else{
+                        imagenvuelo.setImageBitmap(transformar(response.body().getImagen()));
+                    }
 
                     Toast.makeText(getApplicationContext(), "Deslice para revisar la Información", Toast.LENGTH_SHORT).show();
                     System.out.println("CONSIGUIO LOS DATOS");
@@ -199,10 +220,10 @@ public class InformacionVuelo extends AppCompatActivity implements View.OnClickL
                 System.out.println("Entro en ejecucion");
                 if(!TokenController.getToken(this).equals("")){
                     AsientoRequest asientoRequest=new AsientoRequest();
-                    asientoRequest.setNombre(getRandomString(1));
+                    asientoRequest.setNombre("L");
                     asientoRequest.setEstado(1);
                     asientoRequest.setIdAvion(1);
-                    asientoRequest.setPrecio(500.00);
+                    asientoRequest.setPrecio(10.00);
                     Call<AsientoResponse> call=asientoService.create("Bearer "+TokenController.getToken(this),asientoRequest);
                     call.enqueue(new Callback<AsientoResponse>() {
                         @Override
@@ -216,8 +237,7 @@ public class InformacionVuelo extends AppCompatActivity implements View.OnClickL
                                 intent.putExtra("id",datoLong);
                                 Long id = response.body().getIdAsiento();
                                 intent.putExtra("idasiento",id.toString());
-                                intent.putExtra("precio",100.00);
-                                System.out.println("Info -> " + datoLong);
+                                intent.putExtra("precio",10.0);
                                 startActivity(intent);
                             }else{
                                 System.out.println("No se creo el asiento");
@@ -239,10 +259,10 @@ public class InformacionVuelo extends AppCompatActivity implements View.OnClickL
                 case R.id.btn_normal:
                     if(!TokenController.getToken(this).equals("")){
                         AsientoRequest asientoRequest=new AsientoRequest();
-                        asientoRequest.setNombre(getRandomString(1));
+                        asientoRequest.setNombre("N");
                         asientoRequest.setEstado(1);
                         asientoRequest.setIdAvion(1);
-                        asientoRequest.setPrecio(500.00);
+                        asientoRequest.setPrecio(20.00);
                         Call<AsientoResponse> call=asientoService.create("Bearer "+TokenController.getToken(this),asientoRequest);
                         call.enqueue(new Callback<AsientoResponse>() {
                             @Override
@@ -254,7 +274,7 @@ public class InformacionVuelo extends AppCompatActivity implements View.OnClickL
                                     Intent intent = new Intent(getApplicationContext(), Reserva.class);
                                     intent.putExtra("id",datoLong);
                                     intent.putExtra("idasiento",response.body().getIdAsiento());
-                                    intent.putExtra("precio",100.00);
+                                    intent.putExtra("precio",20.00);
                                     System.out.println("Info -> " + datoLong);
                                     startActivity(intent);
                                 }else{
@@ -279,10 +299,10 @@ public class InformacionVuelo extends AppCompatActivity implements View.OnClickL
 
                         if(!TokenController.getToken(this).equals("")){
                             AsientoRequest asientoRequest=new AsientoRequest();
-                            asientoRequest.setNombre(getRandomString(1));
+                            asientoRequest.setNombre("P");
                             asientoRequest.setEstado(1);
                             asientoRequest.setIdAvion(1);
-                            asientoRequest.setPrecio(500.00);
+                            asientoRequest.setPrecio(30.00);
                             Call<AsientoResponse> call=asientoService.create("Bearer "+TokenController.getToken(this),asientoRequest);
                             call.enqueue(new Callback<AsientoResponse>() {
                                 @Override
@@ -294,7 +314,7 @@ public class InformacionVuelo extends AppCompatActivity implements View.OnClickL
                                         Intent intent = new Intent(getApplicationContext(), Reserva.class);
                                         intent.putExtra("id",datoLong);
                                         intent.putExtra("idasiento",response.body().getIdAsiento());
-                                        intent.putExtra("precio",100.00);
+                                        intent.putExtra("precio",30.00);
                                         System.out.println("Info -> " + datoLong);
                                         startActivity(intent);
                                     }else{

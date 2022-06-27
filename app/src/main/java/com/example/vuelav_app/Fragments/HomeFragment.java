@@ -116,8 +116,14 @@ public class HomeFragment extends Fragment{
                 public void onResponse(Call<List<VueloResponse>> call, Response<List<VueloResponse>> response) {
                     if(response.isSuccessful()){
                         System.out.println("Obtuvo los datos");
-                        listvuelo.addAll(response.body());
-                        adaptador = new RecienteAdaptador(getContext(),response.body());
+
+
+                        for (int i = 0; i < response.body().size(); i++) {
+                            if(response.body().get(i).getEstado()==1&&response.body().get(i).getIdTipoVuelo()==2){
+                                listvuelo.add(response.body().get(i));
+                            }
+                        }
+                        adaptador = new RecienteAdaptador(getContext(),listvuelo);
                         recyclerView.setAdapter(adaptador);
                         System.out.println(listvuelo.size());
                         validar=1;
