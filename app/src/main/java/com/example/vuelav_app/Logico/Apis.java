@@ -7,7 +7,6 @@ import com.example.vuelav_app.Logico.Service.UsuarioService;
 import com.example.vuelav_app.Logico.Service.VueloService;
 
 public class Apis {
-
     //public static final String URL="http://192.168.18.9:8080/";
     //public static final String URL="http://192.168.100.4:8080/";
     public static final String URL="https://aerolineavuelov.herokuapp.com";

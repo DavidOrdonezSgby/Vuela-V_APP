@@ -2,325 +2,405 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
-    android:orientation="vertical">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:background="@drawable/bgborder2">
-  <TextView
-      android:id="@+id/textView18"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Información de Vuelo"
-      android:textColor="#DFFFD6"
-      android:textSize="20dp"
-      android:textStyle="bold|italic"
-      android:textAlignment="center"
-      android:layout_gravity="center"
-      android:layout_marginStart="10dp"
-      android:layout_marginEnd="10dp"/>
-
-  <ImageView
-      android:id="@+id/img_informacionvuelo"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginEnd="10dp"
-      android:layout_marginStart="10dp"/>
-
-
-</LinearLayout>
-
-  <ScrollView
-      android:layout_width="match_parent"
-      android:layout_height="350dp"
-      android:layout_marginTop="10dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-      <TextView
-          android:id="@+id/textView3a"
-          android:layout_width="match_parent"
-          android:layout_height="35dp"
-          android:layout_marginTop="5dp"
-          android:text="Avion"
-          android:textColor="@color/black"
-          android:textSize="20dp"
-          android:textStyle="bold|italic" />
-
-      <TextView
-          android:id="@+id/viewAvion_InformacionVuelo"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-
-          android:text="Avión"
-          android:textAlignment="center"
-          android:textSize="18dp"
-          android:textStyle="bold" />
-
-
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          android:padding="10dp"
-          android:layout_marginTop="10dp">
+        android:background="@drawable/bgborder2"
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView19"
+            android:id="@+id/textView18"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:text="Código:"
-            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="Información de Vuelo"
+            android:textAlignment="center"
+            android:textColor="#DFFFD6"
             android:textSize="20dp"
             android:textStyle="bold|italic" />
 
-        <TextView
-            android:id="@+id/viewid_informacionvuelo"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="ID"
-            android:textAlignment="center"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:text="Estado:"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold|italic" />
-
-        <TextView
-            android:id="@+id/viewestado_informacionvuelo"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Estado"
-            android:textAlignment="center"
-            android:textSize="19dp"
-            android:textStyle="bold" />
-
-      </LinearLayout>
-
-      <TextView
-          android:id="@+id/textView21"
-          android:layout_width="match_parent"
-          android:layout_height="35dp"
-          android:layout_marginTop="20dp"
-          android:text="Destino"
-
-          android:textColor="@color/black"
-          android:textSize="20dp"
-          android:textStyle="bold|italic" />
-
-      <TextView
-          android:id="@+id/viewdestino_informacionvuelo"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="Destino"
-          android:textAlignment="center"
-          android:textSize="19dp"
-          android:textStyle="bold" />
-
-      <TextView
-          android:id="@+id/textView33"
-          android:layout_width="match_parent"
-          android:layout_height="35dp"
-          android:layout_marginTop="20dp"
-          android:text="Origen"
-
-          android:textColor="@color/black"
-          android:textSize="20dp"
-          android:textStyle="bold|italic" />
-
-      <TextView
-          android:id="@+id/viewOrigen_InformacionVuelo"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="Origen"
-          android:textAlignment="center"
-          android:textSize="18dp"
-          android:textStyle="bold" />
-
-
-      <TextView
-          android:id="@+id/textView25"
-          android:layout_width="match_parent"
-          android:layout_height="35dp"
-          android:layout_marginTop="20dp"
-          android:text="Fecha de Ida"
-          android:textColor="@color/black"
-          android:textSize="20dp"
-          android:textStyle="bold|italic" />
-
-      <TextView
-          android:id="@+id/viewFechaIda_InformacionVuelo"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="Fecha de IDA"
-          android:textAlignment="center"
-          android:textSize="18dp"
-          android:textStyle="bold" />
-
-      <TextView
-          android:id="@+id/textView27"
-          android:layout_width="match_parent"
-          android:layout_height="35dp"
-          android:layout_marginTop="20dp"
-          android:text="Fecha de Vuelta:"
-          android:textColor="@color/black"
-          android:textSize="20dp"
-          android:textStyle="bold|italic" />
-
-      <TextView
-          android:id="@+id/viewFechaVuelta_InformacionVuelo"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="Fecha de vuelta"
-          android:textAlignment="center"
-          android:textSize="18dp"
-          android:textStyle="bold" />
-
-      <TextView
-          android:id="@+id/textView29"
-          android:layout_width="match_parent"
-          android:layout_height="35dp"
-          android:layout_marginTop="20dp"
-          android:text="Hora de Llegada"
-          android:textColor="@color/black"
-          android:textSize="20dp"
-          android:textStyle="bold|italic" />
-
-      <TextView
-          android:id="@+id/viewHoraLlegada_InformacionVuelo"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="Hora de llegada"
-          android:textAlignment="center"
-          android:textSize="18dp"
-          android:textStyle="bold" />
-
-      <TextView
-          android:id="@+id/textView31"
-          android:layout_width="match_parent"
-          android:layout_height="35dp"
-          android:layout_marginTop="20dp"
-          android:text="Hora de salida"
-          android:textColor="@color/black"
-          android:textSize="20dp"
-
-          android:textStyle="bold|italic" />
-
-      <TextView
-          android:id="@+id/viewHorasalida__InformacionVuelo"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="Hora de salida"
-          android:textAlignment="center"
-          android:textSize="18dp"
-          android:textStyle="bold" />
-
-
-      <TextView
-          android:id="@+id/textView35"
-          android:layout_width="match_parent"
-          android:layout_height="35dp"
-          android:layout_marginTop="20dp"
-          android:text="Precio"
-          android:textColor="@color/black"
-          android:textSize="20dp"
-          android:textStyle="bold|italic" />
-
-      <TextView
-          android:id="@+id/viewPrecio_InformacionVuelo"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="Precio"
-          android:textAlignment="center"
-          android:textSize="18dp"
-          android:textStyle="bold" />
-
-      <TextView
-          android:id="@+id/textView37"
-          android:layout_width="match_parent"
-          android:layout_height="35dp"
-          android:layout_marginTop="20dp"
-          android:text="Tipo de Vuelo"
-          android:textColor="@color/black"
-          android:textSize="20dp"
-          android:textStyle="bold|italic" />
-
-      <TextView
-          android:id="@+id/ViewTipoVuelo_InformacionVuelo"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="Tipo de Vuelo"
-          android:textAlignment="center"
-          android:textSize="18dp"
-android:layout_marginVertical="10dp"
-          android:textStyle="bold" />
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/img_informacionvuelo"
+            app:civ_border_color="#145302"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            app:civ_shadow="true"
+            app:civ_shadow_radius="0dp"
+            />
 
 
     </LinearLayout>
-  </ScrollView>
 
-  <TextView
-      android:id="@+id/textView3"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="10dp"
-      android:text="Para CONTINUAR seleccione el tipo de Vuelo:"
-      android:textColor="#145302"
-      />
- <LinearLayout
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:orientation="horizontal"
-     android:layout_marginTop="10dp">
-   <Button
-       android:id="@+id/btn_light"
-       android:layout_width="110dp"
-       android:layout_height="wrap_content"
-       android:layout_marginEnd="10dp"
-       android:text="Light"
-       android:textColor="#9BFA80"
-       android:background="@drawable/btn_confirmacion"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginTop="10dp">
 
-   <Button
-       android:id="@+id/btn_normal"
-       android:layout_width="110dp"
-       android:layout_height="wrap_content"
-       android:layout_marginEnd="10dp"
-       android:text="NORMAL"
-       android:textColor="#9BFA80"
-      android:background="@drawable/btn_confirmacion"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-   <Button
-       android:id="@+id/btn_premium"
-       android:layout_width="100dp"
-       android:layout_height="wrap_content"
-       android:textColor="#9BFA80"
-       android:background="@drawable/btn_confirmacion"
-       android:text="PREMIUM" />
- </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/textView3a"
+                    android:layout_width="65dp"
+                    android:layout_height="35dp"
+                    android:text="Avion: "
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/viewAvion_InformacionVuelo"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="Avión"
+                    android:textAlignment="center"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:text="Código: "
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/viewid_informacionvuelo"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="ID"
+                    android:textAlignment="center"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:text="Estado: "
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/viewestado_informacionvuelo"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Estado"
+                    android:textAlignment="center"
+                    android:textSize="19dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:text="Destino"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/viewdestino_informacionvuelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Destino"
+                android:textAlignment="center"
+                android:textSize="19dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:text="Origen"
+
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/viewOrigen_InformacionVuelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Origen"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
 
-  <Button
-      android:id="@+id/btnAgregarFavoritos"
-      android:layout_width="175dp"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="100dp"
-      android:text="Agregar a Favoritos"
-      android:layout_marginTop="10dp"
-      android:textStyle="bold"
-      android:background="@drawable/bgboton"
-      android:drawableStart="@drawable/ic_baseline_star_border_24"/>
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:text="Fecha de Ida"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/viewFechaIda_InformacionVuelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fecha de IDA"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:text="Fecha de Vuelta"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/viewFechaVuelta_InformacionVuelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fecha de vuelta"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:text="Hora de Llegada"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/viewHoraLlegada_InformacionVuelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hora de llegada"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:text="Hora de salida"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/viewHorasalida__InformacionVuelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hora de salida"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:text="Precio"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/viewPrecio_InformacionVuelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Precio"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:text="Tipo de Vuelo"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/ViewTipoVuelo_InformacionVuelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:text="Tipo de Vuelo"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Para CONTINUAR seleccione el tipo de Vuelo:"
+                        android:textColor="#145302" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btn_light"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/btn_confirmacion"
+                        android:text="Light"
+                        android:textColor="#9BFA80" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btn_normal"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/btn_confirmacion"
+                        android:text="NORMAL"
+                        android:textColor="#9BFA80" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btn_premium"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_confirmacion"
+                        android:text="PREMIUM"
+                        android:textColor="#9BFA80" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnAgregarFavoritos"
+                        android:layout_width="175dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="100dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bgboton"
+                        android:drawableStart="@drawable/ic_baseline_star_border_24"
+                        android:text="Agregar a Favoritos"
+                        android:textStyle="bold" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </RelativeLayout>
 
 
 </LinearLayout>
