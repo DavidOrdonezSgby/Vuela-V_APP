@@ -4,42 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Reserva"
+    android:background="#F7FFF7"
     android:orientation="vertical"
     android:padding="10dp"
-    android:background="#F7FFF7">
+    tools:context=".Reserva">
 
     <TextView
         android:id="@+id/Registro"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="@drawable/bgborder2"
         android:text="Reseva de Vuelo"
         android:textAlignment="center"
+        android:textColor="#DFFFD6"
         android:textSize="30sp"
         android:textStyle="bold|italic"
-       android:textColor="#DFFFD6"
-        android:typeface="serif"
-        android:background="@drawable/bgborder2"/>
+        android:typeface="serif" />
+
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        app:srcCompat="@drawable/ic_baseline_local_airport_24"
- />
+        app:srcCompat="@drawable/ic_baseline_local_airport_24" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="400dp">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:background="#C1C0C0"
                 android:orientation="horizontal"
-                android:padding="10dp"
-                android:layout_marginTop="10dp">
+                android:padding="10dp">
 
                 <TextView
                     android:id="@+id/textView19"
@@ -78,37 +81,38 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
-        <TextView
-            android:id="@+id/textView3a"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginTop="20dp"
-            android:background="#C1C0C0"
-            android:text="Destino"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold|italic" />
-
-        <TextView
-            android:id="@+id/viewDestinovuelo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bgborde"
-            android:text="Destino"
-            android:textAlignment="center"
-            android:textSize="18dp"
-            android:textStyle="bold" />
 
             <TextView
-            android:id="@+id/textView25"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginTop="20dp"
-            android:text="Fecha de Ida"
-            android:background="#C1C0C0"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold|italic" />
+                android:id="@+id/textView3a"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:background="#C1C0C0"
+                android:text="Destino"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/viewDestinovuelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bgborde"
+                android:text="Destino"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:background="#C1C0C0"
+                android:text="Fecha de Ida"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
 
             <TextView
                 android:id="@+id/viewFechaIda_Vuelo"
@@ -125,8 +129,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_marginTop="20dp"
-                android:text="Fecha de Reserva"
                 android:background="#C1C0C0"
+                android:text="Fecha de Reserva"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold|italic" />
@@ -146,10 +150,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_marginTop="20dp"
+                android:background="#C1C0C0"
                 android:text="Fecha de Vuelta:"
                 android:textColor="@color/black"
                 android:textSize="20dp"
-                android:background="#C1C0C0"
                 android:textStyle="bold|italic" />
 
             <TextView
@@ -161,15 +165,16 @@
                 android:textAlignment="center"
                 android:textSize="18dp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/textView29"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_marginTop="20dp"
+                android:background="#C1C0C0"
                 android:text="Hora de Llegada"
                 android:textColor="@color/black"
                 android:textSize="20dp"
-                android:background="#C1C0C0"
                 android:textStyle="bold|italic" />
 
             <TextView
@@ -181,15 +186,16 @@
                 android:textAlignment="center"
                 android:textSize="18dp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/textView31"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_marginTop="20dp"
+                android:background="#C1C0C0"
                 android:text="Hora de salida"
                 android:textColor="@color/black"
                 android:textSize="20dp"
-                android:background="#C1C0C0"
                 android:textStyle="bold|italic" />
 
             <TextView
@@ -202,49 +208,26 @@
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:background="#C1C0C0"
+                android:text="Origen"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
 
             <TextView
-            android:id="@+id/textView21"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:background="#C1C0C0"
-            android:layout_marginTop="20dp"
-            android:text="Observación"
-
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold|italic" />
-
-        <TextView
-            android:id="@+id/viewobservación_vuelo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bgborde"
-            android:text="Observación"
-            android:textAlignment="center"
-            android:textSize="19dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView33"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginTop="20dp"
-            android:text="Origen"
-            android:background="#C1C0C0"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold|italic" />
-
-        <TextView
-            android:id="@+id/viewOrigen_Vuelo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bgborde"
-            android:text="Origen"
-            android:textAlignment="center"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+                android:id="@+id/viewOrigen_Vuelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bgborde"
+                android:text="Origen"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -253,26 +236,26 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:background="@drawable/bgborde"
         app:errorEnabled="true"
-        android:layout_marginTop="15dp"
         app:startIconDrawable="@drawable/ic_baseline_comment_24">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtUsername"
+        <EditText
+            android:id="@+id/txtObservacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Observación"
-
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/btnReservar_vuelo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#9BFA80"
         android:layout_marginTop="10dp"
         android:background="@drawable/btn_confirmacion"
-        android:text="Reservar Vuelo" />
+        android:text="Reservar Vuelo"
+        android:textColor="#9BFA80" />
 
 </LinearLayout>

@@ -40,25 +40,9 @@ public class NotificacionesAdaptador extends ArrayAdapter<ReservaResponse> {
         TextView detalle = (TextView) row.findViewById(R.id.textView_llegada_salida);
 
         Nomvuelo.setText(reserva.get(position).getDestino());
-        idVuelo.setText(reserva.get(position).getObservacion());
+        idVuelo.setText(reserva.get(position).getOrigen());
         detalle.setText("Hora de Salida: "+reserva.get(position).getHoraSalida()+", Hora de Llegada:"+reserva.get(position).getHoraLlegada());
 
-        /**row.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, DetalleListarProductosAdministrador.class);
-                intent.putExtra("ID", String.valueOf(productos.get(position).getId_product()));
-                intent.putExtra("Nombre", String.valueOf(productos.get(position).getName()));
-                intent.putExtra("Descripcion", String.valueOf(productos.get(position).getDescription()));
-                intent.putExtra("Precio", String.valueOf(productos.get(position).getPrice()));
-                intent.putExtra("IDCAT", String.valueOf(productos.get(position).getId_categoria()));
-                intent.putExtra("URLFOTO", String.valueOf(productos.get(position).getUrlFoto()));
-
-                System.out.println("ID PRODUCTO"+productos.get(position).getId_product());
-
-                context.startActivity(intent);
-            }
-        });**/
 
         return row;
     }

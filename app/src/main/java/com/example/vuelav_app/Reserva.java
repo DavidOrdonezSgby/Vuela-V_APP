@@ -1,4 +1,5 @@
 package com.example.vuelav_app;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -28,6 +29,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,15 +53,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Reserva extends AppCompatActivity {
-TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltareserva, horallegadareserva,
-        fechareserva,horasalidareserva, observacionvuelo,origenreserva,pagoreserva;;
-        Button btnReservar_vuelo;
+    TextView idreserva, destinoreserva, estadoreserva, fechaidareserva, fechavueltareserva, horallegadareserva,
+            fechareserva, horasalidareserva, origenreserva, pagoreserva;
+    Button btnReservar_vuelo;
+    EditText observacionvuelo;
     private int idvuelo;
     VueloService vueloService = Apis.getVueloService();
-    ReservaService reservaService=Apis.getReservaService();
+    ReservaService reservaService = Apis.getReservaService();
 
-    private final static  String CHANNEL_ID="NOFTIFICACION";
-    private final static int NOTIFICACION_ID =0;
+    private final static String CHANNEL_ID = "NOFTIFICACION";
+    private final static int NOTIFICACION_ID = 0;
     private PendingIntent pendingIntent;
     ProgressDialog progressDialog;
     private Date ida, vuelta, actual;
@@ -72,8 +75,8 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
     Asiento asiento;
 
 
-    PasajeroService pasajeroService=Apis.getPasajeroService();
-    UsuarioService usuarioService=Apis.getUsuarioService();
+    PasajeroService pasajeroService = Apis.getPasajeroService();
+    UsuarioService usuarioService = Apis.getUsuarioService();
     UsuarioResponse usuarioResponse1;
 
     @Override
@@ -81,7 +84,7 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reserva);
 
-        idreserva= findViewById(R.id.viewid_reserva);
+        idreserva = findViewById(R.id.viewid_reserva);
         destinoreserva = findViewById(R.id.viewDestinovuelo);
         estadoreserva = findViewById(R.id.viewestadoreserva);
         fechaidareserva = findViewById(R.id.viewFechaIda_Vuelo);
@@ -89,9 +92,9 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
         fechavueltareserva = findViewById(R.id.viewFechaVuelta_Vuelo);
         horallegadareserva = findViewById(R.id.viewHoraLlegada_Vuelo);
         horasalidareserva = findViewById(R.id.viewHorasalida_Vuelo);
-        observacionvuelo = findViewById(R.id.viewobservación_vuelo);
         origenreserva = findViewById(R.id.viewOrigen_Vuelo);
-        System.out.println("id -> "+getIntent().getIntExtra("id",0));
+        observacionvuelo = findViewById(R.id.txtObservacion);
+        System.out.println("id -> " + getIntent().getIntExtra("id", 0));
         obCliente();
         Obtenervuelo();
         btnReservar_vuelo = findViewById(R.id.btnReservar_vuelo);
@@ -109,23 +112,22 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
 
     }
 
-    private String transformar(Date date){
+    private String transformar(Date date) {
         SimpleDateFormat formats = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         return formats.format(date).toString();
     }
 
 
-
-    private void obCliente(){
-        Call<UsuarioResponse> call=usuarioService.findById("Bearer "+TokenController.getToken(Reserva.this),TokenController.getId(Reserva.this));
+    private void obCliente() {
+        Call<UsuarioResponse> call = usuarioService.findById("Bearer " + TokenController.getToken(Reserva.this), TokenController.getId(Reserva.this));
         call.enqueue(new Callback<UsuarioResponse>() {
             @Override
             public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     System.out.println("Linea 125 Ingreso obt cliente");
-                    usuarioResponse1=response.body();
+                    usuarioResponse1 = response.body();
 
-                }else{
+                } else {
 
                     System.out.println(response.message().toString());
                     System.out.println(response.code());
@@ -135,16 +137,16 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
 
             @Override
             public void onFailure(Call<UsuarioResponse> call, Throwable t) {
-                System.out.println("Error de llamar al usuario en Reserva-> "+t.toString());
+                System.out.println("Error de llamar al usuario en Reserva-> " + t.toString());
             }
         });
     }
 
 
-    private void crearPasajero(int idReserva){
+    private void crearPasajero(int idReserva) {
 
-        System.out.println("ID ASIENTO --> "+idasiento);
-        PasajeroRequest pasajeroRequest=new PasajeroRequest();
+        System.out.println("ID ASIENTO --> " + idasiento);
+        PasajeroRequest pasajeroRequest = new PasajeroRequest();
         pasajeroRequest.setNombres(usuarioResponse1.getNombres());
         pasajeroRequest.setDocIdentificacion(usuarioResponse1.getDocIdentificacion());
         pasajeroRequest.setEstado(true);
@@ -152,15 +154,15 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
         pasajeroRequest.setIdReserva(idReserva);
         pasajeroRequest.setIdAsiento(TokenController.getIdAsiento(this));
 
-        Call<PasajeroResponse> call=pasajeroService.create("Bearer "+TokenController.getToken(Reserva.this),pasajeroRequest);
+        Call<PasajeroResponse> call = pasajeroService.create("Bearer " + TokenController.getToken(Reserva.this), pasajeroRequest);
         call.enqueue(new Callback<PasajeroResponse>() {
             @Override
             public void onResponse(Call<PasajeroResponse> call, Response<PasajeroResponse> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
 
                     System.out.println("Se creo el pasajero");
 
-                }else{
+                } else {
                     System.out.println("Hay un error");
                     System.out.println(response.message());
                     System.out.println(response.code());
@@ -169,17 +171,17 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
 
             @Override
             public void onFailure(Call<PasajeroResponse> call, Throwable t) {
-                System.out.println("Este es el error al crear el pasajero ->"+t.toString());
+                System.out.println("Este es el error al crear el pasajero ->" + t.toString());
             }
         });
     }
 
-    private void Obtenervuelo(){
-        Call<VueloResponse> vueloResponseCall=vueloService.findById(getIntent().getIntExtra("id",0));
+    private void Obtenervuelo() {
+        Call<VueloResponse> vueloResponseCall = vueloService.findById(getIntent().getIntExtra("id", 0));
         vueloResponseCall.enqueue(new Callback<VueloResponse>() {
             @Override
             public void onResponse(Call<VueloResponse> call, Response<VueloResponse> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     idvuelo = Integer.parseInt(response.body().getIdVuelo().toString());
                     destinoreserva.setText(response.body().getDestino());
                     estadoreserva.setText(response.body().getEstado().toString());
@@ -188,16 +190,18 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
                     fechavueltareserva.setText(response.body().getFechaVuelta().toString());
                     horallegadareserva.setText(response.body().getHoraLlegada());
                     horasalidareserva.setText(response.body().getHoraSalida());
-                    System.out.println("linea 183 Hora salida "+response.body().getHoraSalida());
-                    //observacionvuelo.setText(response.body().);
+                    System.out.println("linea 183 Hora salida " + response.body().getHoraSalida());
+                    origenreserva.setText(response.body().getOrigen());
+                    //observacionvuelo.setText(response.body().get);
 
                     ida = response.body().getFechaIda();
                     vuelta = response.body().getFechaVuelta();
                     actual = null;
-                }else{
+                } else {
 
                 }
             }
+
             @Override
             public void onFailure(Call<VueloResponse> call, Throwable t) {
 
@@ -206,23 +210,23 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
     }
 
 
-    private void crearReserva(){
+    private void crearReserva() {
 
 
         progressDialog = new ProgressDialog(this);
         System.out.println("Procesando");
-        System.out.println("token reserva"+TokenController.getToken(this));
+        System.out.println("token reserva" + TokenController.getToken(this));
         progressDialog.setMessage("Procesando solicitud espere...");
         progressDialog.show();
 
-        System.out.println("IDUSER "+TokenController.getId(this));
+        System.out.println("IDUSER " + TokenController.getId(this));
 
-        ReservaRequest reservaRequest= new ReservaRequest();
+        ReservaRequest reservaRequest = new ReservaRequest();
 
         reservaRequest.setIdUsuario(TokenController.getId(this));
         reservaRequest.setFechaRegistro(formattedDate);
         reservaRequest.setObservacion(observacionvuelo.getText().toString());
-        reservaRequest.setIdVuelo(getIntent().getIntExtra("id",0));
+        reservaRequest.setIdVuelo(getIntent().getIntExtra("id", 0));
         reservaRequest.setDestino(destinoreserva.getText().toString());
         reservaRequest.setEstado(Integer.parseInt(estadoreserva.getText().toString()));
         reservaRequest.setFechaIda(transformar(ida));
@@ -232,13 +236,13 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
         reservaRequest.setOrigen(origenreserva.getText().toString());
         reservaRequest.setPago(true);
 
-        Call<ReservaResponse> call = reservaService.creaReserva("Bearer "+TokenController.getToken(this), reservaRequest);
+        Call<ReservaResponse> call = reservaService.creaReserva("Bearer " + TokenController.getToken(this), reservaRequest);
         call.enqueue(new Callback<ReservaResponse>() {
             @Override
             public void onResponse(Call<ReservaResponse> call, Response<ReservaResponse> response) {
                 progressDialog.dismiss();
                 System.out.println("Entro al enqueue de la reserva");
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     System.out.println("Paso el metodo ob Cliente");
                     System.out.println("Crea el Asiento");
                     crearPasajero(response.body().getIdReserva());
@@ -246,8 +250,7 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
                     Intent intent = new Intent(Reserva.this, SuccessPaymentActivity.class);
                     startActivity(intent);
                     finish();
-                }
-                else{
+                } else {
                     System.out.println(response.message());
                     System.out.println(response.code());
 
@@ -258,7 +261,7 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
             @Override
             public void onFailure(Call<ReservaResponse> call, Throwable t) {
                 progressDialog.dismiss();
-                System.out.println(t.toString()+"<- Este es el error");
+                System.out.println(t.toString() + "<- Este es el error");
             }
         });
     }
@@ -279,7 +282,7 @@ TextView idreserva, destinoreserva, estadoreserva,fechaidareserva,fechavueltares
         }
     }
 
-    private void setPendingIntent(){
+    private void setPendingIntent() {
         Intent intent = new Intent(this, SesionIniciada.class);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addParentStack(SesionIniciada.class);

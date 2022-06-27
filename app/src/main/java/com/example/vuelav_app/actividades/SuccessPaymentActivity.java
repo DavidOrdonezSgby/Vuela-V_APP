@@ -240,7 +240,8 @@ public class SuccessPaymentActivity extends AppCompatActivity implements View.On
                 }else{
                     EviarNotificacion();
                     createNotificationChanne();
-                    showReserveComplete();
+                    //showReserveComplete();
+                    Toast.makeText(this, "Se completó la reserva con éxito", Toast.LENGTH_SHORT).show();
                     finish();
                 }
                 break;
