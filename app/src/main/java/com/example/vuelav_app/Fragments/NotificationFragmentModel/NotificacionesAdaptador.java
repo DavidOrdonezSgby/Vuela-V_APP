@@ -42,7 +42,7 @@ public class NotificacionesAdaptador extends ArrayAdapter<ReservaResponse> {
 
         Nomvuelo.setText(reserva.get(position).getDestino());
         idVuelo.setText(reserva.get(position).getIdVuelo().toString());
-        detalle.setText("Hora de Salida: "+reserva.get(position).getHoraSalida()+", Hora de Llegada:"+reserva.get(position).getHoraLlegada());
+        detalle.setText("Hora de Salida: "+reserva.get(position).getHoraSalida()+", Hora de Llegada: "+reserva.get(position).getHoraLlegada());
 
         row.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -40,6 +40,7 @@ public class InformacionVueloRealizado extends AppCompatActivity {
         precio=findViewById(R.id.viewPrecio_InformacionVuelorealizado);
         tipovuelo=findViewById(R.id.ViewTipoVuelo_InformacionVuelorealizado);
         hola=findViewById(R.id.img_informacionvuelorealizado);
+        ObtenerVuelos(Integer.parseInt(getIntent().getStringExtra("idVuelo")));
     }
 
     private void ObtenerVuelos(int aLong){

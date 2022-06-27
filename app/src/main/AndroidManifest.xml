@@ -13,18 +13,22 @@
         android:theme="@style/Theme.Design.Light.NoActionBar"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name=".InformacionVueloRealizado"
-            android:exported="false" />
+            android:name=".actividades.InformacionVueloRealizado"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name="com.example.vuelav_app.Fragments.Favoritos.FavoritosAdapter"
-            android:exported="false" />
+            android:name=".Fragments.Favoritos.FavoritosAdapter"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.example.vuelav_app.Fragments.Favoritos.Favoritos"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".actividades.SuccessPaymentActivity"
             android:exported="true"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".Reserva"
             android:exported="false"
