@@ -52,6 +52,7 @@ public class InformacionVueloRealizado extends AppCompatActivity {
         llegada= findViewById(R.id.viewHoraLlegada_InformacionVuelorealizado);
         hola=findViewById(R.id.img_informacionvuelorealizado);
         ObtenerVuelos(getIntent().getIntExtra("idVuelo",0));
+        obtenerfechaR(getIntent().getIntExtra("idReserva",0));
     }
 
     private String transformarD(Date date) {
