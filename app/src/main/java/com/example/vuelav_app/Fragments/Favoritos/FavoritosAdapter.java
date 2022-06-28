@@ -71,7 +71,7 @@ public class FavoritosAdapter extends ArrayAdapter<VueloResponse> {
 
             }
         }else{
-
+                favorito.add("No hay datos");
         }
 
     }
@@ -84,7 +84,7 @@ public class FavoritosAdapter extends ArrayAdapter<VueloResponse> {
                 public void onResponse(Call<VueloResponse> call, Response<VueloResponse> response) {
                     if(response.isSuccessful()){
 
-                        favorito.add(response.body());
+
 
                     }
                 }

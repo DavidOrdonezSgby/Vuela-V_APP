@@ -1,122 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="200dp"
+    android:layout_gravity="center"
     android:layout_height="wrap_content"
-    android:foreground="?attr/selectableItemBackground">
+    android:background="@drawable/card_bg">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
+    <ImageView
+        android:id="@+id/LugarImgF"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
         android:layout_marginBottom="4dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp">
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/txtNombreLugarF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/recentimage1" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?attr/actionBarSize"
-            android:orientation="horizontal">
+    <TextView
+        android:id="@+id/txtNombreLugarF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Fondo de bikini"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.152"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LugarImg" />
 
-            <ImageView
-                android:id="@+id/LugarImg"
-                android:layout_width="200dp"
-                android:layout_height="230dp"
-                android:layout_marginBottom="4dp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                app:layout_constraintBottom_toTopOf="@+id/txtNombreLugar"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/recentimage1" />
+    <TextView
+        android:id="@+id/txtCiudadF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Narnia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtNombreLugarF"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombreLugarF" />
 
-            <View
-                android:layout_width="5dp"
-                android:layout_height="0dp" />
+    <TextView
+        android:id="@+id/txtPrecioF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="$200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtCiudadF"
+        app:layout_constraintTop_toBottomOf="@+id/txtCiudadF"
+        app:layout_constraintVertical_bias="0.0" />
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/txtvueloid"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="16dp"
-                            android:layout_marginBottom="16dp"
-                            android:text="ID"
-                            android:textColor="#027006"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="1.0"
-                            app:layout_constraintStart_toEndOf="@+id/txtPrecio"
-                            app:layout_constraintTop_toBottomOf="@+id/LugarImg"
-                            app:layout_constraintVertical_bias="1.0" />
-
-                    </LinearLayout>
+    <TextView
+        android:id="@+id/txtvueloid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/txtPrecioF"
+        app:layout_constraintTop_toBottomOf="@+id/LugarImg"
+        app:layout_constraintVertical_bias="1.0" />
 
 
-                    <TextView
-                        android:id="@+id/txtNombreLugarF"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Fondo de bikini"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.152"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/LugarImg" />
-
-                    <TextView
-                        android:id="@+id/txtCiudadF"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="Narnia"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/txtNombreLugar"
-                        app:layout_constraintTop_toBottomOf="@+id/txtNombreLugar" />
-
-                    <TextView
-                        android:id="@+id/txtPrecioF"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="16dp"
-                        android:text="$200"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/txtCiudad"
-                        app:layout_constraintTop_toBottomOf="@+id/txtCiudad"
-                        app:layout_constraintVertical_bias="0.0" />
-
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

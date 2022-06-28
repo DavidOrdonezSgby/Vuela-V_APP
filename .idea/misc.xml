@@ -8,6 +8,7 @@
         <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/activity_favoritos_adapter.xml" value="0.29322916666666665" />
         <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/activity_favoritos_list.xml" value="0.29322916666666665" />
         <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/activity_informacion_vuelo2.xml" value="0.33" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/activity_informacion_vuelo_realizado.xml" value="0.29322916666666665" />
         <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/activity_login.xml" value="0.22282608695652173" />
         <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/activity_mi_cuenta.xml" value="0.22" />
         <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/activity_notification_sesion_iniciada.xml" value="0.29322916666666665" />
@@ -21,8 +22,9 @@
         <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/dialogo_reserva_completada.xml" value="0.22282608695652173" />
         <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/fragment_account.xml" value="0.22282608695652173" />
         <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/fragment_notification.xml" value="0.22282608695652173" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/item_favoritos.xml" value="0.29322916666666665" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/item_favoritos.xml" value="0.5" />
         <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/item_notificacion.xml" value="0.29322916666666665" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/layout/recents_row_item.xml" value="0.29322916666666665" />
         <entry key="..\:/Users/David/AndroidStudioProjects/Vuela-V_APP/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.227" />
         <entry key="..\:/Users/David/AndroidStudioProjects/VuelaV_APP/app/src/main/res/drawable/bgborde.xml" value="0.114" />
