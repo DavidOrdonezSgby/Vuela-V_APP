@@ -51,7 +51,7 @@ public class FavoritosAdapter extends ArrayAdapter<VueloResponse> {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View row = inflater.inflate(R.layout.item_favoritos, parent, false);
-        TextView Nomlugar = (TextView) row.findViewById(R.id.txtNombreLugarF);
+        TextView Nomlugar = (TextView) row.findViewById(R.id.txtNombreLugar1);
         TextView idVuelo = (TextView) row.findViewById(R.id.txtvueloid);
         TextView ciudad = (TextView) row.findViewById(R.id.txtCiudadF);
         TextView precio = (TextView) row.findViewById(R.id.txtPrecioF);

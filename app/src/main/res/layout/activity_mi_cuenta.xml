@@ -30,7 +30,7 @@
             android:clickable="true"
             android:padding="20dp"
             android:src="@drawable/ic_cerrar_sesion"
-            app:tint="#B3A7A7"
+            app:tint="#985757"
             tools:ignore="SpeakableTextPresentCheck" />
 
 
@@ -64,6 +64,16 @@
             app:tint="#B3A7A7"
             tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
+    <TextView
+        android:id="@+id/textVie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mis Favoritos"
+        android:layout_marginStart="235dp"
+        android:textColor="#145302"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        android:typeface="serif" />
 
 
 
