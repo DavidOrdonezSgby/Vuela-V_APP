@@ -4,10 +4,14 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +37,6 @@ public class FavoritosAdapter extends ArrayAdapter<VueloResponse> {
 
     private Context context;
     private List<VueloResponse> favorito;
-    private List<Integer> veces;
     VueloService vueloService= Apis.getVueloService();
 
     public FavoritosAdapter(@NonNull Context context, int resource, List<VueloResponse> favorito) {
@@ -52,49 +55,32 @@ public class FavoritosAdapter extends ArrayAdapter<VueloResponse> {
         TextView idVuelo = (TextView) row.findViewById(R.id.txtvueloid);
         TextView ciudad = (TextView) row.findViewById(R.id.txtCiudadF);
         TextView precio = (TextView) row.findViewById(R.id.txtPrecioF);
-        obdatosSQLite();
+        ImageView lugarimg = (ImageView) row.findViewById(R.id.LugarImgF);
+
+        Nomlugar.setText(favorito.get(position).getDestino());
+        idVuelo.setText(favorito.get(position).getIdVuelo().toString());
+        ciudad.setText(favorito.get(position).getDestino().toString());
+        precio.setText(favorito.get(position).getPrecio().toString());
+
+        if(favorito.get(position).getImagen()==null) {
+            lugarimg.setImageResource(R.drawable.recentimage1);
+        }else{
+            lugarimg.setImageBitmap(transformar(favorito.get(position).getImagen()));
+        }
+
 
 
         return row;
     }
 
+    public Bitmap transformar(String string){
 
-    public void obdatosSQLite(){
+        String base64Image = string.split(",")[1];
 
-        AdminSQLiteOpenHelper admin= new AdminSQLiteOpenHelper(getContext(),"admin",null,1);
-        SQLiteDatabase baseDatos=admin.getWritableDatabase();
-        Cursor fila=baseDatos.rawQuery("select id_vuelo from guardados where id_usuario="+ TokenController.getId(getContext()),null);
-        if(fila.moveToFirst()){
-            for (int i = 0; i < fila.getColumnCount(); i++) {
+        byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return decodedByte;
 
-                veces.add(Integer.parseInt(fila.getString(i)));
-
-            }
-        }else{
-                favorito.add("No hay datos");
-        }
-
-    }
-
-    public void obtVuelos(){
-        for (int i = 0; i < veces.size(); i++) {
-            Call<VueloResponse> call=vueloService.findById(veces.get(i));
-            call.enqueue(new Callback<VueloResponse>() {
-                @Override
-                public void onResponse(Call<VueloResponse> call, Response<VueloResponse> response) {
-                    if(response.isSuccessful()){
-
-
-
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<VueloResponse> call, Throwable t) {
-
-                }
-            });
-        }
     }
 
 

@@ -30,7 +30,6 @@ import retrofit2.Response;
 public class InformacionVueloRealizado extends AppCompatActivity {
 
     VueloService vueloService= Apis.getVueloService();
-    ReservaService reservaService = Apis.getReservaService();
     TextView idavion,idvuelo,estadovuelo,fechareserva,destino,origen,
             fechaida, fechavuelta,precio,tipovuelo, salida, llegada;
     ImageView hola;

@@ -1,10 +1,14 @@
 package com.example.vuelav_app.Fragments.Favoritos;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.widget.ListView;
 
 import com.example.vuelav_app.Fragments.NotificationFragmentModel.NotificacionesAdaptador;
@@ -14,6 +18,7 @@ import com.example.vuelav_app.Logico.SQLite.AdminSQLiteOpenHelper;
 import com.example.vuelav_app.Logico.Service.VueloService;
 import com.example.vuelav_app.Logico.Token.TokenController;
 import com.example.vuelav_app.R;
+import com.example.vuelav_app.SesionIniciada;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,10 +60,8 @@ public class Favoritos extends AppCompatActivity {
             for (int i = 0; i < fila.getColumnCount(); i++) {
                 System.out.println("Veces"+ fila.getString(i));
                 veces.add(fila.getString(i));
-
             }
         }else{
-
 
         }
         baseDatos.close();
@@ -85,6 +88,15 @@ public class Favoritos extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode==event.KEYCODE_BACK){
+            Intent intent = new Intent(getApplicationContext(), SesionIniciada.class);
+            startActivity(intent);
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 }
